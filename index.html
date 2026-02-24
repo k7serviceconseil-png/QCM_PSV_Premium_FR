@@ -1160,7 +1160,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
     document.body.appendChild(f);
     form = f;
   }
-  async async function postToNetlify() {
+  async function postToNetlify() {
     const fd = new FormData(form);
     if(!fd.get('form-name')) fd.set('form-name','qcm-results');
     const body = new URLSearchParams(fd).toString();
@@ -1197,7 +1197,6 @@ window.addEventListener("DOMContentLoaded", ()=>{
     });
   }
 })();
-</script>
 </body>
 </html>
 
