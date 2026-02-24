@@ -129,7 +129,8 @@ li {
       <li>Le test comporte 50 questions à choix multiples.</li>
       <li>Chaque question propose 5 choix de réponses (A à E).</li>
       <li>Dans certaines questions, plus d’une réponse peut être correcte.</li>
-      <li>Dans les questions où l’option E est correcte, tous les choix de réponse qui s’appliquent doivent être sélectionnés (A,B,C,D et E). Sélectionner uniquement E ne donne pas un crédit complet.</li>
+      <li>Lorsque l’option « Toutes ces réponses sont correctes » (E) est pertinente, elle est considérée comme juste.</li>
+      <li>Lorsque l’option « Aucune de ces réponses » (E) est pertinente, elle est considérée comme juste.</li>
       <li>Lisez attentivement chaque question avant de répondre.</li>
       <li>Sélectionnez toutes les réponses que vous jugez exactes.</li>
     </ul>
@@ -875,46 +876,146 @@ function isCorrect(q,val){
   for(const k of correct){ if(!user.has(k)) return false; }
   return true;
 }
-function computeScores(){
-  const a=getAnswers(); let total=0;
-  const domTot={}, domOK={}; for(let d=1; d<=13; d++){ domTot[d]=0; domOK[d]=0; }
-  for(let q=1;q<=50;q++){ const d=DOMAIN_OF_Q[q]; domTot[d]++; if(isCorrect(q,a[q])){ domOK[d]++; total++; } }
-  const domPct={}; for(let d=1; d<=13; d++){ const denom=Math.max(1,domTot[d]); domPct[d]=Math.round((domOK[d]/denom)*100); }
-  return { overallPct: Math.round((total/50)*100), domainScores: domPct };
+function getValue(id) {
+  const el = document.getElementById(id);
+  return el ? String(el.value || "").trim() : "";
 }
-function collectAutoEval(){
-  const out={}; for(let i=1;i<=15;i++){ out['ae'+i]=document.getElementById('ae'+i)?.value||''; } return out;
+function setHiddenValue(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.value = (val === undefined || val === null) ? "" : String(val);
 }
-function buildEmailBody(){
-  const {overallPct, domainScores}=computeScores();
-  const ae=collectAutoEval();
-  let lines=[];
-  lines.push("Résultats – Profil de Succès en Ventes (confidentiel)"); lines.push("");
-  lines.push(`Identité : ${document.getElementById('prenom')?.value||''} ${document.getElementById('nom')?.value||''}`);
-  lines.push(`Courriel : ${document.getElementById('email')?.value||''}`);
-  lines.push(`Téléphone : ${document.getElementById('tel')?.value||''}`);
-  lines.push(`Entreprise : ${document.getElementById('entreprise')?.value||''}`);
-  lines.push(`Poste actuel : ${document.getElementById('poste')?.value||''}`);
-  lines.push(`Années d’expérience : ${document.getElementById('exp')?.value||''}`);
-  lines.push(`Rémunération : ${document.getElementById('remu')?.value||''}`);
-  lines.push(`Région/Territoire : ${document.getElementById('region')?.value||''}`);
+
+function computeScores() {
+  const perQuestion = {};
+  let total = 0;
+
+  // Domain totals (13 domaines, 1 question sur 13)
+  const domainTotals = {};
+  for (let d = 1; d <= 13; d++) domainTotals[d] = { score: 0, max: 0 };
+
+  for (let i = 1; i <= QUESTIONS.length; i++) {
+    const selected = (answers[i] || []).slice().sort();
+    const correct = (ANSWER_KEY[i] || []).slice().sort();
+
+    const correctSet = new Set(correct);
+    let correctSelected = 0;
+    let wrongSelected = 0;
+
+    for (const c of selected) {
+      if (correctSet.has(c)) correctSelected++;
+      else wrongSelected++;
+    }
+
+    const denom = Math.max(correct.length, 1);
+    let qScore = (correctSelected - wrongSelected) / denom;
+    qScore = Math.max(0, Math.min(1, qScore));
+    qScore = Math.round(qScore * 100) / 100; // 2 décimales
+
+    perQuestion[i] = { selected, correct, score: qScore };
+    total += qScore;
+
+    const domainIndex = ((i - 1) % 13) + 1; // 1..13
+    domainTotals[domainIndex].score += qScore;
+    domainTotals[domainIndex].max += 1;
+  }
+
+  const overallPct = Math.round((total / QUESTIONS.length) * 100);
+
+  const domainScores = {};
+  for (let d = 1; d <= 13; d++) {
+    const v = domainTotals[d];
+    domainScores[d] = Math.round((v.score / v.max) * 100);
+  }
+
+  const autoEval = {};
+  for (let i = 1; i <= 15; i++) {
+    const sel = document.querySelector(`input[name="Self${i}"]:checked`);
+    autoEval[`Self${i}`] = sel ? sel.value : "";
+  }
+
+  const detailsJson = JSON.stringify({ globalPct: overallPct, perQuestion });
+
+  const subject = `${SUBJECT_PREFIX} ${overallPct}% — ${getValue('prenom')} ${getValue('nom')}`.trim();
+  const body = buildEmailBody({ overallPct, domainScores, autoEval, detailsJson });
+
+  return { subject, body, overallPct, domainScores, autoEval, detailsJson };
+}
+
+
+function buildEmailBody({ overallPct, domainScores, autoEval, detailsJson }) {
+  let lines = [];
+  lines.push("Résultats – PSV (confidentiel)");
   lines.push("");
-  lines.push(`Score global (sur 50 questions) : ${overallPct}%`); lines.push("");
-  lines.push("Scores par domaine (sur 100) :");
-  for(let d=1; d<=13; d++){ const name=DOMAIN_NAMES[d-1]||`Domaine ${d}`; lines.push(`- ${name} : ${domainScores[d]}%`); }
+  lines.push(`Identité : ${getValue('prenom')} ${getValue('nom')}`.trim());
+  lines.push(`Courriel : ${getValue('email')}`);
+  lines.push(`Téléphone : ${getValue('tel')}`);
+  lines.push(`Entreprise : ${getValue('entreprise')}`);
+  lines.push(`Poste actuel : ${getValue('poste')}`);
+  lines.push(`Années d’expérience : ${getValue('exp')}`);
+  lines.push(`Rémunération : ${getValue('remu')}`);
+  lines.push(`Région/Territoire : ${getValue('region')}`);
+  lines.push("");
+  lines.push(`Score global : ${overallPct}%`);
+  lines.push("");
+  lines.push("Scores par domaine :");
+  for (let d = 1; d <= 13; d++) {
+    const name = DOMAIN_NAMES[d - 1] || `Domaine ${d}`;
+    lines.push(`- ${name} : ${domainScores[d]}%`);
+  }
   lines.push("");
   lines.push("Auto-évaluation :");
-  for(let i=1;i<=15;i++){ lines.push(`- Item ${i} : ${ae['ae'+i]||'Non renseigné'}`); }
+  for (let i = 1; i <= 15; i++) {
+    const v = autoEval[`Self${i}`] || "Non renseigné";
+    lines.push(`- Item ${i} : ${v}`);
+  }
+  lines.push("");
+  lines.push("Détails JSON :");
+  lines.push(detailsJson);
+  lines.push("");
+  lines.push("Réponses (brutes) :");
+  for (let i = 1; i <= QUESTIONS.length; i++) {
+    lines.push(`Q${i}: ${(answers[i]||[]).join(',')}`);
+  }
   lines.push("");
   lines.push("Nota bene : Résultats confidentiels – transmettre au directeur des ventes uniquement sur approbation du gestionnaire.");
   return lines.join("\\n");
 }
-function sendResults(){
-  const body=buildEmailBody();
-  const subject=`${SUBJECT_PREFIX}`;
-  const mailto=`mailto:${encodeURIComponent(RECIPIENT_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.location.href=mailto;
+
+function sendResults() {
+  const { subject, body, overallPct, domainScores, autoEval, detailsJson } = computeScores();
+
+  // Remplir les champs cachés Netlify (pour recevoir le rapport par email via Notifications Netlify)
+  setHiddenValue('nf-prenom', getValue('prenom'));
+  setHiddenValue('nf-nom', getValue('nom'));
+  setHiddenValue('nf-email', getValue('email'));
+  setHiddenValue('nf-entreprise', getValue('entreprise'));
+  setHiddenValue('nf-global', overallPct);
+  setHiddenValue('nf-details-json', detailsJson);
+
+  // Domaines
+  // Ordre: les 13 domaines dans DOMAIN_LABELS => nf-d01 ... nf-d13
+  DOMAIN_LABELS.forEach((label, idx) => {
+    const id = `nf-d${String(idx + 1).padStart(2,'0')}`;
+    setHiddenValue(id, domainScores[label] ?? "");
+  });
+
+  // Auto-évaluation
+  for (let i = 1; i <= 15; i++) {
+    setHiddenValue(`nf-self${String(i).padStart(2,'0')}`, autoEval[`Self${i}`] ?? "");
+  }`, autoEval[`Self${i}`] ?? "");
+  }
+
+  // Texte complet (lisible) + réponses brutes (pour faciliter le traitement)
+  setHiddenValue('nf-email-body', body);
+  setHiddenValue('nf-answers', JSON.stringify(answers));
+
+  // Envoi à Netlify (recommandé)
+  postToNetlify();
+
+  // Optionnel: ouvrir un mailto comme backup (si vous voulez garder le comportement actuel)
+  // window.location.href = `mailto:${RECIPIENT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
+
 function renderResults(){
   const {overallPct, domainScores}=computeScores();
   document.getElementById("overall").innerHTML =
@@ -997,7 +1098,12 @@ window.addEventListener("DOMContentLoaded", ()=>{
 <form name="qcm-results" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="qcm-results">
   <input type="text"   name="bot-field" style="display:none">
-  <input type="hidden" name="Score_global_pct" id="nf-global">
+    <input type="hidden" name="prenom" id="nf-prenom">
+  <input type="hidden" name="nom" id="nf-nom">
+  <input type="hidden" name="email" id="nf-email">
+  <input type="hidden" name="entreprise" id="nf-entreprise">
+  <input type="hidden" name="details_json" id="nf-details-json">
+<input type="hidden" name="Score_global_pct" id="nf-global">
   <input type="hidden" name="D01_Approche_Contact_pct" id="nf-d01">
   <input type="hidden" name="D02_Découverte_Besoins_pct" id="nf-d02">
   <input type="hidden" name="D03_Présentation_Solution_pct" id="nf-d03">
@@ -1010,8 +1116,22 @@ window.addEventListener("DOMContentLoaded", ()=>{
   <input type="hidden" name="D10_Prospection_pct" id="nf-d10">
   <input type="hidden" name="D11_Ecoute_Active_pct" id="nf-d11">
   <input type="hidden" name="D12_Créativité_Adaptabilité_pct" id="nf-d12">
-  <input type="hidden" name="D13_Professionnalisme_pct" id="nf-d13">
-  <input type="hidden" name="AutoEval_01" id="nf-ae1">
+  <input type="hidden" name="D13_Professionnalisme_pct" id="nf-d13">  <input type="hidden" name="AutoEval_01" id="nf-self01">
+  <input type="hidden" name="AutoEval_02" id="nf-self02">
+  <input type="hidden" name="AutoEval_03" id="nf-self03">
+  <input type="hidden" name="AutoEval_04" id="nf-self04">
+  <input type="hidden" name="AutoEval_05" id="nf-self05">
+  <input type="hidden" name="AutoEval_06" id="nf-self06">
+  <input type="hidden" name="AutoEval_07" id="nf-self07">
+  <input type="hidden" name="AutoEval_08" id="nf-self08">
+  <input type="hidden" name="AutoEval_09" id="nf-self09">
+  <input type="hidden" name="AutoEval_10" id="nf-self10">
+  <input type="hidden" name="AutoEval_11" id="nf-self11">
+  <input type="hidden" name="AutoEval_12" id="nf-self12">
+  <input type="hidden" name="AutoEval_13" id="nf-self13">
+  <input type="hidden" name="AutoEval_14" id="nf-self14">
+  <input type="hidden" name="AutoEval_15" id="nf-self15">
+<input type="hidden" name="AutoEval_01" id="nf-ae1">
   <input type="hidden" name="AutoEval_02" id="nf-ae2">
   <input type="hidden" name="AutoEval_03" id="nf-ae3">
   <input type="hidden" name="AutoEval_04" id="nf-ae4">
@@ -1045,7 +1165,7 @@ window.addEventListener("DOMContentLoaded", ()=>{
     document.body.appendChild(f);
     form = f;
   }
-  async function postToNetlify(){
+  async async function postToNetlify() {
     const fd = new FormData(form);
     if(!fd.get('form-name')) fd.set('form-name','qcm-results');
     const body = new URLSearchParams(fd).toString();
@@ -1085,4 +1205,9 @@ window.addEventListener("DOMContentLoaded", ()=>{
 </script>
 
 </body>
-</html>
+</html>function setHiddenValue(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.value = (val === undefined || val === null) ? "" : String(val);
+}
+
+
