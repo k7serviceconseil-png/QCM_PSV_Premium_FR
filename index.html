@@ -788,10 +788,6 @@ li {
       </div>
     </section>
     
-l</label>
-      </div>
-    </fieldset>
-    </section>
     
 
     <!-- AUTO-EVALUATION -->
@@ -841,9 +837,9 @@ l</label>
   <footer>© K7 Service-Conseil – Tous droits réservés 2025</footer>
 
 <script>
-const RECIPIENT_EMAIL = "evaluation@psv-global.com";
+const RECIPIENT_EMAIL = "ck7@k7serviceconseil.com";
 const SUBJECT_PREFIX = "Résultats – Profil de Succès en Ventes";
-const SHOW_LOCAL_RESULTS = false;
+const SHOW_LOCAL_RESULTS = new URLSearchParams(location.search).get("admin") === "1";
 
 const DOMAIN_NAMES = [
   "Approche & contact","Découverte des besoins","Présentation de la solution","Gestion des objections","Négociation",
@@ -1002,7 +998,6 @@ function sendResults() {
   // Auto-évaluation
   for (let i = 1; i <= 15; i++) {
     setHiddenValue(`nf-self${String(i).padStart(2,'0')}`, autoEval[`Self${i}`] ?? "");
-  }`, autoEval[`Self${i}`] ?? "");
   }
 
   // Texte complet (lisible) + réponses brutes (pour faciliter le traitement)
@@ -1209,5 +1204,3 @@ window.addEventListener("DOMContentLoaded", ()=>{
   const el = document.getElementById(id);
   if (el) el.value = (val === undefined || val === null) ? "" : String(val);
 }
-
-
