@@ -967,6 +967,29 @@ l
   function pauseTimer(){ if (timerId !== null) { clearInterval(timerId); timerId = null; } }
   function checkedValues(name){ return Array.from(document.querySelectorAll('input[name="' + name + '"]:checked')).map(function(input){ return input.value; }); }
   function valueOf(id){ return (document.getElementById(id)?.value || '').trim(); }
+  function formatPhoneValue(value){
+    const digits = (value || '').replace(/\D/g, '').slice(0, 10);
+    if (digits.length <= 3) return digits;
+    if (digits.length <= 6) return digits.slice(0, 3) + ' ' + digits.slice(3);
+    return digits.slice(0, 3) + ' ' + digits.slice(3, 6) + '-' + digits.slice(6);
+  }
+  function formatMoneyValue(value){
+    const digits = (value || '').replace(/\D/g, '');
+    if (!digits) return '';
+    return digits.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' $';
+  }
+  function attachFormatting(){
+    const tel = document.getElementById('tel');
+    const remu = document.getElementById('remu');
+    if (tel) {
+      tel.addEventListener('input', function(){ tel.value = formatPhoneValue(tel.value); });
+      tel.addEventListener('blur', function(){ tel.value = formatPhoneValue(tel.value); });
+    }
+    if (remu) {
+      remu.addEventListener('blur', function(){ remu.value = formatMoneyValue(remu.value); });
+      remu.addEventListener('focus', function(){ remu.value = remu.value.replace(/\s*\$/g, ''); });
+    }
+  }
   function collectPayload(){
     const questions = {}; for (let i=1;i<=50;i++) questions['q' + i] = checkedValues('q' + i);
     const autoEvaluation = {}; for (let i=1;i<=15;i++) autoEvaluation['ae' + i] = valueOf('ae' + i);
@@ -1046,6 +1069,7 @@ l
   function openSectionById(id){ const button = document.querySelector('#' + id + ' .acc-toggle'); const body = document.querySelector('#' + id + ' .acc-body'); if (!button || !body) return; closeAll(); body.style.display='block'; button.textContent='Fermer la section'; button.setAttribute('aria-expanded','true'); document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'}); }
   window.addEventListener('DOMContentLoaded', function(){
     document.body.classList.add('timer-locked'); document.getElementById('btnAdmin')?.remove();
+    attachFormatting();
     document.querySelectorAll('.acc-toggle').forEach(function(button){ button.addEventListener('click', function(){ const section = button.closest('.accordion'); const body = section.querySelector('.acc-body'); const wasOpen = body.style.display === 'block'; closeAll(); if (!wasOpen) { body.style.display='block'; button.textContent='Fermer la section'; button.setAttribute('aria-expanded','true'); } }); });
     document.querySelectorAll('.acc-next,.acc-prev').forEach(function(link){ link.addEventListener('click', function(event){ event.preventDefault(); openSectionById(link.dataset.target); }); });
     sendButton.addEventListener('click', submitResponses); document.getElementById('timerStart').addEventListener('click', startTimer); document.getElementById('timerPause').addEventListener('click', pauseTimer); displayTimer();
