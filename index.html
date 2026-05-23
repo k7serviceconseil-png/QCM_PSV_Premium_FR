@@ -1,1458 +1,969 @@
+
 <!DOCTYPE html>
-<html lang="fr">
+
+<html lang="fr-CA">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Profil de Succès en Ventes® – QCM | Français</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;0,9..40,900;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Profil de Succ&egrave;s en Vente - Questionnaire PSV</title>
 <style>
-:root {
-  --k7: #08245c;
-  --k7-mid: #1E4E9B;
-  --k7-light: #3b6fc4;
-  --accent: #2563eb;
-  --gold: #c9a84c;
-  --bg: #eef1f8;
-  --card: #ffffff;
-  --text: #0d1b34;
-  --muted: #5a6e8c;
-  --line: #dde2ef;
-  --shadow: 0 2px 16px rgba(8,36,92,.07), 0 1px 3px rgba(8,36,92,.05);
-  --shadow-hover: 0 8px 32px rgba(8,36,92,.13), 0 2px 6px rgba(8,36,92,.07);
-  --shadow2: 0 4px 14px rgba(8,36,92,.06);
-  --radius: 18px;
-  --radius-sm: 12px;
+  :root{ --blue:#0a2a66; --ink:#111; --muted:#666; --bg:#fafafa; --card:#fff; }
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; margin:0; color:var(--ink); background:var(--bg)}
+  header{padding:22px 20px 10px; border-bottom:1px solid #e9eef6; display:flex; align-items:center; gap:16px}
+  header img{height:38px}
+  header h1{color:var(--blue); font-size:20px; margin:0}
+  main{max-width:980px; margin:0 auto; padding:18px 16px 160px}
+  .intro h2,.section h2,.block h2{color:var(--blue)}
+  .intro, .block{background:#fff; border:1px solid #e9eef6; border-radius:12px; padding:16px; margin:16px 0}
+  .list13{columns:2; column-gap:30px; margin:10px 0 0 0}
+  .muted{color:var(--muted); font-size:13px}
+  fieldset.q{border:1px solid #e5e7eb; padding:12px 12px 8px; border-radius:10px; background:#fff; margin:14px 0}
+  fieldset.q legend{font-weight:600}
+  .choices{display:grid; gap:6px; margin-top:8px}
+  label{display:flex; gap:8px; align-items:flex-start; cursor:pointer}
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  .actions{position:sticky; bottom:0; left:0; right:0; display:flex; flex-direction:column; gap:10px; padding:12px 16px; background:rgba(250,250,250,.96); border-top:1px solid #e9eef6; z-index:10}
+  .btnrow{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+  button{padding:10px 14px; border-radius:10px; border:1px solid var(--blue); background:#0a2a66; color:#fff; cursor:pointer; font-weight:600}
+  button.secondary{background:#fff; color:var(--blue)}
+  .results{display:none; background:var(--card); border:1px solid #e6e6e6; border-radius:12px; padding:16px; margin-top:16px}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px}
+  .pill{padding:8px 10px; border-radius:10px; border:1px solid #e6e6e6; background:#fff}
+  .ok{color:#0a7a2a} .warn{color:#8a1f11}
+  .note{font-size:14px; color:#555}
+  .ae-row{display:flex; align-items:center; gap:10px; margin:10px 0}
+  select{padding:6px 8px; border:1px solid #cbd5e1; border-radius:8px}
+  .timer{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  .timer .time{font-weight:700; font-variant-numeric: tabular-nums; padding:8px 10px; border:1px solid #e6e6e6; border-radius:10px; background:#fff}
+  input[type="text"], input[type="email"], input[type="tel"], input[type="number"]{padding:8px;border:1px solid #cbd5e1;border-radius:8px;width:100%}
+  footer{padding:12px 16px; text-align:left; color:#666; font-size:12px}
+  @media (max-width: 760px){ .grid-2{grid-template-columns:1fr} }
+  @media print{ .actions{display:none} fieldset.q{break-inside:avoid} footer{display:none} }
+
+  /* Accordion */
+  .accordion{background:#fff; border:1px solid #e9eef6; border-radius:12px; margin:16px 0; overflow:hidden}
+  .acc-head{display:flex; justify-content:space-between; align-items:center; background:#eef4ff; padding:12px 14px}
+  .acc-head h2{margin:0; color:#0a2a66; font-size:18px}
+  .acc-body{padding:12px 14px; display:none}
+  .acc-nav a{ text-decoration:none; color:#0a2a66; font-weight:600; padding:6px 8px; border-radius:8px; background:#eef4ff; border:1px solid #d8e3ff }
+  .acc-nav a:hover{ background:#dfe9ff }
+  @media print{ .acc-body{display:block!important} .acc-toggle{display:none} }
+
+
+/* Force justified alignment globally */
+body, p, li, div, section, legend, label {
+  text-align: justify !important;
 }
-* { box-sizing: border-box; }
 body {
-  margin: 0;
-  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
-  color: var(--text);
-  background:
-    linear-gradient(135deg, rgba(8,36,92,.06) 0%, transparent 50%),
-    linear-gradient(225deg, rgba(30,78,155,.06) 0%, transparent 50%),
-    var(--bg);
-  min-height: 100vh;
+  margin: 2cm;
 }
-a { color: var(--accent); }
-
-/* ── TOP BAR ── */
-.topbar {
-  position: sticky; top: 0; z-index: 50;
-  backdrop-filter: blur(16px) saturate(1.4);
-  -webkit-backdrop-filter: blur(16px) saturate(1.4);
-  background: rgba(238,241,248,.90);
-  border-bottom: 1px solid rgba(221,226,239,.80);
-  box-shadow: 0 1px 0 rgba(255,255,255,.6), 0 4px 20px rgba(8,36,92,.05);
+p {
+  margin-bottom: 1em;
+  line-height: 1.5;
 }
-.topbar-inner {
-  max-width: 1000px; margin: 0 auto;
-  padding: 10px 20px;
-  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+li {
+  margin-bottom: 0.5em;
+}}
+
+</style>
+<style>
+#instructions {
+    background: linear-gradient(135deg, #0a2a66 0%, #123a8c 100%);
+    color: #ffffff;
+    padding: 60px 20px;
+    border-radius: 12px;
+    margin-bottom: 40px;
 }
-.brand img {
-  width: 200px; max-width: 38vw; height: auto; display: block;
-  filter: drop-shadow(0 2px 8px rgba(8,36,92,.12));
+
+#instructions .container {
+    max-width: 900px;
+    margin: 0 auto;
 }
-.timer {
-  display: flex; align-items: center; gap: 8px;
-  padding: 8px 14px;
-  border: 1.5px solid rgba(8,36,92,.15);
-  background: rgba(255,255,255,.95);
-  border-radius: 999px;
-  box-shadow: 0 2px 12px rgba(8,36,92,.10);
-  cursor: pointer;
-  transition: box-shadow .2s ease, border-color .2s ease, transform .1s ease;
-  user-select: none;
+
+#instructions h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #ffffff;
+    padding-bottom: 10px;
 }
-.timer:hover { box-shadow: 0 4px 20px rgba(8,36,92,.18); border-color: rgba(30,78,155,.35); transform: translateY(-1px); }
-.timer:active { transform: translateY(0); }
-.timer-icon { font-size: 1.1rem; opacity: .7; }
-.timer-label { color: var(--muted); font-weight: 600; font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
-.timer-divider { width: 1px; height: 20px; background: var(--line); }
-.time { font-variant-numeric: tabular-nums; font-size: 1.1rem; font-weight: 900; color: var(--k7); letter-spacing: .03em; min-width: 64px; text-align: center; }
-.time.running { color: #16a34a; }
-.time.warning { color: #d97706; }
-.time.danger  { color: #dc2626; animation: pulse-time 1s ease infinite; }
-@keyframes pulse-time { 0%,100%{opacity:1} 50%{opacity:.55} }
 
-.btn {
-  appearance: none; border: 0; cursor: pointer;
-  padding: 8px 16px; border-radius: 999px;
-  font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: .88rem; letter-spacing: .02em;
-  transition: transform .08s ease, box-shadow .15s ease, filter .15s ease;
-  white-space: nowrap;
+#instructions h2 {
+    margin-top: 30px;
+    font-size: 22px;
+    color: #cfe0ff;
 }
-.btn:active { transform: translateY(1px); }
-.btn-primary { background: linear-gradient(135deg, var(--k7) 0%, var(--k7-mid) 100%); color: #fff; box-shadow: 0 4px 14px rgba(8,36,92,.28); }
-.btn-primary:hover { filter: brightness(1.1); box-shadow: 0 6px 18px rgba(8,36,92,.35); }
-.btn-ghost { background: rgba(8,36,92,.05); border: 1.5px solid rgba(8,36,92,.15); color: var(--k7); }
-.btn-ghost:hover { background: rgba(8,36,92,.09); }
-.btn[disabled] { opacity: .5; cursor: not-allowed; box-shadow: none; filter: none !important; }
 
-/* ── WRAP ── */
-.wrap { max-width: 1000px; margin: 0 auto; padding: 28px 20px 100px; }
-
-/* ── HERO ── */
-.hero {
-  margin-top: 24px; margin-bottom: 20px;
-  padding: 28px 32px;
-  background: linear-gradient(130deg, var(--k7) 0%, var(--k7-mid) 60%, var(--k7-light) 100%);
-  border-radius: var(--radius);
-  box-shadow: 0 8px 40px rgba(8,36,92,.22);
-  position: relative; overflow: hidden;
+#instructions p {
+    font-size: 18px;
+    line-height: 1.6;
 }
-.hero::before { content:''; position:absolute; top:-60px; right:-60px; width:280px; height:280px; background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%); border-radius:50%; }
-.hero::after  { content:''; position:absolute; bottom:-40px; left:30%; width:200px; height:200px; background:radial-gradient(circle,rgba(201,168,76,.12) 0%,transparent 70%); border-radius:50%; }
-.hero-inner { position: relative; z-index: 1; }
-.title { font-family: 'DM Serif Display', Georgia, serif; font-size: clamp(1.55rem,2.8vw,2.4rem); font-weight: 400; letter-spacing: -.01em; color: #fff; margin: 0 0 8px; line-height: 1.15; }
-.subtitle { margin: 0; color: rgba(255,255,255,.75); line-height: 1.5; font-weight: 500; font-size: .97rem; }
-.hero-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-.hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); color: rgba(255,255,255,.9); font-size: .82rem; font-weight: 700; letter-spacing: .02em; backdrop-filter: blur(4px); }
 
-/* ── TIMER NOTICE ── */
-.timer-notice {
-  display: flex; align-items: flex-start; gap: 12px;
-  padding: 14px 18px;
-  background: linear-gradient(135deg, rgba(201,168,76,.12), rgba(201,168,76,.06));
-  border: 1.5px solid rgba(201,168,76,.35);
-  border-radius: var(--radius-sm);
-  margin-bottom: 6px;
+#instructions ul {
+    margin-top: 10px;
+    padding-left: 20px;
 }
-.timer-notice-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 1px; }
-.timer-notice-text { font-size: .93rem; color: #7a4f06; font-weight: 600; line-height: 1.5; }
-.timer-notice-text strong { color: #5a3800; font-weight: 800; }
 
-/* ── CARDS ── */
-.grid { display: grid; gap: 16px; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px 24px; transition: box-shadow .2s ease; }
-.card h2 { margin: 0 0 12px; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.2rem; font-weight: 400; letter-spacing: -.01em; color: var(--k7); }
-
-/* ── IDENTIFICATION FIELDS ── */
-.meta { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin-top: 12px; }
-.field label { display: block; font-size: .84rem; font-weight: 800; color: var(--k7); margin-bottom: 7px; letter-spacing: .03em; text-transform: uppercase; }
-.field input, .field select {
-  width: 100%; padding: 11px 14px; border-radius: var(--radius-sm); border: 1.5px solid var(--line);
-  background: #f8faff; font-family: 'DM Sans', sans-serif; font-size: .97rem; color: var(--text);
-  outline: none; transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+#instructions li {
+    margin-bottom: 10px;
+    font-size: 17px;
 }
-.field input:focus, .field select:focus { border-color: var(--k7-mid); background: #fff; box-shadow: 0 0 0 4px rgba(30,78,155,.11); }
-.field input::placeholder { color: #a0aec0; }
 
-/* ── NOTE / RULES ── */
-.note { color: var(--muted); font-weight: 500; font-size: .94rem; line-height: 1.55; }
-.rules { margin: 12px 0 0; padding-left: 20px; color: #253554; line-height: 1.6; font-weight: 500; font-size: .95rem; }
-.rules li { margin: 7px 0; }
-.rules li::marker { color: var(--k7-mid); font-weight: 800; }
-
-/* ── PILL ── */
-.section-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
-.pill { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; background: rgba(8,36,92,.07); color: var(--k7); font-weight: 800; font-size: .82rem; letter-spacing: .03em; border: 1px solid rgba(8,36,92,.12); }
-
-/* ── INTRO BLOCK ── */
-.intro-card { background: rgba(8,36,92,.03); border: 1px solid rgba(8,36,92,.1); }
-.list13 { columns: 2; column-gap: 28px; margin: 10px 0 0; padding-left: 18px; color: #253554; font-weight: 500; font-size: .93rem; line-height: 1.6; }
-.list13 li { margin-bottom: 4px; }
-
-/* ── ACCORDION ── */
-.accordion { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow2); }
-.acc-head { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, rgba(8,36,92,.06), rgba(30,78,155,.04)); padding: 14px 20px; border-bottom: 1px solid var(--line); }
-.acc-head h2 { margin: 0; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; font-weight: 400; color: var(--k7); }
-.acc-toggle { appearance: none; border: 1.5px solid rgba(8,36,92,.2); background: rgba(8,36,92,.05); color: var(--k7); padding: 7px 16px; border-radius: 999px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: .84rem; cursor: pointer; transition: background .15s, border-color .15s; }
-.acc-toggle:hover { background: rgba(8,36,92,.1); }
-.acc-body { padding: 16px 20px; display: none; }
-.acc-nav { display: flex; justify-content: space-between; gap: 10px; margin-top: 16px; }
-.acc-nav a { text-decoration: none; color: var(--k7); font-weight: 700; font-size: .88rem; padding: 7px 16px; border-radius: 999px; background: rgba(8,36,92,.06); border: 1px solid rgba(8,36,92,.15); transition: background .15s; }
-.acc-nav a:hover { background: rgba(8,36,92,.12); }
-
-/* ── QUESTIONS ── */
-.fieldset-q { border: none; padding: 0; margin: 0 0 12px; }
-.q-head { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; margin-bottom: 12px; }
-.q-num { width: 44px; height: 44px; border-radius: var(--radius-sm); display: grid; place-items: center; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.1rem; font-weight: 400; color: #fff; background: linear-gradient(135deg, var(--k7) 0%, var(--k7-mid) 100%); box-shadow: 0 4px 14px rgba(8,36,92,.25); flex-shrink: 0; }
-.q-text { font-weight: 700; line-height: 1.4; color: #0d1b34; font-size: .97rem; padding-top: 2px; }
-.choices { display: grid; gap: 8px; }
-.answer { display: grid; grid-template-columns: 22px 28px 1fr; gap: 10px; align-items: center; padding: 11px 14px; border-radius: var(--radius-sm); border: 1.5px solid var(--line); background: #f8faff; transition: border-color .15s, background .15s, transform .08s, box-shadow .15s; cursor: pointer; user-select: none; }
-.answer:hover { border-color: rgba(30,78,155,.4); background: #fff; box-shadow: 0 4px 14px rgba(8,36,92,.07); transform: translateX(2px); }
-.answer:has(input:checked) { border-color: var(--k7-mid); background: rgba(30,78,155,.05); box-shadow: 0 2px 10px rgba(30,78,155,.1); }
-.answer input { transform: scale(1.1); accent-color: var(--k7-mid); cursor: pointer; }
-.letter { font-weight: 900; font-size: .88rem; color: var(--k7-mid); letter-spacing: .03em; }
-.answer-text { color: #253554; font-weight: 500; line-height: 1.45; font-size: .93rem; }
-
-/* ── AUTO-EVAL ── */
-.ae-row { display: grid; grid-template-columns: 1fr 180px; gap: 12px; align-items: center; padding: 11px 16px; border: 1.5px solid var(--line); border-radius: var(--radius-sm); background: #f8faff; margin-bottom: 8px; transition: border-color .15s, background .15s; }
-.ae-row:hover { border-color: rgba(30,78,155,.3); background: #fff; }
-.ae-label { font-weight: 600; color: #253554; line-height: 1.4; font-size: .93rem; }
-.ae-select select { width: 100%; font-family: 'DM Sans', sans-serif; padding: 9px 12px; border-radius: 10px; border: 1.5px solid var(--line); background: #fff; font-size: .9rem; color: var(--text); outline: none; cursor: pointer; }
-.ae-select select:focus { border-color: var(--k7-mid); box-shadow: 0 0 0 3px rgba(30,78,155,.1); }
-
-/* ── LOCK OVERLAY ── */
-.form-lock-wrap { position: relative; }
-.form-lock-wrap:has(.form-lock-overlay:not(.unlocked)) input,
-.form-lock-wrap:has(.form-lock-overlay:not(.unlocked)) select,
-.form-lock-wrap:has(.form-lock-overlay:not(.unlocked)) textarea,
-.form-lock-wrap:has(.form-lock-overlay:not(.unlocked)) label,
-.form-lock-wrap:has(.form-lock-overlay:not(.unlocked)) button { pointer-events: none; }
-.form-lock-overlay {
-  position: absolute; inset: 0; z-index: 30;
-  background: rgba(238,241,248,.72); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-  border-radius: var(--radius);
-  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px;
-  cursor: pointer;
-  transition: opacity .4s ease;
+#instructions strong {
+    color: #ffd966;
 }
-.form-lock-overlay.unlocked { opacity: 0; pointer-events: none; }
-.lock-card {
-  background: #fff; border: 1.5px solid rgba(8,36,92,.18); border-radius: var(--radius);
-  box-shadow: 0 12px 40px rgba(8,36,92,.18); padding: 28px 36px; text-align: center; max-width: 380px;
-  animation: pulse-lock 2.5s ease infinite;
-}
-@keyframes pulse-lock { 0%,100%{box-shadow: 0 12px 40px rgba(8,36,92,.18)} 50%{box-shadow: 0 12px 50px rgba(8,36,92,.32)} }
-.lock-icon { font-size: 2.8rem; margin-bottom: 10px; display: block; }
-.lock-title { font-family: 'DM Serif Display', Georgia, serif; font-size: 1.25rem; color: var(--k7); margin: 0 0 8px; }
-.lock-desc { color: var(--muted); font-size: .93rem; font-weight: 500; line-height: 1.55; margin: 0 0 18px; }
-
-/* ── ACTIONS BAR ── */
-.actions-bar {
-  position: sticky; bottom: 0; left: 0; right: 0; z-index: 20;
-  backdrop-filter: blur(14px) saturate(1.3); -webkit-backdrop-filter: blur(14px) saturate(1.3);
-  background: rgba(238,241,248,.93);
-  border-top: 1px solid rgba(221,226,239,.85);
-  padding: 12px 20px;
-}
-.actions-inner { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
-.actions-note { color: var(--muted); font-size: .82rem; font-weight: 500; margin-right: auto; }
-
-/* ── SUCCESS/ERROR ── */
-.status { display: none; margin-top: 14px; padding: 14px 18px; border-radius: var(--radius-sm); border: 1.5px solid rgba(22,163,74,.3); background: rgba(22,163,74,.07); color: #14532d; font-weight: 700; }
-.error-msg { display: none; margin-top: 14px; padding: 14px 18px; border-radius: var(--radius-sm); border: 1.5px solid rgba(220,38,38,.3); background: rgba(220,38,38,.07); color: #7f1d1d; font-weight: 700; }
-
-/* ── RESULTS (admin) ── */
-.results { display: none; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 24px; }
-.results-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 10px; margin-top: 12px; }
-.result-pill { padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: #f8faff; font-size: .9rem; font-weight: 600; }
-.ok { color: #16a34a; } .warn { color: #dc2626; }
-
-/* ── FOOTER ── */
-.footer { margin-top: 24px; color: var(--muted); font-weight: 500; font-size: .88rem; text-align: center; padding-top: 16px; border-top: 1px solid var(--line); }
-
-@media (max-width: 740px) {
-  .meta { grid-template-columns: 1fr; }
-  .ae-row { grid-template-columns: 1fr; }
-  .hero { padding: 22px 20px; }
-  .card { padding: 18px 16px; }
-  .lock-card { padding: 22px 20px; max-width: 90vw; }
-}
-@media print { .actions-bar{display:none} .acc-body{display:block!important} .topbar{position:relative} }
+</style>
+<style id="psv-corrections-css">
+#timerVeil{position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:92px!important;margin:0!important;width:auto!important;height:auto!important;background:rgba(255,255,255,.72)!important;backdrop-filter:blur(2px);z-index:9999!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:20px!important;text-align:center!important}
+#timerVeil .veil-box{max-width:560px!important;background:#fff!important;border:1px solid #d8e3ff!important;border-radius:14px!important;box-shadow:0 16px 48px rgba(10,42,102,.18)!important;padding:24px!important;color:#0a2a66!important;text-align:center!important}
+#timerVeil .veil-box strong{display:block!important;font-size:20px!important;margin-bottom:8px!important;text-align:center!important}
+#timerVeil .veil-box p{text-align:center!important;margin:0!important;color:#0a2a66!important}
+body.timer-started #timerVeil{display:none!important}
+.actions{z-index:10000!important}
+#submit-status{display:none;padding:10px 12px;border-radius:10px;background:#eefaf4;border:1px solid #9ad5b7;color:#216e4e;font-weight:600;text-align:left!important}
+#submit-error{display:none;padding:10px 12px;border-radius:10px;background:#fff3f1;border:1px solid #f0b8ae;color:#a93226;font-weight:600;text-align:left!important}
+body.timer-locked main input[name^="q"],body.timer-locked main select[id^="ae"]{pointer-events:none}
 </style>
 </head>
 <body>
-
-<!-- TOP BAR -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">
-      <svg width="200" height="65" viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="90" cy="110" r="68" fill="none" stroke="#08245c" stroke-width="3"/>
-  <ellipse cx="90" cy="110" rx="68" ry="22" fill="none" stroke="#08245c" stroke-width="1.5"/>
-  <ellipse cx="90" cy="110" rx="30" ry="68" fill="none" stroke="#08245c" stroke-width="1.5"/>
-  <ellipse cx="90" cy="78" rx="55" ry="14" fill="none" stroke="#c9a84c" stroke-width="1.2"/>
-  <ellipse cx="90" cy="142" rx="55" ry="14" fill="none" stroke="#c9a84c" stroke-width="1.2"/>
-  <line x1="90" y1="42" x2="90" y2="178" stroke="#08245c" stroke-width="1.5"/>
-  <path d="M 90 42 A 68 68 0 0 1 158 110" fill="none" stroke="#c9a84c" stroke-width="3.5" stroke-linecap="round"/>
-  <text x="185" y="140" font-family="Georgia,serif" font-size="72" font-weight="700" fill="#08245c" letter-spacing="-2">PSV</text>
-  <line x1="183" y1="150" x2="458" y2="150" stroke="#c9a84c" stroke-width="1.5"/>
-  <text x="186" y="173" font-family="Georgia,serif" font-size="22" fill="#c9a84c" letter-spacing="8">GLOBAL</text>
-  <text x="186" y="196" font-family="Georgia,serif" font-size="11.5" fill="#5a6e8c" letter-spacing="2.5">PROFIL DE SUCCÈS EN VENTES<tspan font-size="9" dy="-3">®</tspan></text>
-</svg>
-    </div>
-    <div class="timer" id="timer-widget" title="Cliquer pour démarrer / mettre en pause" onclick="toggleTimer()">
-      <span class="timer-icon">⏱</span>
-      <span class="timer-label">Temps restant</span>
-      <div class="timer-divider"></div>
-      <div class="time" id="timerDisplay">60:00</div>
-      <button class="btn btn-primary" id="timer-btn" type="button" onclick="event.stopPropagation(); toggleTimer()">Démarrer</button>
-      <button class="btn btn-ghost" id="reset-btn" type="button" onclick="event.stopPropagation(); resetTimer()">Réinitialiser</button>
-    </div>
-  </div>
+<!-- =========================
+     PAGE D'INSTRUCTIONS
+========================= -->
+<section class="section" id="instructions">
+<div class="container">
+<h1>Instructions</h1>
+<p><strong>Durée suggérée :</strong> 60 minutes. Ce test est conçu pour être complété en une seule séance, sans interruption.</p>
+<h2>Règles :</h2>
+<ul>
+<li>Le test comporte 50 questions à choix multiples.</li>
+<li>Chaque question propose 5 choix de réponses (A à E).</li>
+<li>Dans certaines questions, plus d’une réponse peut être correcte.</li>
+<li>Lorsque l’option « Toutes ces réponses sont correctes » (E) est proposée, tous les choix applicables (A à D) doivent aussi être sélectionnés. Sélectionner uniquement E ne donne pas un crédit complet.</li>
+<li>Lorsque l’option « Aucune de ces réponses » (E) est pertinente, elle est considérée comme juste.</li>
+<li>Lisez attentivement chaque question avant de répondre.</li>
+<li>Sélectionnez toutes les réponses que vous jugez exactes.</li>
+</ul>
+<h2>Consignes générales :</h2>
+<ul>
+<li>Le test est individuel et doit être complété sans aide externe.</li>
+<li>Assurez-vous que votre navigateur est stable et que vous disposez d’une connexion Internet fiable.</li>
+</ul>
+<h2>Objectif du test :</h2>
+<p>
+      Ce questionnaire permet d’évaluer vos compétences de vente à travers 13 domaines clés 
+      (prospection, découverte des besoins, gestion des objections, conclusion, suivi, etc.).
+    </p>
+<p>
+      Les résultats seront utilisés pour identifier vos forces et vos points à améliorer, 
+      afin de cibler les formations ou accompagnements les plus pertinents.
+    </p>
 </div>
-
-<div class="wrap">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner" style="display:flex; flex-direction:column; align-items:center; text-align:center;">
-      <div style="margin-bottom:18px;">
-        <svg width="480" height="156" viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="90" cy="110" r="68" fill="none" stroke="#ffffff" stroke-width="3"/>
-  <ellipse cx="90" cy="110" rx="68" ry="22" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
-  <ellipse cx="90" cy="110" rx="30" ry="68" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
-  <ellipse cx="90" cy="78" rx="55" ry="14" fill="none" stroke="#c9a84c" stroke-width="1.8"/>
-  <ellipse cx="90" cy="142" rx="55" ry="14" fill="none" stroke="#c9a84c" stroke-width="1.8"/>
-  <line x1="90" y1="42" x2="90" y2="178" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
-  <path d="M 90 42 A 68 68 0 0 1 158 110" fill="none" stroke="#c9a84c" stroke-width="4.5" stroke-linecap="round"/>
-  <text x="185" y="140" font-family="Georgia,serif" font-size="72" font-weight="700" fill="#ffffff" letter-spacing="-2">PSV</text>
-  <line x1="183" y1="150" x2="458" y2="150" stroke="#c9a84c" stroke-width="2"/>
-  <text x="186" y="173" font-family="Georgia,serif" font-size="22" fill="#c9a84c" letter-spacing="8">GLOBAL</text>
-  <text x="186" y="196" font-family="Georgia,serif" font-size="11.5" fill="rgba(255,255,255,0.75)" letter-spacing="2.5">PROFIL DE SUCCÈS EN VENTES<tspan font-size="9" dy="-3">®</tspan></text>
-</svg>
-      </div>
-    </div>
-  </section>
-
-  <div class="grid">
-
-    <!-- TIMER NOTICE -->
-    <div class="timer-notice">
-      <span class="timer-notice-icon">⏱️</span>
-      <div class="timer-notice-text">
-        <strong>Vous devez démarrer le chronomètre avant de répondre aux questions.</strong> Cliquez sur le chronomètre dans la barre supérieure pour déverrouiller le quiz. Le temps pris pour compléter ce quiz est un facteur clé dans l'évaluation de votre score — le chronomètre démarre au moment où vous commencez.
-      </div>
-    </div>
-
-    <!-- INSTRUCTIONS -->
-    <div class="card">
-      <div class="section-head">
-        <h2>Instructions</h2>
-        <span class="pill">⏳ Durée suggérée : 60 minutes</span>
-      </div>
-      <p class="note">Ce test est conçu pour être complété en une seule séance, sans interruption. Sélectionnez <strong>toutes</strong> les réponses que vous jugez exactes.</p>
-      <ol class="rules">
-        <li>Le test comporte 50 questions à choix multiples.</li>
-        <li>Chaque question propose 5 choix de réponses (A à E).</li>
-        <li>Dans certaines questions, plus d'une réponse peut être correcte.</li>
-        <li>Si les 5 réponses sont correctes, cochez <strong>les 5 cases</strong> — y compris l'option E « Toutes ces réponses sont correctes ».</li>
-        <li>Si aucune réponse n'est correcte, cochez <strong>les 5 cases</strong> — y compris l'option E « Aucune de ces réponses ».</li>
-        <li>Lisez attentivement chaque question avant de répondre.</li>
-      </ol>
-      <p class="note" style="margin-top:12px;">Objectif : évaluer vos compétences de vente dans 13 domaines clés (prospection, découverte des besoins, gestion des objections, conclusion, suivi, etc.).</p>
-    </div>
-
-    <!-- FORM LOCK WRAP -->
-    <div class="form-lock-wrap" id="form-lock-wrap">
-      <div class="form-lock-overlay" id="form-lock-overlay" onclick="toggleTimer()">
-        <div class="lock-card">
-          <span class="lock-icon" id="lock-icon">🔒</span>
-          <h3 class="lock-title" id="lock-title">Démarrez le chronomètre pour commencer</h3>
-          <p class="lock-desc" id="lock-desc">Votre temps de complétion fait partie de votre score. Cliquez ici — ou sur le chronomètre en haut — pour déverrouiller le quiz et démarrer le chronomètre.</p>
-          <button class="btn btn-primary" type="button" id="lock-btn" style="font-size:1rem; padding:12px 28px;">▶ Démarrer &amp; Déverrouiller</button>
-        </div>
-      </div>
-
-      <!-- IDENTIFICATION -->
-      <div class="card">
-        <h2>Identification du participant</h2>
-        <div class="meta">
-          <div class="field"><label for="nom">Nom</label><input id="nom" type="text" placeholder="Ex. : Tremblay" autocomplete="family-name"/></div>
-          <div class="field"><label for="prenom">Prénom</label><input id="prenom" type="text" placeholder="Ex. : Marie" autocomplete="given-name"/></div>
-          <div class="field"><label for="email">Courriel</label><input id="email" type="email" placeholder="Ex. : nom@entreprise.com" autocomplete="email"/></div>
-          <div class="field"><label for="tel">Téléphone</label><input id="tel" type="tel" placeholder="Ex. : 514 555-1212"/></div>
-          <div class="field"><label for="entreprise">Entreprise</label><input id="entreprise" type="text" placeholder="Ex. : K7 Service-Conseil"/></div>
-          <div class="field"><label for="poste">Poste actuel</label><input id="poste" type="text" placeholder="Ex. : Représentant technique"/></div>
-          <div class="field"><label for="exp">Années d'expérience (vente)</label><input id="exp" type="number" min="0" step="1" placeholder="Ex. : 7"/></div>
-          <div class="field"><label for="remu">Rémunération</label><input id="remu" type="text" placeholder="Ex. : 55 000 $ + commissions"/></div>
-          <div class="field"><label for="region">Région / territoire</label><input id="region" type="text" placeholder="Ex. : Montréal et Rive-Sud"/></div>
-        </div>
-      </div>
-
-      <!-- AVIS IMPORTANT -->
-      <div class="card intro-card">
-        <div class="section-head">
-          <h2>Profil de Succès en Ventes® — Avis important</h2>
-        </div>
-        <p class="note">Le Profil de Succès en Ventes® a été conçu pour fournir des informations précieuses sur vos compétences et aptitudes en vente. Il aide à identifier vos forces et vos faiblesses dans 13 domaines clés :</p>
-        <ol class="list13">
-          <li>L'approche et l'établissement du contact</li>
-          <li>La découverte des besoins</li>
-          <li>La présentation de la solution</li>
-          <li>La gestion des objections</li>
-          <li>La négociation</li>
-          <li>La conclusion de la vente</li>
-          <li>Le suivi et la fidélisation</li>
-          <li>La gestion du temps</li>
-          <li>La planification de territoire</li>
-          <li>La prospection</li>
-          <li>L'écoute active</li>
-          <li>La créativité et l'adaptabilité</li>
-          <li>Le professionnalisme</li>
-        </ol>
-        <p class="note" style="margin-top:12px;">En complétant ce profil, vous acceptez expressément que vos réponses soient évaluées et que les résultats puissent être transmis à l'entreprise ou à l'agence qui vous a demandé de remplir ce profil.</p>
-      </div>
-
-      <!-- SECTION 1 -->
-      <div class="accordion" id="acc1">
-        <div class="acc-head">
-          <h2>Section 1 (Q1 – Q10)</h2>
-          <button class="acc-toggle" data-target="acc1" aria-expanded="false" type="button">Ouvrir la section</button>
-        </div>
-        <div class="acc-body" style="display:none">
-          <div class="fieldset-q">          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">1</div>
-              <div class="q-text">1. Lors d’un premier appel de prospection, quelle est la meilleure approche ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q1" value="A"/><span class="letter">A</span><span class="answer-text">Présenter immédiatement votre produit en détail.</span></label>
-              <label class="answer"><input type="checkbox" name="q1" value="B"/><span class="letter">B</span><span class="answer-text">Poser des questions pour comprendre les besoins du prospect.</span></label>
-              <label class="answer"><input type="checkbox" name="q1" value="C"/><span class="letter">C</span><span class="answer-text">Demander directement s’il veut acheter.</span></label>
-              <label class="answer"><input type="checkbox" name="q1" value="D"/><span class="letter">D</span><span class="answer-text">Créer un lien de confiance avant de parler de vente.</span></label>
-              <label class="answer"><input type="checkbox" name="q1" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">2</div>
-              <div class="q-text">2. Quelles actions démontrent une bonne écoute active en vente ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q2" value="A"/><span class="letter">A</span><span class="answer-text">Reformuler les propos du client.</span></label>
-              <label class="answer"><input type="checkbox" name="q2" value="B"/><span class="letter">B</span><span class="answer-text">Poser des questions ouvertes.</span></label>
-              <label class="answer"><input type="checkbox" name="q2" value="C"/><span class="letter">C</span><span class="answer-text">Parler plus que le client pour montrer son expertise.</span></label>
-              <label class="answer"><input type="checkbox" name="q2" value="D"/><span class="letter">D</span><span class="answer-text">Éviter de prendre des notes.</span></label>
-              <label class="answer"><input type="checkbox" name="q2" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">3</div>
-              <div class="q-text">3. Un client dit : « C’est trop cher ». Que peut faire un bon vendeur ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q3" value="A"/><span class="letter">A</span><span class="answer-text">Réduire immédiatement le prix.</span></label>
-              <label class="answer"><input type="checkbox" name="q3" value="B"/><span class="letter">B</span><span class="answer-text">Mettre en valeur le retour sur investissement.</span></label>
-              <label class="answer"><input type="checkbox" name="q3" value="C"/><span class="letter">C</span><span class="answer-text">Comparer avec des alternatives moins chères.</span></label>
-              <label class="answer"><input type="checkbox" name="q3" value="D"/><span class="letter">D</span><span class="answer-text">Explorer les besoins réels du client.</span></label>
-              <label class="answer"><input type="checkbox" name="q3" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">4</div>
-              <div class="q-text">4. Quelles sont de bonnes pratiques pour conclure une vente ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q4" value="A"/><span class="letter">A</span><span class="answer-text">Attendre que le client demande à acheter.</span></label>
-              <label class="answer"><input type="checkbox" name="q4" value="B"/><span class="letter">B</span><span class="answer-text">Identifier et utiliser les signaux d’achat.</span></label>
-              <label class="answer"><input type="checkbox" name="q4" value="C"/><span class="letter">C</span><span class="answer-text">Ne jamais poser de questions directes.</span></label>
-              <label class="answer"><input type="checkbox" name="q4" value="D"/><span class="letter">D</span><span class="answer-text">Proposer un choix limité (ex. couleur, modèle).</span></label>
-              <label class="answer"><input type="checkbox" name="q4" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">5</div>
-              <div class="q-text">5. Lors d’une présentation de produit, quel est l’objectif principal ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q5" value="A"/><span class="letter">A</span><span class="answer-text">Montrer le plus de caractéristiques techniques possible.</span></label>
-              <label class="answer"><input type="checkbox" name="q5" value="B"/><span class="letter">B</span><span class="answer-text">Centrer le discours sur les besoins du client.</span></label>
-              <label class="answer"><input type="checkbox" name="q5" value="C"/><span class="letter">C</span><span class="answer-text">Répéter le même argument pour convaincre.</span></label>
-              <label class="answer"><input type="checkbox" name="q5" value="D"/><span class="letter">D</span><span class="answer-text">Éviter les objections en parlant vite.</span></label>
-              <label class="answer"><input type="checkbox" name="q5" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">6</div>
-              <div class="q-text">6. Un client exprime une objection. Quelle est la meilleure attitude ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q6" value="A"/><span class="letter">A</span><span class="answer-text">L’interrompre immédiatement pour corriger.</span></label>
-              <label class="answer"><input type="checkbox" name="q6" value="B"/><span class="letter">B</span><span class="answer-text">L’écouter jusqu’au bout.</span></label>
-              <label class="answer"><input type="checkbox" name="q6" value="C"/><span class="letter">C</span><span class="answer-text">Reformuler son objection pour montrer que vous comprenez.</span></label>
-              <label class="answer"><input type="checkbox" name="q6" value="D"/><span class="letter">D</span><span class="answer-text">Ignorer l’objection et continuer votre discours.</span></label>
-              <label class="answer"><input type="checkbox" name="q6" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">7</div>
-              <div class="q-text">7. Quelles sont des sources de nouveaux prospects ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q7" value="A"/><span class="letter">A</span><span class="answer-text">Les références de clients satisfaits.</span></label>
-              <label class="answer"><input type="checkbox" name="q7" value="B"/><span class="letter">B</span><span class="answer-text">Les salons professionnels.</span></label>
-              <label class="answer"><input type="checkbox" name="q7" value="C"/><span class="letter">C</span><span class="answer-text">Les bases de données achetées.</span></label>
-              <label class="answer"><input type="checkbox" name="q7" value="D"/><span class="letter">D</span><span class="answer-text">Les anciens clients insatisfaits.</span></label>
-              <label class="answer"><input type="checkbox" name="q7" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">8</div>
-              <div class="q-text">8. Dans un entretien de vente, pourquoi poser des questions ouvertes ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q8" value="A"/><span class="letter">A</span><span class="answer-text">Pour encourager le client à parler davantage.</span></label>
-              <label class="answer"><input type="checkbox" name="q8" value="B"/><span class="letter">B</span><span class="answer-text">Pour obtenir des réponses limitées et rapides.</span></label>
-              <label class="answer"><input type="checkbox" name="q8" value="C"/><span class="letter">C</span><span class="answer-text">Pour éviter d’entendre les véritables besoins du client.</span></label>
-              <label class="answer"><input type="checkbox" name="q8" value="D"/><span class="letter">D</span><span class="answer-text">Pour impliquer activement le client dans la discussion.</span></label>
-              <label class="answer"><input type="checkbox" name="q8" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">9</div>
-              <div class="q-text">9. Quand est-il approprié de négocier un prix ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q9" value="A"/><span class="letter">A</span><span class="answer-text">Dès le début de la rencontre.</span></label>
-              <label class="answer"><input type="checkbox" name="q9" value="B"/><span class="letter">B</span><span class="answer-text">Après avoir présenté la valeur du produit.</span></label>
-              <label class="answer"><input type="checkbox" name="q9" value="C"/><span class="letter">C</span><span class="answer-text">Avant même de comprendre les besoins.</span></label>
-              <label class="answer"><input type="checkbox" name="q9" value="D"/><span class="letter">D</span><span class="answer-text">Lorsque le client insiste fortement.</span></label>
-              <label class="answer"><input type="checkbox" name="q9" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">10</div>
-              <div class="q-text">10. Quels comportements aident à bâtir une relation de confiance avec un client ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q10" value="A"/><span class="letter">A</span><span class="answer-text">Tenir ses promesses.</span></label>
-              <label class="answer"><input type="checkbox" name="q10" value="B"/><span class="letter">B</span><span class="answer-text">Écouter attentivement et prendre des notes.</span></label>
-              <label class="answer"><input type="checkbox" name="q10" value="C"/><span class="letter">C</span><span class="answer-text">Exagérer pour impressionner le client.</span></label>
-              <label class="answer"><input type="checkbox" name="q10" value="D"/><span class="letter">D</span><span class="answer-text">Rester transparent et honnête.</span></label>
-              <label class="answer"><input type="checkbox" name="q10" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="acc-nav">
-            <span></span>
-            <a class="acc-next" data-target="acc2" href="#acc2">Section 2 →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 2 -->
-      <div class="accordion" id="acc2">
-        <div class="acc-head">
-          <h2>Section 2 (Q11 – Q20)</h2>
-          <button class="acc-toggle" data-target="acc2" aria-expanded="false" type="button">Ouvrir la section</button>
-        </div>
-        <div class="acc-body" style="display:none">
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">11</div>
-              <div class="q-text">11. Lorsqu’un client hésite à acheter, quelle est une bonne approche ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q11" value="A"/><span class="letter">A</span><span class="answer-text">Le presser en lui disant que l’offre expire bientôt.</span></label>
-              <label class="answer"><input type="checkbox" name="q11" value="B"/><span class="letter">B</span><span class="answer-text">Poser des questions pour comprendre son hésitation.</span></label>
-              <label class="answer"><input type="checkbox" name="q11" value="C"/><span class="letter">C</span><span class="answer-text">Laisser un silence inconfortable pour le forcer à décider.</span></label>
-              <label class="answer"><input type="checkbox" name="q11" value="D"/><span class="letter">D</span><span class="answer-text">Lui proposer un choix alternatif (autre produit ou service).</span></label>
-              <label class="answer"><input type="checkbox" name="q11" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">12</div>
-              <div class="q-text">12. Quelles sont des techniques efficaces pour surmonter une objection liée au prix ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q12" value="A"/><span class="letter">A</span><span class="answer-text">Réduire immédiatement le prix demandé.</span></label>
-              <label class="answer"><input type="checkbox" name="q12" value="B"/><span class="letter">B</span><span class="answer-text">Expliquer la valeur ajoutée du produit.</span></label>
-              <label class="answer"><input type="checkbox" name="q12" value="C"/><span class="letter">C</span><span class="answer-text">Comparer avec des produits concurrents.</span></label>
-              <label class="answer"><input type="checkbox" name="q12" value="D"/><span class="letter">D</span><span class="answer-text">Proposer des modalités de paiement flexibles.</span></label>
-              <label class="answer"><input type="checkbox" name="q12" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">13</div>
-              <div class="q-text">13. Quels comportements sont perçus comme non professionnels en vente ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q13" value="A"/><span class="letter">A</span><span class="answer-text">Arriver en retard à un rendez-vous.</span></label>
-              <label class="answer"><input type="checkbox" name="q13" value="B"/><span class="letter">B</span><span class="answer-text">Ne pas écouter le client.</span></label>
-              <label class="answer"><input type="checkbox" name="q13" value="C"/><span class="letter">C</span><span class="answer-text">Promettre plus que ce qu’on peut livrer.</span></label>
-              <label class="answer"><input type="checkbox" name="q13" value="D"/><span class="letter">D</span><span class="answer-text">Admettre honnêtement qu’on ne connaît pas la réponse à une question.</span></label>
-              <label class="answer"><input type="checkbox" name="q13" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">14</div>
-              <div class="q-text">14. Quelles sont les qualités essentielles d’un bon vendeur ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q14" value="A"/><span class="letter">A</span><span class="answer-text">Empathie.</span></label>
-              <label class="answer"><input type="checkbox" name="q14" value="B"/><span class="letter">B</span><span class="answer-text">Persévérance.</span></label>
-              <label class="answer"><input type="checkbox" name="q14" value="C"/><span class="letter">C</span><span class="answer-text">Patience.</span></label>
-              <label class="answer"><input type="checkbox" name="q14" value="D"/><span class="letter">D</span><span class="answer-text">Honnêteté.</span></label>
-              <label class="answer"><input type="checkbox" name="q14" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">15</div>
-              <div class="q-text">15. Un prospect dit : « J’aimerais réfléchir avant de décider ». Quelle réponse est la plus appropriée ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q15" value="A"/><span class="letter">A</span><span class="answer-text">« Très bien, je comprends, puis-je vous rappeler d’ici deux jours ? »</span></label>
-              <label class="answer"><input type="checkbox" name="q15" value="B"/><span class="letter">B</span><span class="answer-text">« Pas besoin de réfléchir, c’est une évidence. »</span></label>
-              <label class="answer"><input type="checkbox" name="q15" value="C"/><span class="letter">C</span><span class="answer-text">« Prenez votre temps, mais sachez que l’offre expire aujourd’hui. »</span></label>
-              <label class="answer"><input type="checkbox" name="q15" value="D"/><span class="letter">D</span><span class="answer-text">« Je peux vous aider à réfléchir en revoyant vos priorités. »</span></label>
-              <label class="answer"><input type="checkbox" name="q15" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">16</div>
-              <div class="q-text">16. Quelle est la meilleure façon d’ouvrir une rencontre de vente ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q16" value="A"/><span class="letter">A</span><span class="answer-text">Commencer immédiatement avec une démonstration technique.</span></label>
-              <label class="answer"><input type="checkbox" name="q16" value="B"/><span class="letter">B</span><span class="answer-text">Poser une question d’intérêt sur les besoins du client.</span></label>
-              <label class="answer"><input type="checkbox" name="q16" value="C"/><span class="letter">C</span><span class="answer-text">Parler longuement de soi pour inspirer confiance.</span></label>
-              <label class="answer"><input type="checkbox" name="q16" value="D"/><span class="letter">D</span><span class="answer-text">Mettre le client à l’aise avec une approche conviviale.</span></label>
-              <label class="answer"><input type="checkbox" name="q16" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">17</div>
-              <div class="q-text">17. Quelles sont des façons efficaces de gérer son temps en vente ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q17" value="A"/><span class="letter">A</span><span class="answer-text">Prioriser les prospects les plus prometteurs.</span></label>
-              <label class="answer"><input type="checkbox" name="q17" value="B"/><span class="letter">B</span><span class="answer-text">Établir un agenda quotidien.</span></label>
-              <label class="answer"><input type="checkbox" name="q17" value="C"/><span class="letter">C</span><span class="answer-text">Passer la majorité de son temps avec des clients qui n’achèteront pas.</span></label>
-              <label class="answer"><input type="checkbox" name="q17" value="D"/><span class="letter">D</span><span class="answer-text">Réserver du temps pour le suivi après-vente.</span></label>
-              <label class="answer"><input type="checkbox" name="q17" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">18</div>
-              <div class="q-text">18. Un client satisfait est une excellente ressource pour :</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q18" value="A"/><span class="letter">A</span><span class="answer-text">Obtenir des références.</span></label>
-              <label class="answer"><input type="checkbox" name="q18" value="B"/><span class="letter">B</span><span class="answer-text">Générer des témoignages.</span></label>
-              <label class="answer"><input type="checkbox" name="q18" value="C"/><span class="letter">C</span><span class="answer-text">Promouvoir de nouveaux produits.</span></label>
-              <label class="answer"><input type="checkbox" name="q18" value="D"/><span class="letter">D</span><span class="answer-text">Construire une relation à long terme.</span></label>
-              <label class="answer"><input type="checkbox" name="q18" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">19</div>
-              <div class="q-text">19. Quelles stratégies augmentent les chances de conclure une vente ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q19" value="A"/><span class="letter">A</span><span class="answer-text">Repérer les signaux d’achat.</span></label>
-              <label class="answer"><input type="checkbox" name="q19" value="B"/><span class="letter">B</span><span class="answer-text">Poser des questions de conclusion.</span></label>
-              <label class="answer"><input type="checkbox" name="q19" value="C"/><span class="letter">C</span><span class="answer-text">Éviter d’aborder le sujet de la conclusion.</span></label>
-              <label class="answer"><input type="checkbox" name="q19" value="D"/><span class="letter">D</span><span class="answer-text">Proposer un choix plutôt qu’une décision fermée (ex. modèle A ou B).</span></label>
-              <label class="answer"><input type="checkbox" name="q19" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">20</div>
-              <div class="q-text">20. Lors d’un salon professionnel, quelle est la meilleure stratégie ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q20" value="A"/><span class="letter">A</span><span class="answer-text">Attendre que les visiteurs viennent à vous.</span></label>
-              <label class="answer"><input type="checkbox" name="q20" value="B"/><span class="letter">B</span><span class="answer-text">Être proactif et engager la conversation.</span></label>
-              <label class="answer"><input type="checkbox" name="q20" value="C"/><span class="letter">C</span><span class="answer-text">Distribuer seulement des brochures sans contact direct.</span></label>
-              <label class="answer"><input type="checkbox" name="q20" value="D"/><span class="letter">D</span><span class="answer-text">Obtenir les coordonnées et planifier un suivi après l’événement.</span></label>
-              <label class="answer"><input type="checkbox" name="q20" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="acc-nav">
-            <a class="acc-prev" data-target="acc2" href="#acc2">← Section 1</a>
-            <a class="acc-next" data-target="acc3" href="#acc3">Section 3 →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 3 -->
-      <div class="accordion" id="acc3">
-        <div class="acc-head">
-          <h2>Section 3 (Q21 – Q30)</h2>
-          <button class="acc-toggle" data-target="acc3" aria-expanded="false" type="button">Ouvrir la section</button>
-        </div>
-        <div class="acc-body" style="display:none">
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">21</div>
-              <div class="q-text">21. Quand est-il préférable de présenter les caractéristiques techniques d’un produit ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q21" value="A"/><span class="letter">A</span><span class="answer-text">Dès le début, avant même de poser des questions.</span></label>
-              <label class="answer"><input type="checkbox" name="q21" value="B"/><span class="letter">B</span><span class="answer-text">Une fois que les besoins du client ont été identifiés.</span></label>
-              <label class="answer"><input type="checkbox" name="q21" value="C"/><span class="letter">C</span><span class="answer-text">Lorsque le client demande plus de détails techniques.</span></label>
-              <label class="answer"><input type="checkbox" name="q21" value="D"/><span class="letter">D</span><span class="answer-text">À la fin uniquement, au moment de conclure.</span></label>
-              <label class="answer"><input type="checkbox" name="q21" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">22</div>
-              <div class="q-text">22. Quelles méthodes sont efficaces pour obtenir un rendez-vous téléphonique ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q22" value="A"/><span class="letter">A</span><span class="answer-text">Utiliser un script clair et concis.</span></label>
-              <label class="answer"><input type="checkbox" name="q22" value="B"/><span class="letter">B</span><span class="answer-text">Sourire dans sa voix et être enthousiaste.</span></label>
-              <label class="answer"><input type="checkbox" name="q22" value="C"/><span class="letter">C</span><span class="answer-text">Vendre le produit immédiatement au téléphone.</span></label>
-              <label class="answer"><input type="checkbox" name="q22" value="D"/><span class="letter">D</span><span class="answer-text">Vendre le rendez-vous plutôt que le produit.</span></label>
-              <label class="answer"><input type="checkbox" name="q22" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">23</div>
-              <div class="q-text">23. Quelle est une bonne façon de répondre à une objection sur la concurrence ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q23" value="A"/><span class="letter">A</span><span class="answer-text">Critiquer ouvertement les concurrents.</span></label>
-              <label class="answer"><input type="checkbox" name="q23" value="B"/><span class="letter">B</span><span class="answer-text">Montrer les avantages uniques de votre offre.</span></label>
-              <label class="answer"><input type="checkbox" name="q23" value="C"/><span class="letter">C</span><span class="answer-text">Comparer objectivement les différences.</span></label>
-              <label class="answer"><input type="checkbox" name="q23" value="D"/><span class="letter">D</span><span class="answer-text">Ignorer l’objection pour ne pas en parler.</span></label>
-              <label class="answer"><input type="checkbox" name="q23" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">24</div>
-              <div class="q-text">24. Quelles actions démontrent un bon suivi après une vente ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q24" value="A"/><span class="letter">A</span><span class="answer-text">Appeler pour s’assurer de la satisfaction du client.</span></label>
-              <label class="answer"><input type="checkbox" name="q24" value="B"/><span class="letter">B</span><span class="answer-text">Envoyer une note de remerciement.</span></label>
-              <label class="answer"><input type="checkbox" name="q24" value="C"/><span class="letter">C</span><span class="answer-text">Rester en contact pour de futures opportunités.</span></label>
-              <label class="answer"><input type="checkbox" name="q24" value="D"/><span class="letter">D</span><span class="answer-text">Disparaître après la conclusion.</span></label>
-              <label class="answer"><input type="checkbox" name="q24" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">25</div>
-              <div class="q-text">25. Lors d’une négociation, qu’est-ce qui aide le plus à trouver un terrain d’entente ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q25" value="A"/><span class="letter">A</span><span class="answer-text">Écouter activement les priorités du client.</span></label>
-              <label class="answer"><input type="checkbox" name="q25" value="B"/><span class="letter">B</span><span class="answer-text">Être flexible sur certaines conditions.</span></label>
-              <label class="answer"><input type="checkbox" name="q25" value="C"/><span class="letter">C</span><span class="answer-text">Garder une attitude défensive.</span></label>
-              <label class="answer"><input type="checkbox" name="q25" value="D"/><span class="letter">D</span><span class="answer-text">Identifier les points communs et proposer des compromis.</span></label>
-              <label class="answer"><input type="checkbox" name="q25" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">26</div>
-              <div class="q-text">26. Quelles sont les principales étapes d’un processus de vente efficace ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q26" value="A"/><span class="letter">A</span><span class="answer-text">Prospection.</span></label>
-              <label class="answer"><input type="checkbox" name="q26" value="B"/><span class="letter">B</span><span class="answer-text">Découverte des besoins.</span></label>
-              <label class="answer"><input type="checkbox" name="q26" value="C"/><span class="letter">C</span><span class="answer-text">Présentation de la solution.</span></label>
-              <label class="answer"><input type="checkbox" name="q26" value="D"/><span class="letter">D</span><span class="answer-text">Conclusion et suivi.</span></label>
-              <label class="answer"><input type="checkbox" name="q26" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">27</div>
-              <div class="q-text">27. Quel est l’objectif principal d’une démonstration de produit ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q27" value="A"/><span class="letter">A</span><span class="answer-text">Impressionner le client avec des données techniques.</span></label>
-              <label class="answer"><input type="checkbox" name="q27" value="B"/><span class="letter">B</span><span class="answer-text">Montrer comment le produit répond aux besoins du client.</span></label>
-              <label class="answer"><input type="checkbox" name="q27" value="C"/><span class="letter">C</span><span class="answer-text">Mettre en avant des caractéristiques inutiles.</span></label>
-              <label class="answer"><input type="checkbox" name="q27" value="D"/><span class="letter">D</span><span class="answer-text">Impliquer le client dans la démonstration.</span></label>
-              <label class="answer"><input type="checkbox" name="q27" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">28</div>
-              <div class="q-text">28. Quels éléments font partie d’une bonne gestion de territoire de vente ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q28" value="A"/><span class="letter">A</span><span class="answer-text">Segmenter les clients selon leur potentiel.</span></label>
-              <label class="answer"><input type="checkbox" name="q28" value="B"/><span class="letter">B</span><span class="answer-text">Planifier des visites régulières.</span></label>
-              <label class="answer"><input type="checkbox" name="q28" value="C"/><span class="letter">C</span><span class="answer-text">Se concentrer uniquement sur les clients faciles.</span></label>
-              <label class="answer"><input type="checkbox" name="q28" value="D"/><span class="letter">D</span><span class="answer-text">Mesurer la rentabilité de chaque secteur.</span></label>
-              <label class="answer"><input type="checkbox" name="q28" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">29</div>
-              <div class="q-text">29. Comment réagir lorsqu’un client compare votre produit uniquement sur le prix ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q29" value="A"/><span class="letter">A</span><span class="answer-text">Insister pour que le prix est le plus bas.</span></label>
-              <label class="answer"><input type="checkbox" name="q29" value="B"/><span class="letter">B</span><span class="answer-text">Orienter la discussion sur la valeur et les bénéfices.</span></label>
-              <label class="answer"><input type="checkbox" name="q29" value="C"/><span class="letter">C</span><span class="answer-text">Expliquer le coût total de possession.</span></label>
-              <label class="answer"><input type="checkbox" name="q29" value="D"/><span class="letter">D</span><span class="answer-text">Démontrer les économies à long terme.</span></label>
-              <label class="answer"><input type="checkbox" name="q29" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">30</div>
-              <div class="q-text">30. Quelles attitudes nuisent à la confiance du client ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q30" value="A"/><span class="letter">A</span><span class="answer-text">Surpromettre et sous-livrer.</span></label>
-              <label class="answer"><input type="checkbox" name="q30" value="B"/><span class="letter">B</span><span class="answer-text">Ne pas retourner les appels.</span></label>
-              <label class="answer"><input type="checkbox" name="q30" value="C"/><span class="letter">C</span><span class="answer-text">Être arrogant ou condescendant.</span></label>
-              <label class="answer"><input type="checkbox" name="q30" value="D"/><span class="letter">D</span><span class="answer-text">Fournir un service après-vente médiocre.</span></label>
-              <label class="answer"><input type="checkbox" name="q30" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="acc-nav">
-            <a class="acc-prev" data-target="acc3" href="#acc3">← Section 2</a>
-            <a class="acc-next" data-target="acc4" href="#acc4">Section 4 →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 4 -->
-      <div class="accordion" id="acc4">
-        <div class="acc-head">
-          <h2>Section 4 (Q31 – Q40)</h2>
-          <button class="acc-toggle" data-target="acc4" aria-expanded="false" type="button">Ouvrir la section</button>
-        </div>
-        <div class="acc-body" style="display:none">
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">31</div>
-              <div class="q-text">31. Quelle est la meilleure façon de bâtir une relation à long terme avec un client ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q31" value="A"/><span class="letter">A</span><span class="answer-text">Offrir un suivi régulier.</span></label>
-              <label class="answer"><input type="checkbox" name="q31" value="B"/><span class="letter">B</span><span class="answer-text">Être transparent et honnête.</span></label>
-              <label class="answer"><input type="checkbox" name="q31" value="C"/><span class="letter">C</span><span class="answer-text">Éviter le client après la vente.</span></label>
-              <label class="answer"><input type="checkbox" name="q31" value="D"/><span class="letter">D</span><span class="answer-text">Récompenser la fidélité par des avantages.</span></label>
-              <label class="answer"><input type="checkbox" name="q31" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">32</div>
-              <div class="q-text">32. Lors d’un appel à froid, quelle erreur doit-on éviter ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q32" value="A"/><span class="letter">A</span><span class="answer-text">Ne pas préparer un script clair.</span></label>
-              <label class="answer"><input type="checkbox" name="q32" value="B"/><span class="letter">B</span><span class="answer-text">Ne pas écouter le prospect.</span></label>
-              <label class="answer"><input type="checkbox" name="q32" value="C"/><span class="letter">C</span><span class="answer-text">Parler trop longtemps sans pause.</span></label>
-              <label class="answer"><input type="checkbox" name="q32" value="D"/><span class="letter">D</span><span class="answer-text">Demander directement la conclusion.</span></label>
-              <label class="answer"><input type="checkbox" name="q32" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">33</div>
-              <div class="q-text">33. Quelles stratégies améliorent les chances de conclure une grande vente complexe ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q33" value="A"/><span class="letter">A</span><span class="answer-text">Impliquer plusieurs décideurs dans le processus.</span></label>
-              <label class="answer"><input type="checkbox" name="q33" value="B"/><span class="letter">B</span><span class="answer-text">Comprendre les enjeux stratégiques du client.</span></label>
-              <label class="answer"><input type="checkbox" name="q33" value="C"/><span class="letter">C</span><span class="answer-text">Se concentrer uniquement sur le prix.</span></label>
-              <label class="answer"><input type="checkbox" name="q33" value="D"/><span class="letter">D</span><span class="answer-text">Démontrer un retour sur investissement clair.</span></label>
-              <label class="answer"><input type="checkbox" name="q33" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">34</div>
-              <div class="q-text">34. Quels comportements favorisent la crédibilité du vendeur ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q34" value="A"/><span class="letter">A</span><span class="answer-text">Connaître son produit parfaitement.</span></label>
-              <label class="answer"><input type="checkbox" name="q34" value="B"/><span class="letter">B</span><span class="answer-text">Admettre quand on ne connaît pas une réponse.</span></label>
-              <label class="answer"><input type="checkbox" name="q34" value="C"/><span class="letter">C</span><span class="answer-text">Être ponctuel et bien préparé.</span></label>
-              <label class="answer"><input type="checkbox" name="q34" value="D"/><span class="letter">D</span><span class="answer-text">Tenir ses promesses.</span></label>
-              <label class="answer"><input type="checkbox" name="q34" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">35</div>
-              <div class="q-text">35. Lorsqu’un client compare plusieurs fournisseurs, quelle est la meilleure approche ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q35" value="A"/><span class="letter">A</span><span class="answer-text">Se différencier par la valeur ajoutée.</span></label>
-              <label class="answer"><input type="checkbox" name="q35" value="B"/><span class="letter">B</span><span class="answer-text">Insister sur le prix le plus bas.</span></label>
-              <label class="answer"><input type="checkbox" name="q35" value="C"/><span class="letter">C</span><span class="answer-text">Montrer des preuves ou témoignages clients.</span></label>
-              <label class="answer"><input type="checkbox" name="q35" value="D"/><span class="letter">D</span><span class="answer-text">Expliquer comment votre service se démarque.</span></label>
-              <label class="answer"><input type="checkbox" name="q35" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">36</div>
-              <div class="q-text">36. Quelles techniques sont efficaces pour qualifier un prospect ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q36" value="A"/><span class="letter">A</span><span class="answer-text">Déterminer son budget.</span></label>
-              <label class="answer"><input type="checkbox" name="q36" value="B"/><span class="letter">B</span><span class="answer-text">Identifier ses besoins prioritaires.</span></label>
-              <label class="answer"><input type="checkbox" name="q36" value="C"/><span class="letter">C</span><span class="answer-text">Vérifier son pouvoir de décision.</span></label>
-              <label class="answer"><input type="checkbox" name="q36" value="D"/><span class="letter">D</span><span class="answer-text">Évaluer son échéancier d’achat.</span></label>
-              <label class="answer"><input type="checkbox" name="q36" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">37</div>
-              <div class="q-text">37. Quelles actions augmentent l’efficacité d’une présentation de vente ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q37" value="A"/><span class="letter">A</span><span class="answer-text">Utiliser des exemples concrets.</span></label>
-              <label class="answer"><input type="checkbox" name="q37" value="B"/><span class="letter">B</span><span class="answer-text">Impliquer le client dans la démonstration.</span></label>
-              <label class="answer"><input type="checkbox" name="q37" value="C"/><span class="letter">C</span><span class="answer-text">Utiliser un langage simple et clair.</span></label>
-              <label class="answer"><input type="checkbox" name="q37" value="D"/><span class="letter">D</span><span class="answer-text">Réciter un discours sans personnalisation.</span></label>
-              <label class="answer"><input type="checkbox" name="q37" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">38</div>
-              <div class="q-text">38. Un client mécontent exprime sa frustration. Quelle est la bonne réaction ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q38" value="A"/><span class="letter">A</span><span class="answer-text">Laisser le client parler sans l’interrompre.</span></label>
-              <label class="answer"><input type="checkbox" name="q38" value="B"/><span class="letter">B</span><span class="answer-text">Reconnaître sa frustration.</span></label>
-              <label class="answer"><input type="checkbox" name="q38" value="C"/><span class="letter">C</span><span class="answer-text">Offrir une solution concrète.</span></label>
-              <label class="answer"><input type="checkbox" name="q38" value="D"/><span class="letter">D</span><span class="answer-text">Se défendre immédiatement pour protéger sa réputation.</span></label>
-              <label class="answer"><input type="checkbox" name="q38" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">39</div>
-              <div class="q-text">39. Quelles sont de bonnes pratiques de gestion de pipeline de vente ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q39" value="A"/><span class="letter">A</span><span class="answer-text">Mettre à jour régulièrement ses opportunités.</span></label>
-              <label class="answer"><input type="checkbox" name="q39" value="B"/><span class="letter">B</span><span class="answer-text">Prioriser les prospects les plus prometteurs.</span></label>
-              <label class="answer"><input type="checkbox" name="q39" value="C"/><span class="letter">C</span><span class="answer-text">Conserver toutes les opportunités ouvertes, même celles perdues.</span></label>
-              <label class="answer"><input type="checkbox" name="q39" value="D"/><span class="letter">D</span><span class="answer-text">Mesurer les taux de conversion.</span></label>
-              <label class="answer"><input type="checkbox" name="q39" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">40</div>
-              <div class="q-text">40. Quels sont des exemples de signaux d’achat ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q40" value="A"/><span class="letter">A</span><span class="answer-text">Le client pose des questions sur les modalités de livraison.</span></label>
-              <label class="answer"><input type="checkbox" name="q40" value="B"/><span class="letter">B</span><span class="answer-text">Le client demande des détails sur le financement.</span></label>
-              <label class="answer"><input type="checkbox" name="q40" value="C"/><span class="letter">C</span><span class="answer-text">Le client parle de l’utilisation future du produit.</span></label>
-              <label class="answer"><input type="checkbox" name="q40" value="D"/><span class="letter">D</span><span class="answer-text">Le client reste silencieux et distrait.</span></label>
-              <label class="answer"><input type="checkbox" name="q40" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="acc-nav">
-            <a class="acc-prev" data-target="acc4" href="#acc4">← Section 3</a>
-            <a class="acc-next" data-target="acc5" href="#acc5">Section 5 →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 5 -->
-      <div class="accordion" id="acc5">
-        <div class="acc-head">
-          <h2>Section 5 (Q41 – Q50)</h2>
-          <button class="acc-toggle" data-target="acc5" aria-expanded="false" type="button">Ouvrir la section</button>
-        </div>
-        <div class="acc-body" style="display:none">
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">41</div>
-              <div class="q-text">41. Quelles actions aident à créer une première impression positive ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q41" value="A"/><span class="letter">A</span><span class="answer-text">Arriver à l’heure.</span></label>
-              <label class="answer"><input type="checkbox" name="q41" value="B"/><span class="letter">B</span><span class="answer-text">S’habiller de manière professionnelle.</span></label>
-              <label class="answer"><input type="checkbox" name="q41" value="C"/><span class="letter">C</span><span class="answer-text">Établir un contact visuel.</span></label>
-              <label class="answer"><input type="checkbox" name="q41" value="D"/><span class="letter">D</span><span class="answer-text">Commencer par un sourire sincère.</span></label>
-              <label class="answer"><input type="checkbox" name="q41" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">42</div>
-              <div class="q-text">42. Lorsqu’un prospect demande une remise, quelle est une bonne approche ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q42" value="A"/><span class="letter">A</span><span class="answer-text">Dire « oui » immédiatement.</span></label>
-              <label class="answer"><input type="checkbox" name="q42" value="B"/><span class="letter">B</span><span class="answer-text">Explorer d’abord ses besoins pour justifier la valeur.</span></label>
-              <label class="answer"><input type="checkbox" name="q42" value="C"/><span class="letter">C</span><span class="answer-text">Offrir une valeur ajoutée plutôt qu’une remise.</span></label>
-              <label class="answer"><input type="checkbox" name="q42" value="D"/><span class="letter">D</span><span class="answer-text">Proposer un plan de financement.</span></label>
-              <label class="answer"><input type="checkbox" name="q42" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">43</div>
-              <div class="q-text">43. Quelles compétences sont essentielles en négociation ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q43" value="A"/><span class="letter">A</span><span class="answer-text">Écouter activement.</span></label>
-              <label class="answer"><input type="checkbox" name="q43" value="B"/><span class="letter">B</span><span class="answer-text">Savoir faire des compromis.</span></label>
-              <label class="answer"><input type="checkbox" name="q43" value="C"/><span class="letter">C</span><span class="answer-text">Garder son calme.</span></label>
-              <label class="answer"><input type="checkbox" name="q43" value="D"/><span class="letter">D</span><span class="answer-text">Utiliser uniquement la pression pour conclure.</span></label>
-              <label class="answer"><input type="checkbox" name="q43" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">44</div>
-              <div class="q-text">44. Quelles sont les erreurs à éviter lors d’une présentation ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q44" value="A"/><span class="letter">A</span><span class="answer-text">Lire mot à mot ses diapositives.</span></label>
-              <label class="answer"><input type="checkbox" name="q44" value="B"/><span class="letter">B</span><span class="answer-text">Ignorer les questions du client.</span></label>
-              <label class="answer"><input type="checkbox" name="q44" value="C"/><span class="letter">C</span><span class="answer-text">Utiliser un jargon trop technique.</span></label>
-              <label class="answer"><input type="checkbox" name="q44" value="D"/><span class="letter">D</span><span class="answer-text">Parler sans structure ni fil conducteur.</span></label>
-              <label class="answer"><input type="checkbox" name="q44" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">45</div>
-              <div class="q-text">45. Quels facteurs contribuent à un bon service après-vente ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q45" value="A"/><span class="letter">A</span><span class="answer-text">Rapidité de réponse aux demandes.</span></label>
-              <label class="answer"><input type="checkbox" name="q45" value="B"/><span class="letter">B</span><span class="answer-text">Proposer des solutions efficaces.</span></label>
-              <label class="answer"><input type="checkbox" name="q45" value="C"/><span class="letter">C</span><span class="answer-text">Maintenir une communication proactive.</span></label>
-              <label class="answer"><input type="checkbox" name="q45" value="D"/><span class="letter">D</span><span class="answer-text">Éviter de recontacter le client après la vente.</span></label>
-              <label class="answer"><input type="checkbox" name="q45" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">46</div>
-              <div class="q-text">46. Quelles qualités augmentent la motivation d’un vendeur ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q46" value="A"/><span class="letter">A</span><span class="answer-text">Avoir des objectifs clairs.</span></label>
-              <label class="answer"><input type="checkbox" name="q46" value="B"/><span class="letter">B</span><span class="answer-text">Se récompenser après les succès.</span></label>
-              <label class="answer"><input type="checkbox" name="q46" value="C"/><span class="letter">C</span><span class="answer-text">Garder une attitude positive.</span></label>
-              <label class="answer"><input type="checkbox" name="q46" value="D"/><span class="letter">D</span><span class="answer-text">Travailler sans planification.</span></label>
-              <label class="answer"><input type="checkbox" name="q46" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">47</div>
-              <div class="q-text">47. Que doit faire un vendeur quand il ne connaît pas la réponse à une question client ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q47" value="A"/><span class="letter">A</span><span class="answer-text">Deviner une réponse plausible.</span></label>
-              <label class="answer"><input type="checkbox" name="q47" value="B"/><span class="letter">B</span><span class="answer-text">Admettre honnêtement et promettre de vérifier.</span></label>
-              <label class="answer"><input type="checkbox" name="q47" value="C"/><span class="letter">C</span><span class="answer-text">Détourner la conversation.</span></label>
-              <label class="answer"><input type="checkbox" name="q47" value="D"/><span class="letter">D</span><span class="answer-text">Critiquer la question.</span></label>
-              <label class="answer"><input type="checkbox" name="q47" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">48</div>
-              <div class="q-text">48. Quelles méthodes renforcent la fidélité d’un client ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q48" value="A"/><span class="letter">A</span><span class="answer-text">Offrir un service de qualité constante.</span></label>
-              <label class="answer"><input type="checkbox" name="q48" value="B"/><span class="letter">B</span><span class="answer-text">Rester disponible pour les besoins futurs.</span></label>
-              <label class="answer"><input type="checkbox" name="q48" value="C"/><span class="letter">C</span><span class="answer-text">Créer une relation personnelle sincère.</span></label>
-              <label class="answer"><input type="checkbox" name="q48" value="D"/><span class="letter">D</span><span class="answer-text">Ignorer les petites demandes après la vente.</span></label>
-              <label class="answer"><input type="checkbox" name="q48" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">49</div>
-              <div class="q-text">49. Quelles sont de bonnes pratiques lors d’un rendez-vous client ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q49" value="A"/><span class="letter">A</span><span class="answer-text">Écouter plus que parler.</span></label>
-              <label class="answer"><input type="checkbox" name="q49" value="B"/><span class="letter">B</span><span class="answer-text">Poser des questions pertinentes.</span></label>
-              <label class="answer"><input type="checkbox" name="q49" value="C"/><span class="letter">C</span><span class="answer-text">Proposer des solutions adaptées.</span></label>
-              <label class="answer"><input type="checkbox" name="q49" value="D"/><span class="letter">D</span><span class="answer-text">Interrompre le client pour accélérer.</span></label>
-              <label class="answer"><input type="checkbox" name="q49" value="E"/><span class="letter">E</span><span class="answer-text">Aucune de ces réponses.</span></label>
-            </div>
-          </div>
-          <div class="fieldset-q">
-            <div class="q-head">
-              <div class="q-num">50</div>
-              <div class="q-text">50. Quelles compétences un vendeur doit-il développer pour réussir à long terme ?</div>
-            </div>
-            <div class="choices">
-              <label class="answer"><input type="checkbox" name="q50" value="A"/><span class="letter">A</span><span class="answer-text">Compétences en communication.</span></label>
-              <label class="answer"><input type="checkbox" name="q50" value="B"/><span class="letter">B</span><span class="answer-text">Compétences en négociation.</span></label>
-              <label class="answer"><input type="checkbox" name="q50" value="C"/><span class="letter">C</span><span class="answer-text">Gestion du temps.</span></label>
-              <label class="answer"><input type="checkbox" name="q50" value="D"/><span class="letter">D</span><span class="answer-text">Résilience face au rejet.</span></label>
-              <label class="answer"><input type="checkbox" name="q50" value="E"/><span class="letter">E</span><span class="answer-text">Toutes ces réponses sont correctes.</span></label>
-            </div>
-          </div>
-
-          <div class="acc-nav">
-            <a class="acc-prev" data-target="acc5" href="#acc5">← Section 4</a>
-            <span></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- AUTO-ÉVALUATION -->
-      <div class="card">
-        <div class="section-head">
-          <h2>Auto-évaluation et auto-perception</h2>
-          <span class="pill">15 compétences</span>
-        </div>
-        <p class="note">Sélectionnez votre perception dans le menu déroulant. Choix : Très faible, Faible, Moyen, Bon, Très bon, Supérieur.</p>
-        <div style="margin-top:14px;">
-          <div class="ae-row"><div class="ae-label">1. Ma capacité à établir un contact initial et à mettre le client à l'aise</div><div class="ae-select"><select id="ae1"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">2. Ma capacité à identifier et comprendre les besoins du client</div><div class="ae-select"><select id="ae2"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">3. Ma capacité à présenter une solution adaptée aux besoins du client</div><div class="ae-select"><select id="ae3"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">4. Ma capacité à répondre efficacement aux objections</div><div class="ae-select"><select id="ae4"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">5. Ma capacité à négocier pour parvenir à un accord gagnant-gagnant</div><div class="ae-select"><select id="ae5"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">6. Ma capacité à conclure la vente</div><div class="ae-select"><select id="ae6"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">7. Ma capacité à effectuer un suivi et à fidéliser le client</div><div class="ae-select"><select id="ae7"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">8. Ma gestion du temps et de mes priorités</div><div class="ae-select"><select id="ae8"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">9. Ma capacité à planifier et gérer mon territoire de vente</div><div class="ae-select"><select id="ae9"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">10. Ma capacité à prospecter et générer de nouvelles opportunités</div><div class="ae-select"><select id="ae10"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">11. Mon écoute active et ma compréhension du client</div><div class="ae-select"><select id="ae11"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">12. Ma créativité et mon adaptabilité dans le processus de vente</div><div class="ae-select"><select id="ae12"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">13. Mon professionnalisme et mon éthique de travail</div><div class="ae-select"><select id="ae13"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">14. Ma motivation et mon attitude face au travail</div><div class="ae-select"><select id="ae14"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-          <div class="ae-row"><div class="ae-label">15. Ma confiance en mes capacités de vente</div><div class="ae-select"><select id="ae15"><option value=""></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div></div>
-        </div>
-      </div>
-
-    </div><!-- /.form-lock-wrap -->
-
-    <!-- RÉSULTATS (admin) -->
-    <div class="results" id="resultsPanel">
-      <h3 style="margin:0 0 10px;color:var(--k7);font-family:'DM Serif Display',Georgia,serif;font-weight:400">Résultats (mode admin)</h3>
-      <div id="overall"></div>
-      <div class="results-grid" id="domains" style="margin-top:10px"></div>
-    </div>
-
-    <div class="footer">© 2026 K7 Service‑Conseil — Profil de Succès en Ventes® — Tous droits réservés</div>
-
-  </div><!-- /.grid -->
-</div><!-- /.wrap -->
-
-<!-- BARRE D'ACTIONS STICKY -->
-  <div class="validation-banner" id="validation-banner">
-    ⚠️ Veuillez corriger les erreurs suivantes avant de soumettre :
-    <ul id="validation-list"></ul>
-  </div>
-<div class="actions-bar">
-  <div class="actions-inner">
-    <span class="actions-note">Vos réponses demeureront strictement confidentielles.</span>
-    <button class="btn btn-ghost" id="btnAdmin" style="display:none" type="button">Résultats (admin)</button>
-    <button class="btn btn-primary" id="btnSend" type="button">Envoyer à PSV Global</button>
-  </div>
-  <div id="submit-success" class="status" style="max-width:1000px;margin:8px auto 0">✅ Merci ! Vos réponses ont été soumises avec succès.</div>
+</section>
+<div id="timerVeil"><div class="veil-box"><strong>Chronom&egrave;tre non d&eacute;marr&eacute;</strong><p>Cliquez sur &laquo; D&eacute;marrer le chronom&egrave;tre &raquo; dans la barre du bas pour d&eacute;verrouiller les questions.</p></div></div>
+<header>
+<img alt="PSV Global" src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27180%27 height=%2748%27 viewBox=%270 0 180 48%27%3E%3Crect width=%27180%27 height=%2748%27 rx=%278%27 fill=%27%230a2a66%27/%3E%3Ctext x=%2718%27 y=%2731%27 font-family=%27Arial,sans-serif%27 font-size=%2720%27 font-weight=%27700%27 fill=%27white%27%3EPSV Global%3C/text%3E%3C/svg%3E"/>
+<h1>Profil de Succ&egrave;s en Vente&reg;</h1>
+</header>
+<main>
+<!-- Bloc identification -->
+<section class="block" id="identite">
+<h2>Identification du participant</h2>
+<div class="grid-2">
+<label>Nom
+          <input id="nom" placeholder="Ex.: Tremblay" type="text"/>
+</label>
+<label>Prénom
+          <input id="prenom" placeholder="Ex.: Marie" type="text"/>
+</label>
+<label>Courriel
+          <input id="email" placeholder="Ex.: nom@entreprise.com" type="email"/>
+</label>
+<label>Téléphone
+          <input id="tel" placeholder="Ex.: 514 555-1212" type="tel"/>
+</label>
+<label>Entreprise
+          <input id="entreprise" placeholder="Ex.: Entreprise ABC" type="text"/>
+</label>
+<label>Poste actuel
+          <input id="poste" placeholder="Ex.: Représentant technique" type="text"/>
+</label>
+<label>Années d’expérience (vente)
+          <input id="exp" min="0" placeholder="Ex.: 7" step="1" type="number"/>
+</label>
+<label>Rémunération (fixe + variable)
+          <input id="remu" placeholder="Ex.: 55 000 $ + commissions" type="text"/>
+</label>
+<label>Région / territoire
+          <input id="region" placeholder="Ex.: Montréal et Rive-Sud" type="text"/>
+</label>
 </div>
+</section>
+<!-- INTRO -->
+<section class="intro">
+<h2>Profil de Succ&egrave;s en Vente&reg; – Avis important</h2>
+<p>Le Profil de Succ&egrave;s en Vente&reg; a été conçu pour fournir des informations précieuses sur vos compétences et aptitudes en vente. Il aide à identifier vos forces et vos faiblesses dans 13 domaines clés du processus de vente, notamment :</p>
+<ol class="list13">
+<li>L’approche et l’établissement du contact</li>
+<li>La découverte des besoins</li>
+<li>La présentation de la solution</li>
+<li>La gestion des objections</li>
+<li>La négociation</li>
+<li>La conclusion de la vente</li>
+<li>Le suivi et la fidélisation</li>
+<li>La gestion du temps</li>
+<li>La planification de territoire</li>
+<li>La prospection</li>
+<li>L’écoute active</li>
+<li>La créativité et l’adaptabilité</li>
+<li>Le professionnalisme</li>
+</ol>
+<p>Les résultats peuvent être utilisés par vos gestionnaires ou votre employeur pour améliorer vos habiletés de vente en vous offrant de la formation ciblée dans les domaines où vous avez besoin d’aide.</p>
+<p>En complétant ce profil, vous acceptez expressément que vos réponses soient évaluées et que les résultats puissent être transmis à l’entreprise ou à l’agence qui vous a demandé de remplir ce profil.</p>
+<p>Le Profil de Succ&egrave;s en Vente&reg; mesure vos compétences de vente, et non votre personnalité. Les compétences de vente peuvent être entraînées et améliorées. Toutefois, il est essentiel de savoir quel est votre niveau actuel afin d’identifier les priorités de développement.</p>
+<p>Il s&rsquo;agit d&rsquo;un test de 50 questions &agrave; choix multiples couvrant 13 comp&eacute;tences critiques. Vos r&eacute;ponses permettront de pr&eacute;parer une analyse structur&eacute;e de vos forces, de vos zones &agrave; d&eacute;velopper et de vos priorit&eacute;s de progression en vente.</p>
 
-<!-- NETLIFY FORM (hidden) -->
-<form data-netlify="true" hidden method="POST" name="qcm-fr-results" netlify-honeypot="bot-field">
-  <input name="form-name" type="hidden" value="qcm-fr-results"/>
-  <input name="bot-field" style="display:none" type="text"/>
-  <input id="nf-nom" name="Nom" type="hidden"/>
-  <input id="nf-prenom" name="Prenom" type="hidden"/>
-  <input id="nf-email" name="Courriel" type="hidden"/>
-  <input id="nf-tel" name="Telephone" type="hidden"/>
-  <input id="nf-entreprise" name="Entreprise" type="hidden"/>
-  <input id="nf-poste" name="Poste" type="hidden"/>
-  <input id="nf-exp" name="Experience_annees" type="hidden"/>
-  <input id="nf-remu" name="Remuneration" type="hidden"/>
-  <input id="nf-region" name="Region" type="hidden"/>
-  <input id="nf-elapsed" name="Temps_ecoule" type="hidden"/>
-  <input id="nf-elapsed-s" name="Temps_ecoule_secondes" type="hidden"/>
-  <input id="nf-global" name="Score_global_pct" type="hidden"/>
-  <input id="nf-d01" name="D01_Approche_Contact_pct" type="hidden"/>
-  <input id="nf-d02" name="D02_Decouverte_Besoins_pct" type="hidden"/>
-  <input id="nf-d03" name="D03_Presentation_Solution_pct" type="hidden"/>
-  <input id="nf-d04" name="D04_Gestion_Objections_pct" type="hidden"/>
-  <input id="nf-d05" name="D05_Negociation_pct" type="hidden"/>
-  <input id="nf-d06" name="D06_Conclusion_Vente_pct" type="hidden"/>
-  <input id="nf-d07" name="D07_Suivi_Fidelisation_pct" type="hidden"/>
-  <input id="nf-d08" name="D08_Gestion_Temps_pct" type="hidden"/>
-  <input id="nf-d09" name="D09_Planification_Territoire_pct" type="hidden"/>
-  <input id="nf-d10" name="D10_Prospection_pct" type="hidden"/>
-  <input id="nf-d11" name="D11_Ecoute_Active_pct" type="hidden"/>
-  <input id="nf-d12" name="D12_Creativite_Adaptabilite_pct" type="hidden"/>
-  <input id="nf-d13" name="D13_Professionnalisme_pct" type="hidden"/>
-  <input id="nf-ae1" name="AutoEval_01" type="hidden"/>
-  <input id="nf-ae2" name="AutoEval_02" type="hidden"/>
-  <input id="nf-ae3" name="AutoEval_03" type="hidden"/>
-  <input id="nf-ae4" name="AutoEval_04" type="hidden"/>
-  <input id="nf-ae5" name="AutoEval_05" type="hidden"/>
-  <input id="nf-ae6" name="AutoEval_06" type="hidden"/>
-  <input id="nf-ae7" name="AutoEval_07" type="hidden"/>
-  <input id="nf-ae8" name="AutoEval_08" type="hidden"/>
-  <input id="nf-ae9" name="AutoEval_09" type="hidden"/>
-  <input id="nf-ae10" name="AutoEval_10" type="hidden"/>
-  <input id="nf-ae11" name="AutoEval_11" type="hidden"/>
-  <input id="nf-ae12" name="AutoEval_12" type="hidden"/>
-  <input id="nf-ae13" name="AutoEval_13" type="hidden"/>
-  <input id="nf-ae14" name="AutoEval_14" type="hidden"/>
-  <input id="nf-ae15" name="AutoEval_15" type="hidden"/>
+<section class="accordion" id="acc1">
+<div class="acc-head">
+<h2>Section 1 (Q1 - Q10)</h2>
+<button aria-expanded="false" class="acc-toggle" data-target="acc1" type="button">Ouvrir la section</button>
+</div>
+<div class="acc-body" style="display:none">
+<fieldset class="q" data-q="1">
+<legend>1. Lors d’un premier appel de prospection, quelle est la meilleure approche ?</legend>
+<div class="choices">
+<label><input name="q1" type="checkbox" value="A"/> A. Présenter immédiatement votre produit en détail.</label>
+<label><input name="q1" type="checkbox" value="B"/> B. Poser des questions pour comprendre les besoins du prospect.</label>
+<label><input name="q1" type="checkbox" value="C"/> C. Demander directement s’il veut acheter.</label>
+<label><input name="q1" type="checkbox" value="D"/> D. Créer un lien de confiance avant de parler de vente.</label>
+<label><input name="q1" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="2">
+<legend>2. Quelles actions démontrent une bonne écoute active en vente ?</legend>
+<div class="choices">
+<label><input name="q2" type="checkbox" value="A"/> A. Reformuler les propos du client.</label>
+<label><input name="q2" type="checkbox" value="B"/> B. Poser des questions ouvertes.</label>
+<label><input name="q2" type="checkbox" value="C"/> C. Parler plus que le client pour montrer son expertise.</label>
+<label><input name="q2" type="checkbox" value="D"/> D. Éviter de prendre des notes.</label>
+<label><input name="q2" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="3">
+<legend>3. Un client dit : « C’est trop cher ». Que peut faire un bon vendeur ?</legend>
+<div class="choices">
+<label><input name="q3" type="checkbox" value="A"/> A. Réduire immédiatement le prix.</label>
+<label><input name="q3" type="checkbox" value="B"/> B. Mettre en valeur le retour sur investissement.</label>
+<label><input name="q3" type="checkbox" value="C"/> C. Comparer avec des alternatives moins chères.</label>
+<label><input name="q3" type="checkbox" value="D"/> D. Explorer les besoins réels du client.</label>
+<label><input name="q3" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="4">
+<legend>4. Quelles sont de bonnes pratiques pour conclure une vente ?</legend>
+<div class="choices">
+<label><input name="q4" type="checkbox" value="A"/> A. Attendre que le client demande à acheter.</label>
+<label><input name="q4" type="checkbox" value="B"/> B. Identifier et utiliser les signaux d’achat.</label>
+<label><input name="q4" type="checkbox" value="C"/> C. Ne jamais poser de questions directes.</label>
+<label><input name="q4" type="checkbox" value="D"/> D. Proposer un choix limité (ex. couleur, modèle).</label>
+<label><input name="q4" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="5">
+<legend>5. Lors d’une présentation de produit, quel est l’objectif principal ?</legend>
+<div class="choices">
+<label><input name="q5" type="checkbox" value="A"/> A. Montrer le plus de caractéristiques techniques possible.</label>
+<label><input name="q5" type="checkbox" value="B"/> B. Centrer le discours sur les besoins du client.</label>
+<label><input name="q5" type="checkbox" value="C"/> C. Répéter le même argument pour convaincre.</label>
+<label><input name="q5" type="checkbox" value="D"/> D. Éviter les objections en parlant vite.</label>
+<label><input name="q5" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="6">
+<legend>6. Un client exprime une objection. Quelle est la meilleure attitude ?</legend>
+<div class="choices">
+<label><input name="q6" type="checkbox" value="A"/> A. L’interrompre immédiatement pour corriger.</label>
+<label><input name="q6" type="checkbox" value="B"/> B. L’écouter jusqu’au bout.</label>
+<label><input name="q6" type="checkbox" value="C"/> C. Reformuler son objection pour montrer que vous comprenez.</label>
+<label><input name="q6" type="checkbox" value="D"/> D. Ignorer l’objection et continuer votre discours.</label>
+<label><input name="q6" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="7">
+<legend>7. Quelles sont des sources de nouveaux prospects ?</legend>
+<div class="choices">
+<label><input name="q7" type="checkbox" value="A"/> A. Les références de clients satisfaits.</label>
+<label><input name="q7" type="checkbox" value="B"/> B. Les salons professionnels.</label>
+<label><input name="q7" type="checkbox" value="C"/> C. Les bases de données achetées.</label>
+<label><input name="q7" type="checkbox" value="D"/> D. Les anciens clients insatisfaits.</label>
+<label><input name="q7" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="8">
+<legend>8. Dans un entretien de vente, pourquoi poser des questions ouvertes ?</legend>
+<div class="choices">
+<label><input name="q8" type="checkbox" value="A"/> A. Pour encourager le client à parler davantage.</label>
+<label><input name="q8" type="checkbox" value="B"/> B. Pour obtenir des réponses limitées et rapides.</label>
+<label><input name="q8" type="checkbox" value="C"/> C. Pour éviter d’entendre les véritables besoins du client.</label>
+<label><input name="q8" type="checkbox" value="D"/> D. Pour impliquer activement le client dans la discussion.</label>
+<label><input name="q8" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="9">
+<legend>9. Quand est-il approprié de négocier un prix ?</legend>
+<div class="choices">
+<label><input name="q9" type="checkbox" value="A"/> A. Dès le début de la rencontre.</label>
+<label><input name="q9" type="checkbox" value="B"/> B. Après avoir présenté la valeur du produit.</label>
+<label><input name="q9" type="checkbox" value="C"/> C. Avant même de comprendre les besoins.</label>
+<label><input name="q9" type="checkbox" value="D"/> D. Lorsque le client insiste fortement.</label>
+<label><input name="q9" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="10">
+<legend>10. Quels comportements aident à bâtir une relation de confiance avec un client ?</legend>
+<div class="choices">
+<label><input name="q10" type="checkbox" value="A"/> A. Tenir ses promesses.</label>
+<label><input name="q10" type="checkbox" value="B"/> B. Écouter attentivement et prendre des notes.</label>
+<label><input name="q10" type="checkbox" value="C"/> C. Exagérer pour impressionner le client.</label>
+<label><input name="q10" type="checkbox" value="D"/> D. Rester transparent et honnête.</label>
+<label><input name="q10" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<div class="acc-nav" style="display:flex;justify-content:space-between;gap:10px;margin-top:12px">
+<span></span>
+<a class="acc-next" data-target="acc2" href="#acc2">Section 2 →</a>
+</div>
+</div>
+</section>
+<section class="accordion" id="acc2">
+<div class="acc-head">
+<h2>Section 2 (Q11 - Q20)</h2>
+<button aria-expanded="false" class="acc-toggle" data-target="acc2" type="button">Ouvrir la section</button>
+</div>
+<div class="acc-body" style="display:none">
+<fieldset class="q" data-q="11">
+<legend>11. Lorsqu’un client hésite à acheter, quelle est une bonne approche ?</legend>
+<div class="choices">
+<label><input name="q11" type="checkbox" value="A"/> A. Le presser en lui disant que l’offre expire bientôt.</label>
+<label><input name="q11" type="checkbox" value="B"/> B. Poser des questions pour comprendre son hésitation.</label>
+<label><input name="q11" type="checkbox" value="C"/> C. Laisser un silence inconfortable pour le forcer à décider.</label>
+<label><input name="q11" type="checkbox" value="D"/> D. Lui proposer un choix alternatif (autre produit ou service).</label>
+<label><input name="q11" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="12">
+<legend>12. Quelles sont des techniques efficaces pour surmonter une objection liée au prix ?</legend>
+<div class="choices">
+<label><input name="q12" type="checkbox" value="A"/> A. Réduire immédiatement le prix demandé.</label>
+<label><input name="q12" type="checkbox" value="B"/> B. Expliquer la valeur ajoutée du produit.</label>
+<label><input name="q12" type="checkbox" value="C"/> C. Comparer avec des produits concurrents.</label>
+<label><input name="q12" type="checkbox" value="D"/> D. Proposer des modalités de paiement flexibles.</label>
+<label><input name="q12" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="13">
+<legend>13. Quels comportements sont perçus comme non professionnels en vente ?</legend>
+<div class="choices">
+<label><input name="q13" type="checkbox" value="A"/> A. Arriver en retard à un rendez-vous.</label>
+<label><input name="q13" type="checkbox" value="B"/> B. Ne pas écouter le client.</label>
+<label><input name="q13" type="checkbox" value="C"/> C. Promettre plus que ce qu’on peut livrer.</label>
+<label><input name="q13" type="checkbox" value="D"/> D. Admettre honnêtement qu’on ne connaît pas la réponse à une question.</label>
+<label><input name="q13" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="14">
+<legend>14. Quelles sont les qualités essentielles d’un bon vendeur ?</legend>
+<div class="choices">
+<label><input name="q14" type="checkbox" value="A"/> A. Empathie.</label>
+<label><input name="q14" type="checkbox" value="B"/> B. Persévérance.</label>
+<label><input name="q14" type="checkbox" value="C"/> C. Patience.</label>
+<label><input name="q14" type="checkbox" value="D"/> D. Honnêteté.</label>
+<label><input name="q14" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="15">
+<legend>15. Un prospect dit : « J’aimerais réfléchir avant de décider ». Quelle réponse est la plus appropriée ?</legend>
+<div class="choices">
+<label><input name="q15" type="checkbox" value="A"/> A. « Très bien, je comprends, puis-je vous rappeler d’ici deux jours ? »</label>
+<label><input name="q15" type="checkbox" value="B"/> B. « Pas besoin de réfléchir, c’est une évidence. »</label>
+<label><input name="q15" type="checkbox" value="C"/> C. « Prenez votre temps, mais sachez que l’offre expire aujourd’hui. »</label>
+<label><input name="q15" type="checkbox" value="D"/> D. « Je peux vous aider à réfléchir en revoyant vos priorités. »</label>
+<label><input name="q15" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="16">
+<legend>16. Quelle est la meilleure façon d’ouvrir une rencontre de vente ?</legend>
+<div class="choices">
+<label><input name="q16" type="checkbox" value="A"/> A. Commencer immédiatement avec une démonstration technique.</label>
+<label><input name="q16" type="checkbox" value="B"/> B. Poser une question d’intérêt sur les besoins du client.</label>
+<label><input name="q16" type="checkbox" value="C"/> C. Parler longuement de soi pour inspirer confiance.</label>
+<label><input name="q16" type="checkbox" value="D"/> D. Mettre le client à l’aise avec une approche conviviale.</label>
+<label><input name="q16" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="17">
+<legend>17. Quelles sont des façons efficaces de gérer son temps en vente ?</legend>
+<div class="choices">
+<label><input name="q17" type="checkbox" value="A"/> A. Prioriser les prospects les plus prometteurs.</label>
+<label><input name="q17" type="checkbox" value="B"/> B. Établir un agenda quotidien.</label>
+<label><input name="q17" type="checkbox" value="C"/> C. Passer la majorité de son temps avec des clients qui n’achèteront pas.</label>
+<label><input name="q17" type="checkbox" value="D"/> D. Réserver du temps pour le suivi après-vente.</label>
+<label><input name="q17" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="18">
+<legend>18. Un client satisfait est une excellente ressource pour :</legend>
+<div class="choices">
+<label><input name="q18" type="checkbox" value="A"/> A. Obtenir des références.</label>
+<label><input name="q18" type="checkbox" value="B"/> B. Générer des témoignages.</label>
+<label><input name="q18" type="checkbox" value="C"/> C. Promouvoir de nouveaux produits.</label>
+<label><input name="q18" type="checkbox" value="D"/> D. Construire une relation à long terme.</label>
+<label><input name="q18" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="19">
+<legend>19. Quelles stratégies augmentent les chances de conclure une vente ?</legend>
+<div class="choices">
+<label><input name="q19" type="checkbox" value="A"/> A. Repérer les signaux d’achat.</label>
+<label><input name="q19" type="checkbox" value="B"/> B. Poser des questions de conclusion.</label>
+<label><input name="q19" type="checkbox" value="C"/> C. Éviter d’aborder le sujet de la conclusion.</label>
+<label><input name="q19" type="checkbox" value="D"/> D. Proposer un choix plutôt qu’une décision fermée (ex. modèle A ou B).</label>
+<label><input name="q19" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="20">
+<legend>20. Lors d’un salon professionnel, quelle est la meilleure stratégie ?</legend>
+<div class="choices">
+<label><input name="q20" type="checkbox" value="A"/> A. Attendre que les visiteurs viennent à vous.</label>
+<label><input name="q20" type="checkbox" value="B"/> B. Être proactif et engager la conversation.</label>
+<label><input name="q20" type="checkbox" value="C"/> C. Distribuer seulement des brochures sans contact direct.</label>
+<label><input name="q20" type="checkbox" value="D"/> D. Obtenir les coordonnées et planifier un suivi après l’événement.</label>
+<label><input name="q20" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<div class="acc-nav" style="display:flex;justify-content:space-between;gap:10px;margin-top:12px">
+<a class="acc-prev" data-target="acc1" href="#acc1">← Section 1</a>
+<a class="acc-next" data-target="acc3" href="#acc3">Section 3 →</a>
+</div>
+</div>
+</section>
+<section class="accordion" id="acc3">
+<div class="acc-head">
+<h2>Section 3 (Q21 - Q30)</h2>
+<button aria-expanded="false" class="acc-toggle" data-target="acc3" type="button">Ouvrir la section</button>
+</div>
+<div class="acc-body" style="display:none">
+<fieldset class="q" data-q="21">
+<legend>21. Quand est-il préférable de présenter les caractéristiques techniques d’un produit ?</legend>
+<div class="choices">
+<label><input name="q21" type="checkbox" value="A"/> A. Dès le début, avant même de poser des questions.</label>
+<label><input name="q21" type="checkbox" value="B"/> B. Une fois que les besoins du client ont été identifiés.</label>
+<label><input name="q21" type="checkbox" value="C"/> C. Lorsque le client demande plus de détails techniques.</label>
+<label><input name="q21" type="checkbox" value="D"/> D. À la fin uniquement, au moment de conclure.</label>
+<label><input name="q21" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="22">
+<legend>22. Quelles méthodes sont efficaces pour obtenir un rendez-vous téléphonique ?</legend>
+<div class="choices">
+<label><input name="q22" type="checkbox" value="A"/> A. Utiliser un script clair et concis.</label>
+<label><input name="q22" type="checkbox" value="B"/> B. Sourire dans sa voix et être enthousiaste.</label>
+<label><input name="q22" type="checkbox" value="C"/> C. Vendre le produit immédiatement au téléphone.</label>
+<label><input name="q22" type="checkbox" value="D"/> D. Vendre le rendez-vous plutôt que le produit.</label>
+<label><input name="q22" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="23">
+<legend>23. Quelle est une bonne façon de répondre à une objection sur la concurrence ?</legend>
+<div class="choices">
+<label><input name="q23" type="checkbox" value="A"/> A. Critiquer ouvertement les concurrents.</label>
+<label><input name="q23" type="checkbox" value="B"/> B. Montrer les avantages uniques de votre offre.</label>
+<label><input name="q23" type="checkbox" value="C"/> C. Comparer objectivement les différences.</label>
+<label><input name="q23" type="checkbox" value="D"/> D. Ignorer l’objection pour ne pas en parler.</label>
+<label><input name="q23" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="24">
+<legend>24. Quelles actions démontrent un bon suivi après une vente ?</legend>
+<div class="choices">
+<label><input name="q24" type="checkbox" value="A"/> A. Appeler pour s’assurer de la satisfaction du client.</label>
+<label><input name="q24" type="checkbox" value="B"/> B. Envoyer une note de remerciement.</label>
+<label><input name="q24" type="checkbox" value="C"/> C. Rester en contact pour de futures opportunités.</label>
+<label><input name="q24" type="checkbox" value="D"/> D. Disparaître après la conclusion.</label>
+<label><input name="q24" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="25">
+<legend>25. Lors d’une négociation, qu’est-ce qui aide le plus à trouver un terrain d’entente ?</legend>
+<div class="choices">
+<label><input name="q25" type="checkbox" value="A"/> A. Écouter activement les priorités du client.</label>
+<label><input name="q25" type="checkbox" value="B"/> B. Être flexible sur certaines conditions.</label>
+<label><input name="q25" type="checkbox" value="C"/> C. Garder une attitude défensive.</label>
+<label><input name="q25" type="checkbox" value="D"/> D. Identifier les points communs et proposer des compromis.</label>
+<label><input name="q25" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="26">
+<legend>26. Quelles sont les principales étapes d’un processus de vente efficace ?</legend>
+<div class="choices">
+<label><input name="q26" type="checkbox" value="A"/> A. Prospection.</label>
+<label><input name="q26" type="checkbox" value="B"/> B. Découverte des besoins.</label>
+<label><input name="q26" type="checkbox" value="C"/> C. Présentation de la solution.</label>
+<label><input name="q26" type="checkbox" value="D"/> D. Conclusion et suivi.</label>
+<label><input name="q26" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="27">
+<legend>27. Quel est l’objectif principal d’une démonstration de produit ?</legend>
+<div class="choices">
+<label><input name="q27" type="checkbox" value="A"/> A. Impressionner le client avec des données techniques.</label>
+<label><input name="q27" type="checkbox" value="B"/> B. Montrer comment le produit répond aux besoins du client.</label>
+<label><input name="q27" type="checkbox" value="C"/> C. Mettre en avant des caractéristiques inutiles.</label>
+<label><input name="q27" type="checkbox" value="D"/> D. Impliquer le client dans la démonstration.</label>
+<label><input name="q27" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="28">
+<legend>28. Quels éléments font partie d’une bonne gestion de territoire de vente ?</legend>
+<div class="choices">
+<label><input name="q28" type="checkbox" value="A"/> A. Segmenter les clients selon leur potentiel.</label>
+<label><input name="q28" type="checkbox" value="B"/> B. Planifier des visites régulières.</label>
+<label><input name="q28" type="checkbox" value="C"/> C. Se concentrer uniquement sur les clients faciles.</label>
+<label><input name="q28" type="checkbox" value="D"/> D. Mesurer la rentabilité de chaque secteur.</label>
+<label><input name="q28" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="29">
+<legend>29. Comment réagir lorsqu’un client compare votre produit uniquement sur le prix ?</legend>
+<div class="choices">
+<label><input name="q29" type="checkbox" value="A"/> A. Insister pour que le prix est le plus bas.</label>
+<label><input name="q29" type="checkbox" value="B"/> B. Orienter la discussion sur la valeur et les bénéfices.</label>
+<label><input name="q29" type="checkbox" value="C"/> C. Expliquer le coût total de possession.</label>
+<label><input name="q29" type="checkbox" value="D"/> D. Démontrer les économies à long terme.</label>
+<label><input name="q29" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="30">
+<legend>30. Quelles attitudes nuisent à la confiance du client ?</legend>
+<div class="choices">
+<label><input name="q30" type="checkbox" value="A"/> A. Surpromettre et sous-livrer.</label>
+<label><input name="q30" type="checkbox" value="B"/> B. Ne pas retourner les appels.</label>
+<label><input name="q30" type="checkbox" value="C"/> C. Être arrogant ou condescendant.</label>
+<label><input name="q30" type="checkbox" value="D"/> D. Fournir un service après-vente médiocre.</label>
+<label><input name="q30" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<div class="acc-nav" style="display:flex;justify-content:space-between;gap:10px;margin-top:12px">
+<a class="acc-prev" data-target="acc2" href="#acc2">← Section 2</a>
+<a class="acc-next" data-target="acc4" href="#acc4">Section 4 →</a>
+</div>
+</div>
+</section>
+<section class="accordion" id="acc4">
+<div class="acc-head">
+<h2>Section 4 (Q31 - Q40)</h2>
+<button aria-expanded="false" class="acc-toggle" data-target="acc4" type="button">Ouvrir la section</button>
+</div>
+<div class="acc-body" style="display:none">
+<fieldset class="q" data-q="31">
+<legend>31. Quelle est la meilleure façon de bâtir une relation à long terme avec un client ?</legend>
+<div class="choices">
+<label><input name="q31" type="checkbox" value="A"/> A. Offrir un suivi régulier.</label>
+<label><input name="q31" type="checkbox" value="B"/> B. Être transparent et honnête.</label>
+<label><input name="q31" type="checkbox" value="C"/> C. Éviter le client après la vente.</label>
+<label><input name="q31" type="checkbox" value="D"/> D. Récompenser la fidélité par des avantages.</label>
+<label><input name="q31" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="32">
+<legend>32. Lors d’un appel à froid, quelle erreur doit-on éviter ?</legend>
+<div class="choices">
+<label><input name="q32" type="checkbox" value="A"/> A. Ne pas préparer un script clair.</label>
+<label><input name="q32" type="checkbox" value="B"/> B. Ne pas écouter le prospect.</label>
+<label><input name="q32" type="checkbox" value="C"/> C. Parler trop longtemps sans pause.</label>
+<label><input name="q32" type="checkbox" value="D"/> D. Demander directement la conclusion.</label>
+<label><input name="q32" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="33">
+<legend>33. Quelles stratégies améliorent les chances de conclure une grande vente complexe ?</legend>
+<div class="choices">
+<label><input name="q33" type="checkbox" value="A"/> A. Impliquer plusieurs décideurs dans le processus.</label>
+<label><input name="q33" type="checkbox" value="B"/> B. Comprendre les enjeux stratégiques du client.</label>
+<label><input name="q33" type="checkbox" value="C"/> C. Se concentrer uniquement sur le prix.</label>
+<label><input name="q33" type="checkbox" value="D"/> D. Démontrer un retour sur investissement clair.</label>
+<label><input name="q33" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="34">
+<legend>34. Quels comportements favorisent la crédibilité du vendeur ?</legend>
+<div class="choices">
+<label><input name="q34" type="checkbox" value="A"/> A. Connaître son produit parfaitement.</label>
+<label><input name="q34" type="checkbox" value="B"/> B. Admettre quand on ne connaît pas une réponse.</label>
+<label><input name="q34" type="checkbox" value="C"/> C. Être ponctuel et bien préparé.</label>
+<label><input name="q34" type="checkbox" value="D"/> D. Tenir ses promesses.</label>
+<label><input name="q34" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="35">
+<legend>35. Lorsqu’un client compare plusieurs fournisseurs, quelle est la meilleure approche ?</legend>
+<div class="choices">
+<label><input name="q35" type="checkbox" value="A"/> A. Se différencier par la valeur ajoutée.</label>
+<label><input name="q35" type="checkbox" value="B"/> B. Insister sur le prix le plus bas.</label>
+<label><input name="q35" type="checkbox" value="C"/> C. Montrer des preuves ou témoignages clients.</label>
+<label><input name="q35" type="checkbox" value="D"/> D. Expliquer comment votre service se démarque.</label>
+<label><input name="q35" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="36">
+<legend>36. Quelles techniques sont efficaces pour qualifier un prospect ?</legend>
+<div class="choices">
+<label><input name="q36" type="checkbox" value="A"/> A. Déterminer son budget.</label>
+<label><input name="q36" type="checkbox" value="B"/> B. Identifier ses besoins prioritaires.</label>
+<label><input name="q36" type="checkbox" value="C"/> C. Vérifier son pouvoir de décision.</label>
+<label><input name="q36" type="checkbox" value="D"/> D. Évaluer son échéancier d’achat.</label>
+<label><input name="q36" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="37">
+<legend>37. Quelles actions augmentent l’efficacité d’une présentation de vente ?</legend>
+<div class="choices">
+<label><input name="q37" type="checkbox" value="A"/> A. Utiliser des exemples concrets.</label>
+<label><input name="q37" type="checkbox" value="B"/> B. Impliquer le client dans la démonstration.</label>
+<label><input name="q37" type="checkbox" value="C"/> C. Utiliser un langage simple et clair.</label>
+<label><input name="q37" type="checkbox" value="D"/> D. Réciter un discours sans personnalisation.</label>
+<label><input name="q37" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="38">
+<legend>38. Un client mécontent exprime sa frustration. Quelle est la bonne réaction ?</legend>
+<div class="choices">
+<label><input name="q38" type="checkbox" value="A"/> A. Laisser le client parler sans l’interrompre.</label>
+<label><input name="q38" type="checkbox" value="B"/> B. Reconnaître sa frustration.</label>
+<label><input name="q38" type="checkbox" value="C"/> C. Offrir une solution concrète.</label>
+<label><input name="q38" type="checkbox" value="D"/> D. Se défendre immédiatement pour protéger sa réputation.</label>
+<label><input name="q38" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="39">
+<legend>39. Quelles sont de bonnes pratiques de gestion de pipeline de vente ?</legend>
+<div class="choices">
+<label><input name="q39" type="checkbox" value="A"/> A. Mettre à jour régulièrement ses opportunités.</label>
+<label><input name="q39" type="checkbox" value="B"/> B. Prioriser les prospects les plus prometteurs.</label>
+<label><input name="q39" type="checkbox" value="C"/> C. Conserver toutes les opportunités ouvertes, même celles perdues.</label>
+<label><input name="q39" type="checkbox" value="D"/> D. Mesurer les taux de conversion.</label>
+<label><input name="q39" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="40">
+<legend>40. Quels sont des exemples de signaux d’achat ?</legend>
+<div class="choices">
+<label><input name="q40" type="checkbox" value="A"/> A. Le client pose des questions sur les modalités de livraison.</label>
+<label><input name="q40" type="checkbox" value="B"/> B. Le client demande des détails sur le financement.</label>
+<label><input name="q40" type="checkbox" value="C"/> C. Le client parle de l’utilisation future du produit.</label>
+<label><input name="q40" type="checkbox" value="D"/> D. Le client reste silencieux et distrait.</label>
+<label><input name="q40" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<div class="acc-nav" style="display:flex;justify-content:space-between;gap:10px;margin-top:12px">
+<a class="acc-prev" data-target="acc3" href="#acc3">← Section 3</a>
+<a class="acc-next" data-target="acc5" href="#acc5">Section 5 →</a>
+</div>
+</div>
+</section>
+<section class="accordion" id="acc5">
+<div class="acc-head">
+<h2>Section 5 (Q41 - Q50)</h2>
+<button aria-expanded="false" class="acc-toggle" data-target="acc5" type="button">Ouvrir la section</button>
+</div>
+<div class="acc-body" style="display:none">
+<fieldset class="q" data-q="41">
+<legend>41. Quelles actions aident à créer une première impression positive ?</legend>
+<div class="choices">
+<label><input name="q41" type="checkbox" value="A"/> A. Arriver à l’heure.</label>
+<label><input name="q41" type="checkbox" value="B"/> B. S’habiller de manière professionnelle.</label>
+<label><input name="q41" type="checkbox" value="C"/> C. Établir un contact visuel.</label>
+<label><input name="q41" type="checkbox" value="D"/> D. Commencer par un sourire sincère.</label>
+<label><input name="q41" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="42">
+<legend>42. Lorsqu’un prospect demande une remise, quelle est une bonne approche ?</legend>
+<div class="choices">
+<label><input name="q42" type="checkbox" value="A"/> A. Dire « oui » immédiatement.</label>
+<label><input name="q42" type="checkbox" value="B"/> B. Explorer d’abord ses besoins pour justifier la valeur.</label>
+<label><input name="q42" type="checkbox" value="C"/> C. Offrir une valeur ajoutée plutôt qu’une remise.</label>
+<label><input name="q42" type="checkbox" value="D"/> D. Proposer un plan de financement.</label>
+<label><input name="q42" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="43">
+<legend>43. Quelles compétences sont essentielles en négociation ?</legend>
+<div class="choices">
+<label><input name="q43" type="checkbox" value="A"/> A. Écouter activement.</label>
+<label><input name="q43" type="checkbox" value="B"/> B. Savoir faire des compromis.</label>
+<label><input name="q43" type="checkbox" value="C"/> C. Garder son calme.</label>
+<label><input name="q43" type="checkbox" value="D"/> D. Utiliser uniquement la pression pour conclure.</label>
+<label><input name="q43" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="44">
+<legend>44. Quelles sont les erreurs à éviter lors d’une présentation ?</legend>
+<div class="choices">
+<label><input name="q44" type="checkbox" value="A"/> A. Lire mot à mot ses diapositives.</label>
+<label><input name="q44" type="checkbox" value="B"/> B. Ignorer les questions du client.</label>
+<label><input name="q44" type="checkbox" value="C"/> C. Utiliser un jargon trop technique.</label>
+<label><input name="q44" type="checkbox" value="D"/> D. Parler sans structure ni fil conducteur.</label>
+<label><input name="q44" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="45">
+<legend>45. Quels facteurs contribuent à un bon service après-vente ?</legend>
+<div class="choices">
+<label><input name="q45" type="checkbox" value="A"/> A. Rapidité de réponse aux demandes.</label>
+<label><input name="q45" type="checkbox" value="B"/> B. Proposer des solutions efficaces.</label>
+<label><input name="q45" type="checkbox" value="C"/> C. Maintenir une communication proactive.</label>
+<label><input name="q45" type="checkbox" value="D"/> D. Éviter de recontacter le client après la vente.</label>
+<label><input name="q45" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="46">
+<legend>46. Quelles qualités augmentent la motivation d’un vendeur ?</legend>
+<div class="choices">
+<label><input name="q46" type="checkbox" value="A"/> A. Avoir des objectifs clairs.</label>
+<label><input name="q46" type="checkbox" value="B"/> B. Se récompenser après les succès.</label>
+<label><input name="q46" type="checkbox" value="C"/> C. Garder une attitude positive.</label>
+<label><input name="q46" type="checkbox" value="D"/> D. Travailler sans planification.</label>
+<label><input name="q46" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="47">
+<legend>47. Que doit faire un vendeur quand il ne connaît pas la réponse à une question client ?</legend>
+<div class="choices">
+<label><input name="q47" type="checkbox" value="A"/> A. Deviner une réponse plausible.</label>
+<label><input name="q47" type="checkbox" value="B"/> B. Admettre honnêtement et promettre de vérifier.</label>
+<label><input name="q47" type="checkbox" value="C"/> C. Détourner la conversation.</label>
+<label><input name="q47" type="checkbox" value="D"/> D. Critiquer la question.</label>
+<label><input name="q47" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="48">
+<legend>48. Quelles méthodes renforcent la fidélité d’un client ?</legend>
+<div class="choices">
+<label><input name="q48" type="checkbox" value="A"/> A. Offrir un service de qualité constante.</label>
+<label><input name="q48" type="checkbox" value="B"/> B. Rester disponible pour les besoins futurs.</label>
+<label><input name="q48" type="checkbox" value="C"/> C. Créer une relation personnelle sincère.</label>
+<label><input name="q48" type="checkbox" value="D"/> D. Ignorer les petites demandes après la vente.</label>
+<label><input name="q48" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="49">
+<legend>49. Quelles sont de bonnes pratiques lors d’un rendez-vous client ?</legend>
+<div class="choices">
+<label><input name="q49" type="checkbox" value="A"/> A. Écouter plus que parler.</label>
+<label><input name="q49" type="checkbox" value="B"/> B. Poser des questions pertinentes.</label>
+<label><input name="q49" type="checkbox" value="C"/> C. Proposer des solutions adaptées.</label>
+<label><input name="q49" type="checkbox" value="D"/> D. Interrompre le client pour accélérer.</label>
+<label><input name="q49" type="checkbox" value="E"/> E. Aucune de ces réponses.</label>
+</div>
+</fieldset>
+<fieldset class="q" data-q="50">
+<legend>50. Quelles compétences un vendeur doit-il développer pour réussir à long terme ?</legend>
+<div class="choices">
+<label><input name="q50" type="checkbox" value="A"/> A. Compétences en communication.</label>
+<label><input name="q50" type="checkbox" value="B"/> B. Compétences en négociation.</label>
+<label><input name="q50" type="checkbox" value="C"/> C. Gestion du temps.</label>
+<label><input name="q50" type="checkbox" value="D"/> D. Résilience face au rejet.</label>
+<label><input name="q50" type="checkbox" value="E"/> E. Toutes ces réponses sont correctes.</label>
+</div>
+</fieldset>
+<div class="acc-nav" style="display:flex;justify-content:space-between;gap:10px;margin-top:12px">
+<a class="acc-prev" data-target="acc4" href="#acc4">← Section 4</a>
+<span></span>
+</div>
+</div>
+</section>
+    
+l
+
+
+</p></section>
+<!-- AUTO-EVALUATION -->
+<section class="block" id="autoeval">
+<h2>Auto-évaluation et auto-perception</h2>
+<p class="note">Sélectionnez votre perception dans le <strong>menu déroulant</strong>. Choix disponibles : Très faible, Faible, Moyen, Bon, Très bon, Supérieur.</p>
+<div class="ae-row"><span>1. Ma capacité à établir un contact initial et à mettre le client à l’aise :</span><select id="ae1"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>2. Ma capacité à identifier et comprendre les besoins du client :</span><select id="ae2"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>3. Ma capacité à présenter une solution adaptée aux besoins du client :</span><select id="ae3"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>4. Ma capacité à répondre efficacement aux objections :</span><select id="ae4"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>5. Ma capacité à négocier pour parvenir à un accord gagnant-gagnant :</span><select id="ae5"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>6. Ma capacité à conclure la vente :</span><select id="ae6"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>7. Ma capacité à effectuer un suivi et à fidéliser le client :</span><select id="ae7"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>8. Ma gestion du temps et de mes priorités :</span><select id="ae8"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>9. Ma capacité à planifier et gérer mon territoire de vente :</span><select id="ae9"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>10. Ma capacité à prospecter et générer de nouvelles opportunités :</span><select id="ae10"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>11. Mon écoute active et ma compréhension du client :</span><select id="ae11"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>12. Ma créativité et mon adaptabilité dans le processus de vente :</span><select id="ae12"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>13. Mon professionnalisme et mon éthique de travail :</span><select id="ae13"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>14. Ma motivation et mon attitude face au travail :</span><select id="ae14"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>15. Ma confiance en mes capacités de vente :</span><select id="ae15"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+</section>
+<!-- RESULTATS (admin seulement) -->
+<section class="results" id="resultsPanel">
+<h3 style="margin:0 0 10px;color:#0a2a66">Résultats (visible en mode admin seulement)</h3>
+<div id="overall"></div>
+<div class="grid" id="domains" style="margin-top:10px"></div>
+</section>
+</main>
+<div class="actions">
+<div class="btnrow">
+<button class="secondary" id="btnAdmin" style="display:none;" type="button">Afficher/masquer les résultats (admin)</button>
+<button id="btnSend" type="submit">Envoyer les r&eacute;ponses</button>
+<div class="timer">
+<span class="time" id="timerDisplay">60:00</span>
+<button class="secondary" id="timerStart" type="button">Démarrer le chronomètre</button>
+<button class="secondary" id="timerPause" type="button">Pause</button>
+</div>
+</div>
+<div id="submit-status"></div><div id="submit-error"></div><div class="muted">Vos r&eacute;ponses demeureront strictement confidentielles. Elles seront transmises de fa&ccedil;on s&eacute;curis&eacute;e &agrave; l&rsquo;&eacute;quipe PSV.</div>
+</div>
+<footer>&copy; 2026 PSV Global - Tous droits r&eacute;serv&eacute;s</footer>
+<form data-netlify="true" hidden method="POST" name="psv-questionnaire" netlify-honeypot="bot-field">
+<input name="form-name" type="hidden" value="psv-questionnaire">
+<input name="bot-field" type="text">
+<input id="nf-formule" name="formule" type="hidden">
+<input id="nf-submitted-at" name="submitted_at" type="hidden">
+<input id="nf-nom" name="nom" type="hidden">
+<input id="nf-prenom" name="prenom" type="hidden">
+<input id="nf-email" name="email" type="hidden">
+<input id="nf-tel" name="telephone" type="hidden">
+<input id="nf-entreprise" name="entreprise" type="hidden">
+<input id="nf-poste" name="poste" type="hidden">
+<input id="nf-exp" name="experience" type="hidden">
+<input id="nf-remu" name="remuneration" type="hidden">
+<input id="nf-region" name="region" type="hidden">
+<input id="nf-q1" name="q1" type="hidden">
+<input id="nf-q2" name="q2" type="hidden">
+<input id="nf-q3" name="q3" type="hidden">
+<input id="nf-q4" name="q4" type="hidden">
+<input id="nf-q5" name="q5" type="hidden">
+<input id="nf-q6" name="q6" type="hidden">
+<input id="nf-q7" name="q7" type="hidden">
+<input id="nf-q8" name="q8" type="hidden">
+<input id="nf-q9" name="q9" type="hidden">
+<input id="nf-q10" name="q10" type="hidden">
+<input id="nf-q11" name="q11" type="hidden">
+<input id="nf-q12" name="q12" type="hidden">
+<input id="nf-q13" name="q13" type="hidden">
+<input id="nf-q14" name="q14" type="hidden">
+<input id="nf-q15" name="q15" type="hidden">
+<input id="nf-q16" name="q16" type="hidden">
+<input id="nf-q17" name="q17" type="hidden">
+<input id="nf-q18" name="q18" type="hidden">
+<input id="nf-q19" name="q19" type="hidden">
+<input id="nf-q20" name="q20" type="hidden">
+<input id="nf-q21" name="q21" type="hidden">
+<input id="nf-q22" name="q22" type="hidden">
+<input id="nf-q23" name="q23" type="hidden">
+<input id="nf-q24" name="q24" type="hidden">
+<input id="nf-q25" name="q25" type="hidden">
+<input id="nf-q26" name="q26" type="hidden">
+<input id="nf-q27" name="q27" type="hidden">
+<input id="nf-q28" name="q28" type="hidden">
+<input id="nf-q29" name="q29" type="hidden">
+<input id="nf-q30" name="q30" type="hidden">
+<input id="nf-q31" name="q31" type="hidden">
+<input id="nf-q32" name="q32" type="hidden">
+<input id="nf-q33" name="q33" type="hidden">
+<input id="nf-q34" name="q34" type="hidden">
+<input id="nf-q35" name="q35" type="hidden">
+<input id="nf-q36" name="q36" type="hidden">
+<input id="nf-q37" name="q37" type="hidden">
+<input id="nf-q38" name="q38" type="hidden">
+<input id="nf-q39" name="q39" type="hidden">
+<input id="nf-q40" name="q40" type="hidden">
+<input id="nf-q41" name="q41" type="hidden">
+<input id="nf-q42" name="q42" type="hidden">
+<input id="nf-q43" name="q43" type="hidden">
+<input id="nf-q44" name="q44" type="hidden">
+<input id="nf-q45" name="q45" type="hidden">
+<input id="nf-q46" name="q46" type="hidden">
+<input id="nf-q47" name="q47" type="hidden">
+<input id="nf-q48" name="q48" type="hidden">
+<input id="nf-q49" name="q49" type="hidden">
+<input id="nf-q50" name="q50" type="hidden">
+<input id="nf-ae1" name="ae1" type="hidden">
+<input id="nf-ae2" name="ae2" type="hidden">
+<input id="nf-ae3" name="ae3" type="hidden">
+<input id="nf-ae4" name="ae4" type="hidden">
+<input id="nf-ae5" name="ae5" type="hidden">
+<input id="nf-ae6" name="ae6" type="hidden">
+<input id="nf-ae7" name="ae7" type="hidden">
+<input id="nf-ae8" name="ae8" type="hidden">
+<input id="nf-ae9" name="ae9" type="hidden">
+<input id="nf-ae10" name="ae10" type="hidden">
+<input id="nf-ae11" name="ae11" type="hidden">
+<input id="nf-ae12" name="ae12" type="hidden">
+<input id="nf-ae13" name="ae13" type="hidden">
+<input id="nf-ae14" name="ae14" type="hidden">
+<input id="nf-ae15" name="ae15" type="hidden">
+<textarea id="nf-responses-json" name="responses_json"></textarea>
 </form>
-
 <script>
-// ===== DONNÉES =====
-const RECIPIENT_EMAIL = "ck7@k7serviceconseil.com";
-const SHOW_LOCAL_RESULTS = new URLSearchParams(location.search).get("admin") === "1";
-const DOMAIN_NAMES = ["Approche & contact","Découverte des besoins","Présentation de la solution","Gestion des objections","Négociation","Conclusion de la vente","Suivi & fidélisation","Gestion du temps","Planification de territoire","Prospection","Écoute active","Créativité & adaptabilité","Professionnalisme"];
-const DOMAIN_OF_Q = {}; for (let q=1; q<=50; q++) DOMAIN_OF_Q[q] = ((q-1) % 13) + 1;
-const ANSWER_KEY = {1:["B","D"],2:["A","B"],3:["B","D"],4:["B","D"],5:["B"],6:["B","C"],7:["A","B","C"],8:["A","D"],9:["B","D"],10:["A","B","D"],11:["B","D"],12:["B","C","D"],13:["A","B","C"],14:["A","B","C","D","E"],15:["A","D"],16:["B","D"],17:["A","B","D"],18:["A","B","C","D","E"],19:["A","B","D"],20:["B","D"],21:["B","C"],22:["A","B","D"],23:["B","C"],24:["A","B","C"],25:["A","B","D"],26:["A","B","C","D","E"],27:["B","D"],28:["A","B","D"],29:["B","C","D"],30:["A","B","C","D"],31:["A","B","D"],32:["A","B","C","D"],33:["A","B","D"],34:["A","B","C","D","E"],35:["A","C","D"],36:["A","B","C","D","E"],37:["A","B","C"],38:["A","B","C"],39:["A","B","D"],40:["A","B","C"],41:["A","B","C","D","E"],42:["B","C","D"],43:["A","B","C"],44:["A","B","C","D"],45:["A","B","C"],46:["A","B","C"],47:["B"],48:["A","B","C"],49:["A","B","C"],50:["A","B","C","D","E"]};
-
-// ===== TIMER =====
-const totalSeconds = 60 * 60;
-let remainingSeconds = totalSeconds;
-let elapsedSeconds = 0;
-let timerInterval = null;
-let isRunning = false;
-
-function formatTime(s) {
-  const m = Math.floor(s / 60), sec = s % 60;
-  return String(m).padStart(2,'0') + ':' + String(sec).padStart(2,'0');
-}
-
-function updateTimerDisplay() {
-  const el = document.getElementById('timerDisplay');
-  el.textContent = formatTime(remainingSeconds);
-  el.className = 'time';
-  if (remainingSeconds <= 5*60) el.classList.add('danger');
-  else if (remainingSeconds <= 15*60) el.classList.add('warning');
-  else if (isRunning) el.classList.add('running');
-}
-
-function toggleTimer() {
-  const btn = document.getElementById('timer-btn');
-  if (!isRunning) {
-    isRunning = true;
-    btn.textContent = 'Pause';
-    // Unlock form
-    const overlay = document.getElementById('form-lock-overlay');
-    if (overlay && !overlay.classList.contains('unlocked')) overlay.classList.add('unlocked');
-    timerInterval = setInterval(() => {
-      if (remainingSeconds > 0) { remainingSeconds--; elapsedSeconds++; updateTimerDisplay(); }
-      else {
-        clearInterval(timerInterval); isRunning = false;
-        btn.disabled = true; btn.textContent = "Temps écoulé !";
-        document.getElementById('timerDisplay').textContent = '00:00';
-        document.getElementById('timerDisplay').className = 'time danger';
-      }
-    }, 1000);
-  } else {
-    isRunning = false; clearInterval(timerInterval);
-    btn.textContent = 'Reprendre';
-    updateTimerDisplay();
-    // Re-lock
-    const overlay = document.getElementById('form-lock-overlay');
-    if (overlay) {
-      overlay.classList.remove('unlocked');
-      document.getElementById('lock-icon').textContent = '⏸️';
-      document.getElementById('lock-title').textContent = 'Quiz en pause';
-      document.getElementById('lock-desc').textContent = 'Le chronomètre est en pause et le quiz est verrouillé. Cliquez ici — ou sur Reprendre — pour continuer.';
-      document.getElementById('lock-btn').innerHTML = '▶ Reprendre &amp; Déverrouiller';
-    }
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const formule = params.get('formule') || 'PSV';
+  let timerSeconds = 60 * 60;
+  let timerId = null;
+  let timerStarted = false;
+  const statusBox = document.getElementById('submit-status');
+  const errorBox = document.getElementById('submit-error');
+  const sendButton = document.getElementById('btnSend');
+  function showError(message){ errorBox.textContent = message; errorBox.style.display = 'block'; statusBox.style.display = 'none'; }
+  function showStatus(message){ statusBox.textContent = message; statusBox.style.display = 'block'; errorBox.style.display = 'none'; }
+  function displayTimer(){ const m = Math.floor(timerSeconds / 60); const s = timerSeconds % 60; document.getElementById('timerDisplay').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0'); }
+  function startTimer(){
+    if (!timerStarted) { timerStarted = true; document.body.classList.remove('timer-locked'); document.body.classList.add('timer-started'); showStatus('Le questionnaire est d\u00e9verrouill\u00e9. Vous pouvez r\u00e9pondre aux questions.'); }
+    if (timerId !== null) return;
+    timerId = setInterval(function(){ if (timerSeconds > 0) { timerSeconds--; displayTimer(); } else { clearInterval(timerId); timerId = null; showError('Temps \u00e9coul\u00e9. Vous pouvez tout de m\u00eame envoyer vos r\u00e9ponses si elles sont compl\u00e9t\u00e9es.'); } }, 1000);
   }
-}
-
-function resetTimer() {
-  clearInterval(timerInterval); isRunning = false;
-  remainingSeconds = totalSeconds; elapsedSeconds = 0;
-  const btn = document.getElementById('timer-btn');
-  btn.disabled = false; btn.textContent = 'Démarrer';
-  updateTimerDisplay();
-  const overlay = document.getElementById('form-lock-overlay');
-  if (overlay) {
-    overlay.classList.remove('unlocked');
-    document.getElementById('lock-icon').textContent = '🔒';
-    document.getElementById('lock-title').textContent = 'Démarrez le chronomètre pour commencer';
-    document.getElementById('lock-desc').textContent = 'Votre temps de complétion fait partie de votre score. Cliquez ici — ou sur le chronomètre en haut — pour déverrouiller le quiz.';
-    document.getElementById('lock-btn').innerHTML = '▶ Démarrer &amp; Déverrouiller';
+  function pauseTimer(){ if (timerId !== null) { clearInterval(timerId); timerId = null; } }
+  function checkedValues(name){ return Array.from(document.querySelectorAll('input[name="' + name + '"]:checked')).map(function(input){ return input.value; }); }
+  function valueOf(id){ return (document.getElementById(id)?.value || '').trim(); }
+  function collectPayload(){
+    const questions = {}; for (let i=1;i<=50;i++) questions['q' + i] = checkedValues('q' + i);
+    const autoEvaluation = {}; for (let i=1;i<=15;i++) autoEvaluation['ae' + i] = valueOf('ae' + i);
+    return { formule: formule, submittedAt: new Date().toISOString(), candidat: { nom: valueOf('nom'), prenom: valueOf('prenom'), email: valueOf('email'), telephone: valueOf('tel'), entreprise: valueOf('entreprise'), poste: valueOf('poste'), experience: valueOf('exp'), remuneration: valueOf('remu'), region: valueOf('region') }, questions: questions, autoEvaluation: autoEvaluation };
   }
-}
-
-updateTimerDisplay();
-
-// ===== SCORING =====
-function getAnswers() {
-  const out = {};
-  for (let q=1; q<=50; q++) {
-    out[q] = [...document.querySelectorAll(`input[name="q${q}"]:checked`)].map(e=>e.value);
+  function validate(payload){
+    if (!timerStarted) return 'Cliquez d\u2019abord sur \u00ab D\u00e9marrer le chronom\u00e8tre \u00bb avant de remplir ou envoyer le questionnaire.';
+    if (!payload.candidat.nom || !payload.candidat.prenom || !payload.candidat.email || !payload.candidat.entreprise) return 'Veuillez remplir au minimum le nom, le pr\u00e9nom, le courriel et l\u2019entreprise.';
+    if (!/^\S+@\S+\.\S+$/.test(payload.candidat.email)) return 'Veuillez inscrire une adresse courriel valide.';
+    for (let i=1;i<=50;i++) if (!payload.questions['q' + i].length) return 'La question ' + i + ' n\u2019a pas encore de r\u00e9ponse.';
+    for (let i=1;i<=15;i++) if (!payload.autoEvaluation['ae' + i]) return 'L\u2019auto-\u00e9valuation ' + i + ' doit \u00eatre compl\u00e9t\u00e9e.';
+    return '';
   }
-  return out;
-}
-
-function isCorrect(q, val) {
-  const key = ANSWER_KEY[q]; if (!key) return false;
-  const correct = new Set(key); const user = new Set(val||[]);
-  if (user.size !== correct.size) return false;
-  for (const k of correct) { if (!user.has(k)) return false; }
-  return true;
-}
-
-function computeScores() {
-  const a = getAnswers(); let total = 0;
-  const domTot = {}, domOK = {};
-  for (let d=1; d<=13; d++) { domTot[d]=0; domOK[d]=0; }
-  for (let q=1; q<=50; q++) {
-    const d = DOMAIN_OF_Q[q]; domTot[d]++;
-    if (isCorrect(q, a[q])) { domOK[d]++; total++; }
+  function fillNetlifyForm(payload){
+    document.getElementById('nf-formule').value = payload.formule; document.getElementById('nf-submitted-at').value = payload.submittedAt;
+    document.getElementById('nf-nom').value = payload.candidat.nom; document.getElementById('nf-prenom').value = payload.candidat.prenom; document.getElementById('nf-email').value = payload.candidat.email; document.getElementById('nf-tel').value = payload.candidat.telephone; document.getElementById('nf-entreprise').value = payload.candidat.entreprise; document.getElementById('nf-poste').value = payload.candidat.poste; document.getElementById('nf-exp').value = payload.candidat.experience; document.getElementById('nf-remu').value = payload.candidat.remuneration; document.getElementById('nf-region').value = payload.candidat.region;
+    for (let i=1;i<=50;i++) document.getElementById('nf-q' + i).value = payload.questions['q' + i].join(',');
+    for (let i=1;i<=15;i++) document.getElementById('nf-ae' + i).value = payload.autoEvaluation['ae' + i];
+    document.getElementById('nf-responses-json').value = JSON.stringify(payload);
   }
-  const domPct = {};
-  for (let d=1; d<=13; d++) { domPct[d] = Math.round((domOK[d]/Math.max(1,domTot[d]))*100); }
-  return { overallPct: Math.round((total/50)*100), domainScores: domPct };
-}
-
-function collectAutoEval() {
-  const out = {};
-  for (let i=1; i<=15; i++) { out['ae'+i] = document.getElementById('ae'+i)?.value||''; }
-  return out;
-}
-
-function renderResults() {
-  const {overallPct, domainScores} = computeScores();
-  document.getElementById('overall').innerHTML =
-    `<div class="result-pill"><strong>Score global (50 questions)</strong> : <span class="${overallPct>=60?'ok':'warn'}">${overallPct}%</span></div>`;
-  const dom = document.getElementById('domains'); dom.innerHTML = '';
-  for (let d=1; d<=13; d++) {
-    const v = domainScores[d];
-    const card = document.createElement('div'); card.className = 'result-pill';
-    card.innerHTML = `<strong>${DOMAIN_NAMES[d-1]}</strong><br><span class="${v>=60?'ok':'warn'}">${v}%</span>`;
-    dom.appendChild(card);
+  async function submitResponses(event){
+    event.preventDefault();
+    const payload = collectPayload(); const validationError = validate(payload); if (validationError) { showError(validationError); return; }
+    fillNetlifyForm(payload); sendButton.disabled = true; sendButton.textContent = 'Envoi en cours...';
+    try { const form = document.querySelector('form[name="psv-questionnaire"]'); const body = new URLSearchParams(new FormData(form)).toString(); const response = await fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: body }); if (!response.ok) throw new Error('Netlify response ' + response.status); showStatus('Merci. Vos r\u00e9ponses ont \u00e9t\u00e9 envoy\u00e9es \u00e0 l\u2019\u00e9quipe PSV.'); sendButton.textContent = 'R\u00e9ponses envoy\u00e9es'; }
+    catch (error) { showError('L\u2019envoi n\u2019a pas fonctionn\u00e9. V\u00e9rifiez que la page est publi\u00e9e sur Netlify, puis r\u00e9essayez.'); sendButton.disabled = false; sendButton.textContent = 'Envoyer les r\u00e9ponses'; }
   }
-  document.getElementById('resultsPanel').style.display = 'block';
-}
-
-// ===== NETLIFY SUBMIT =====
-function validateForm() {
-  let errors = [];
-  let firstError = null;
-
-  // Validation identification
-  const required = [
-    {id:'nom', label:'Nom'},
-    {id:'prenom', label:'Prénom'},
-    {id:'email', label:'Courriel'},
-  ];
-  required.forEach(({id, label}) => {
-    const el = document.getElementById(id);
-    const wrap = el?.closest('.field');
-    if (!el?.value?.trim()) {
-      errors.push(label);
-      wrap?.classList.add('field-error');
-      if (!firstError) firstError = el;
-    } else {
-      wrap?.classList.remove('field-error');
-    }
+  function closeAll(){ document.querySelectorAll('.accordion .acc-body').forEach(function(el){ el.style.display='none'; }); document.querySelectorAll('.acc-toggle').forEach(function(button){ button.textContent='Ouvrir la section'; button.setAttribute('aria-expanded','false'); }); }
+  function openSectionById(id){ const button = document.querySelector('#' + id + ' .acc-toggle'); const body = document.querySelector('#' + id + ' .acc-body'); if (!button || !body) return; closeAll(); body.style.display='block'; button.textContent='Fermer la section'; button.setAttribute('aria-expanded','true'); document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'}); }
+  window.addEventListener('DOMContentLoaded', function(){
+    document.body.classList.add('timer-locked'); document.getElementById('btnAdmin')?.remove();
+    document.querySelectorAll('.acc-toggle').forEach(function(button){ button.addEventListener('click', function(){ const section = button.closest('.accordion'); const body = section.querySelector('.acc-body'); const wasOpen = body.style.display === 'block'; closeAll(); if (!wasOpen) { body.style.display='block'; button.textContent='Fermer la section'; button.setAttribute('aria-expanded','true'); } }); });
+    document.querySelectorAll('.acc-next,.acc-prev').forEach(function(link){ link.addEventListener('click', function(event){ event.preventDefault(); openSectionById(link.dataset.target); }); });
+    sendButton.addEventListener('click', submitResponses); document.getElementById('timerStart').addEventListener('click', startTimer); document.getElementById('timerPause').addEventListener('click', pauseTimer); displayTimer();
   });
-
-  // Validation des 50 questions
-  const unanswered = [];
-  for (let q = 1; q <= 50; q++) {
-    const checked = document.querySelectorAll(`input[name="q${q}"]:checked`);
-    const wrap = document.querySelector(`input[name="q${q}"]`)?.closest('.fieldset-q');
-    if (checked.length === 0) {
-      unanswered.push(q);
-      wrap?.classList.add('q-error');
-      if (!firstError) firstError = wrap;
-    } else {
-      wrap?.classList.remove('q-error');
-    }
-  }
-
-  if (unanswered.length > 0) {
-    errors.push(`${unanswered.length} question(s) sans réponse : Q${unanswered.join(', Q')}`);
-  }
-
-  // Afficher bannière
-  const banner = document.getElementById('validation-banner');
-  const list = document.getElementById('validation-list');
-  if (errors.length > 0) {
-    list.innerHTML = errors.map(e => `<li>${e}</li>`).join('');
-    banner.classList.add('show');
-    if (firstError) firstError.scrollIntoView({behavior:'smooth', block:'center'});
-    return false;
-  } else {
-    banner.classList.remove('show');
-    return true;
-  }
-}
-
-async function postToNetlify() {
-  if (!validateForm()) return;
-  const {overallPct, domainScores} = computeScores();
-  const ae = collectAutoEval();
-  // Fill hidden fields
-  document.getElementById('nf-nom').value = document.getElementById('nom')?.value||'';
-  document.getElementById('nf-prenom').value = document.getElementById('prenom')?.value||'';
-  document.getElementById('nf-email').value = document.getElementById('email')?.value||'';
-  document.getElementById('nf-tel').value = document.getElementById('tel')?.value||'';
-  document.getElementById('nf-entreprise').value = document.getElementById('entreprise')?.value||'';
-  document.getElementById('nf-poste').value = document.getElementById('poste')?.value||'';
-  document.getElementById('nf-exp').value = document.getElementById('exp')?.value||'';
-  document.getElementById('nf-remu').value = document.getElementById('remu')?.value||'';
-  document.getElementById('nf-region').value = document.getElementById('region')?.value||'';
-  document.getElementById('nf-elapsed').value = formatTime(elapsedSeconds);
-  document.getElementById('nf-elapsed-s').value = elapsedSeconds;
-  document.getElementById('nf-global').value = overallPct + '%';
-  for (let d=1; d<=13; d++) { document.getElementById(`nf-d${String(d).padStart(2,'0')}`).value = domainScores[d]+'%'; }
-  for (let i=1; i<=15; i++) { document.getElementById(`nf-ae${i}`).value = ae['ae'+i]||''; }
-
-  const form = document.querySelector('form[name="qcm-fr-results"]');
-  const fd = new FormData(form);
-  if (!fd.get('form-name')) fd.set('form-name','qcm-fr-results');
-  const ok = await fetch(window.location.pathname, {
-    method:'POST',
-    headers:{'Content-Type':'application/x-www-form-urlencoded'},
-    body: new URLSearchParams(fd).toString()
-  }).then(r=>r.ok).catch(()=>false);
-  const box = document.getElementById('submit-success');
-  if (box) { box.style.display = ok ? 'block' : 'none'; if (ok) window.scrollTo({top:0,behavior:'smooth'}); }
-  return ok;
-}
-
-// ===== ACCORDION =====
-function closeAll() {
-  document.querySelectorAll('.accordion .acc-body').forEach(el => el.style.display='none');
-  document.querySelectorAll('.acc-toggle').forEach(b => { b.textContent='Ouvrir la section'; b.setAttribute('aria-expanded','false'); });
-}
-function openSectionById(id) {
-  const btn = document.querySelector(`#${id} .acc-toggle`);
-  if (!btn) return;
-  closeAll();
-  const body = document.querySelector(`#${id} .acc-body`);
-  body.style.display = 'block';
-  btn.textContent = 'Fermer la section';
-  btn.setAttribute('aria-expanded','true');
-  document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
-}
-function toggleAcc(btn) {
-  const id = btn.getAttribute('data-target');
-  const body = document.querySelector(`#${id} .acc-body`);
-  const isOpen = body.style.display !== 'none';
-  if (isOpen) closeAll(); else openSectionById(id);
-}
-
-// ===== INIT =====
-window.addEventListener('DOMContentLoaded', () => {
-  const adminBtn = document.getElementById('btnAdmin');
-  if (SHOW_LOCAL_RESULTS) { adminBtn.style.display = 'inline-block'; renderResults(); }
-  adminBtn.addEventListener('click', () => {
-    const p = document.getElementById('resultsPanel');
-    if (p.style.display==='none'||!p.style.display) renderResults(); else p.style.display='none';
-  });
-  document.getElementById('btnSend').addEventListener('click', (e) => { e.preventDefault(); postToNetlify(); });
-  document.querySelectorAll('.acc-toggle').forEach(btn => btn.addEventListener('click', () => toggleAcc(btn)));
-  document.querySelectorAll('.acc-nav a[data-target]').forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); openSectionById(a.getAttribute('data-target')); }));
-});
+})();
 </script>
 </body>
 </html>
