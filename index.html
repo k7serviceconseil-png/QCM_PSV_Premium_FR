@@ -133,6 +133,8 @@ body.timer-started #timerVeil{display:none!important}
 #submit-status{display:none;padding:10px 12px;border-radius:10px;background:#eefaf4;border:1px solid #9ad5b7;color:#216e4e;font-weight:600;text-align:left!important}
 #submit-error{display:none;padding:10px 12px;border-radius:10px;background:#fff3f1;border:1px solid #f0b8ae;color:#a93226;font-weight:600;text-align:left!important}
 body.timer-locked main input[name^="q"],body.timer-locked main select[id^="ae"]{pointer-events:none}
+.identite-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.formule-badge{border:1px solid #d8e3ff;background:#eef4ff;color:#0a2a66;border-radius:999px;padding:8px 12px;font-size:14px;font-weight:700}
 </style>
 </head>
 <body>
@@ -180,7 +182,10 @@ body.timer-locked main input[name^="q"],body.timer-locked main select[id^="ae"]{
 <main>
 <!-- Bloc identification -->
 <section class="block" id="identite">
+<div class="identite-head">
 <h2>Identification du participant</h2>
+<div class="formule-badge" id="formuleBadge">Formule PSV : à confirmer</div>
+</div>
 <div class="grid-2">
 <label>Nom
           <input id="nom" placeholder="Ex.: Tremblay" type="text"/>
@@ -845,6 +850,10 @@ l
 <input name="bot-field" type="text">
 <input id="nf-formule" name="formule" type="hidden">
 <input id="nf-submitted-at" name="submitted_at" type="hidden">
+<input id="nf-score-global" name="score_global_pct" type="hidden">
+<textarea id="nf-scores-domaines" name="scores_domaines_json"></textarea>
+<textarea id="nf-scores-questions" name="scores_questions_json"></textarea>
+<textarea id="nf-resultats-resume" name="resultats_resume"></textarea>
 <input id="nf-nom" name="nom" type="hidden">
 <input id="nf-prenom" name="prenom" type="hidden">
 <input id="nf-email" name="email" type="hidden">
@@ -925,12 +934,28 @@ l
 (function(){
   const params = new URLSearchParams(window.location.search);
   const formule = params.get('formule') || 'PSV';
+  const formuleLabel = formule === 'strategique' ? 'PSV Stratégique' : formule === 'essentiel' ? 'PSV Essentiel' : 'PSV à confirmer';
   let timerSeconds = 60 * 60;
   let timerId = null;
   let timerStarted = false;
   const statusBox = document.getElementById('submit-status');
   const errorBox = document.getElementById('submit-error');
   const sendButton = document.getElementById('btnSend');
+  const formuleBadge = document.getElementById('formuleBadge');
+  if (formuleBadge) formuleBadge.textContent = 'Formule PSV : ' + formuleLabel;
+  const ANSWER_KEY = {
+    1:['B','D'],2:['A','B'],3:['B','D'],4:['B','D'],5:['B'],6:['B','C'],7:['A','B','C'],8:['A','D'],9:['B','D'],10:['A','B','D'],
+    11:['B','D'],12:['B','C','D'],13:['A','B','C'],14:['A','B','C','D','E'],15:['A','D'],16:['B','D'],17:['A','B','D'],18:['A','B','C','D','E'],19:['A','B','D'],20:['B','D'],
+    21:['B','C'],22:['A','B','D'],23:['B','C'],24:['A','B','C'],25:['A','B','D'],26:['A','B','C','D','E'],27:['B','D'],28:['A','B','D'],29:['B','C','D'],30:['A','B','C','D','E'],
+    31:['A','B','D'],32:['A','B','C','D','E'],33:['A','B','D'],34:['A','B','C','D','E'],35:['A','C','D'],36:['A','B','C','D','E'],37:['A','B','C'],38:['A','B','C'],39:['A','B','D'],40:['A','B','C'],
+    41:['A','B','C','D','E'],42:['B','C','D'],43:['A','B','C'],44:['A','B','C','D','E'],45:['A','B','C'],46:['A','B','C'],47:['B'],48:['A','B','C'],49:['A','B','C'],50:['A','B','C','D','E']
+  };
+  const DOMAIN_NAMES = [
+    'Approche et contact','D\u00e9couverte des besoins','Pr\u00e9sentation de la solution','Gestion des objections','N\u00e9gociation',
+    'Conclusion de la vente','Suivi et fid\u00e9lisation','Gestion du temps','Planification de territoire','Prospection',
+    '\u00c9coute active','Cr\u00e9ativit\u00e9 et adaptabilit\u00e9','Professionnalisme'
+  ];
+  function domainOfQuestion(questionNumber){ return ((questionNumber - 1) % DOMAIN_NAMES.length) + 1; }
   function showError(message){ errorBox.textContent = message; errorBox.style.display = 'block'; statusBox.style.display = 'none'; }
   function showStatus(message){ statusBox.textContent = message; statusBox.style.display = 'block'; errorBox.style.display = 'none'; }
   function displayTimer(){ const m = Math.floor(timerSeconds / 60); const s = timerSeconds % 60; document.getElementById('timerDisplay').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0'); }
@@ -945,7 +970,51 @@ l
   function collectPayload(){
     const questions = {}; for (let i=1;i<=50;i++) questions['q' + i] = checkedValues('q' + i);
     const autoEvaluation = {}; for (let i=1;i<=15;i++) autoEvaluation['ae' + i] = valueOf('ae' + i);
-    return { formule: formule, submittedAt: new Date().toISOString(), candidat: { nom: valueOf('nom'), prenom: valueOf('prenom'), email: valueOf('email'), telephone: valueOf('tel'), entreprise: valueOf('entreprise'), poste: valueOf('poste'), experience: valueOf('exp'), remuneration: valueOf('remu'), region: valueOf('region') }, questions: questions, autoEvaluation: autoEvaluation };
+    const resultats = computeResults(questions);
+    return { formule: formule, submittedAt: new Date().toISOString(), candidat: { nom: valueOf('nom'), prenom: valueOf('prenom'), email: valueOf('email'), telephone: valueOf('tel'), entreprise: valueOf('entreprise'), poste: valueOf('poste'), experience: valueOf('exp'), remuneration: valueOf('remu'), region: valueOf('region') }, questions: questions, autoEvaluation: autoEvaluation, resultats: resultats };
+  }
+  function jaccardScore(correctAnswers, selectedAnswers){
+    const correct = new Set(correctAnswers || []);
+    const selected = new Set(selectedAnswers || []);
+    let tp = 0;
+    selected.forEach(function(answer){ if (correct.has(answer)) tp++; });
+    const fp = selected.size - tp;
+    let fn = 0;
+    correct.forEach(function(answer){ if (!selected.has(answer)) fn++; });
+    const denominator = tp + fp + fn;
+    return denominator === 0 ? 0 : tp / denominator;
+  }
+  function computeResults(questions){
+    const questionScores = {};
+    const domainBuckets = {};
+    let total = 0;
+    for (let q=1; q<=50; q++) {
+      const score = jaccardScore(ANSWER_KEY[q], questions['q' + q]);
+      const rounded = Math.round(score * 100);
+      const domainId = domainOfQuestion(q);
+      questionScores['q' + q] = { scorePct: rounded, scoreRaw: Number(score.toFixed(4)), bonnesReponses: ANSWER_KEY[q], reponsesCochees: questions['q' + q], domaine: domainId };
+      if (!domainBuckets[domainId]) domainBuckets[domainId] = [];
+      domainBuckets[domainId].push(score);
+      total += score;
+    }
+    const domainScores = {};
+    for (let d=1; d<=DOMAIN_NAMES.length; d++) {
+      const bucket = domainBuckets[d] || [];
+      const avg = bucket.length ? bucket.reduce(function(sum, value){ return sum + value; }, 0) / bucket.length : 0;
+      domainScores['d' + String(d).padStart(2,'0')] = { nom: DOMAIN_NAMES[d - 1], scorePct: Math.round(avg * 100) };
+    }
+    return { methode: 'Jaccard par question: TP / (TP + FP + FN)', scoreGlobalPct: Math.round((total / 50) * 100), scoresQuestions: questionScores, scoresDomaines: domainScores };
+  }
+  function buildResultsSummary(resultats){
+    const lines = [];
+    lines.push('Score global Jaccard: ' + resultats.scoreGlobalPct + '%');
+    lines.push('');
+    lines.push('Scores par domaine:');
+    Object.keys(resultats.scoresDomaines).forEach(function(key){
+      const item = resultats.scoresDomaines[key];
+      lines.push('- ' + item.nom + ': ' + item.scorePct + '%');
+    });
+    return lines.join('\n');
   }
   function validate(payload){
     if (!timerStarted) return 'Cliquez d\u2019abord sur \u00ab D\u00e9marrer le chronom\u00e8tre \u00bb avant de remplir ou envoyer le questionnaire.';
@@ -957,6 +1026,10 @@ l
   }
   function fillNetlifyForm(payload){
     document.getElementById('nf-formule').value = payload.formule; document.getElementById('nf-submitted-at').value = payload.submittedAt;
+    document.getElementById('nf-score-global').value = payload.resultats.scoreGlobalPct;
+    document.getElementById('nf-scores-domaines').value = JSON.stringify(payload.resultats.scoresDomaines);
+    document.getElementById('nf-scores-questions').value = JSON.stringify(payload.resultats.scoresQuestions);
+    document.getElementById('nf-resultats-resume').value = buildResultsSummary(payload.resultats);
     document.getElementById('nf-nom').value = payload.candidat.nom; document.getElementById('nf-prenom').value = payload.candidat.prenom; document.getElementById('nf-email').value = payload.candidat.email; document.getElementById('nf-tel').value = payload.candidat.telephone; document.getElementById('nf-entreprise').value = payload.candidat.entreprise; document.getElementById('nf-poste').value = payload.candidat.poste; document.getElementById('nf-exp').value = payload.candidat.experience; document.getElementById('nf-remu').value = payload.candidat.remuneration; document.getElementById('nf-region').value = payload.candidat.region;
     for (let i=1;i<=50;i++) document.getElementById('nf-q' + i).value = payload.questions['q' + i].join(',');
     for (let i=1;i<=15;i++) document.getElementById('nf-ae' + i).value = payload.autoEvaluation['ae' + i];
