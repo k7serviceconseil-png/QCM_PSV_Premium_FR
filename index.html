@@ -124,7 +124,7 @@ li {
 }
 </style>
 <style id="psv-corrections-css">
-#timerVeil{position:fixed!important;top:0!important;left:0!important;right:0!important;bottom:92px!important;margin:0!important;width:auto!important;height:auto!important;background:rgba(255,255,255,.72)!important;backdrop-filter:blur(2px);z-index:9999!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:20px!important;text-align:center!important}
+#timerVeil{position:absolute!important;top:0!important;left:0!important;right:0!important;bottom:0!important;margin:0!important;width:auto!important;height:auto!important;background:rgba(255,255,255,.72)!important;backdrop-filter:blur(2px);z-index:20!important;display:flex!important;align-items:flex-start!important;justify-content:center!important;padding:120px 20px 20px!important;text-align:center!important}
 #timerVeil .veil-box{max-width:560px!important;background:#fff!important;border:1px solid #d8e3ff!important;border-radius:14px!important;box-shadow:0 16px 48px rgba(10,42,102,.18)!important;padding:24px!important;color:#0a2a66!important;text-align:center!important}
 #timerVeil .veil-box strong{display:block!important;font-size:20px!important;margin-bottom:8px!important;text-align:center!important}
 #timerVeil .veil-box p{text-align:center!important;margin:0!important;color:#0a2a66!important}
@@ -132,9 +132,11 @@ body.timer-started #timerVeil{display:none!important}
 .actions{z-index:10000!important}
 #submit-status{display:none;padding:10px 12px;border-radius:10px;background:#eefaf4;border:1px solid #9ad5b7;color:#216e4e;font-weight:600;text-align:left!important}
 #submit-error{display:none;padding:10px 12px;border-radius:10px;background:#fff3f1;border:1px solid #f0b8ae;color:#a93226;font-weight:600;text-align:left!important}
-body.timer-locked main input[name^="q"],body.timer-locked main select[id^="ae"]{pointer-events:none}
+body.timer-locked main input[name^="q"],body.timer-locked main select[id^="ae"],body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{pointer-events:none}
+body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{opacity:.62}
 .identite-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .formule-badge{border:1px solid #d8e3ff;background:#eef4ff;color:#0a2a66;border-radius:999px;padding:8px 12px;font-size:14px;font-weight:700}
+#questionnaireWrap{position:relative}
 </style>
 </head>
 <body>
@@ -157,6 +159,10 @@ body.timer-locked main input[name^="q"],body.timer-locked main select[id^="ae"]{
 <li>Lorsque l’option « Aucune de ces réponses » (E) est pertinente, elle est considérée comme juste.</li>
 <li>Lisez attentivement chaque question avant de répondre.</li>
 <li>Sélectionnez toutes les réponses que vous jugez exactes.</li>
+<li>Le questionnaire se déverrouille seulement lorsque le chronomètre est démarré.</li>
+<li>Vous pouvez utiliser un maximum de 3 pauses. Chaque pause est limitée à 15 minutes.</li>
+<li>Pendant une pause, les questions sont verrouillées et ne peuvent pas être modifiées.</li>
+<li>Le temps utilisé et le nombre de pauses seront transmis avec les résultats.</li>
 </ul>
 <h2>Consignes générales :</h2>
 <ul>
@@ -174,7 +180,6 @@ body.timer-locked main input[name^="q"],body.timer-locked main select[id^="ae"]{
     </p>
 </div>
 </section>
-<div id="timerVeil"><div class="veil-box"><strong>Chronom&egrave;tre non d&eacute;marr&eacute;</strong><p>Cliquez sur &laquo; D&eacute;marrer le chronom&egrave;tre &raquo; dans la barre du bas pour d&eacute;verrouiller les questions.</p></div></div>
 <header>
 <img alt="PSV Global" src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27180%27 height=%2748%27 viewBox=%270 0 180 48%27%3E%3Crect width=%27180%27 height=%2748%27 rx=%278%27 fill=%27%230a2a66%27/%3E%3Ctext x=%2718%27 y=%2731%27 font-family=%27Arial,sans-serif%27 font-size=%2720%27 font-weight=%27700%27 fill=%27white%27%3EPSV Global%3C/text%3E%3C/svg%3E"/>
 <h1>Profil de Succ&egrave;s en Vente&reg;</h1>
@@ -188,35 +193,37 @@ body.timer-locked main input[name^="q"],body.timer-locked main select[id^="ae"]{
 </div>
 <div class="grid-2">
 <label>Nom
-          <input id="nom" placeholder="Ex.: Tremblay" type="text"/>
+          <input id="nom" placeholder="Ex.: Tremblay" required type="text"/>
 </label>
 <label>Prénom
-          <input id="prenom" placeholder="Ex.: Marie" type="text"/>
+          <input id="prenom" placeholder="Ex.: Marie" required type="text"/>
 </label>
 <label>Courriel
-          <input id="email" placeholder="Ex.: nom@entreprise.com" type="email"/>
+          <input id="email" placeholder="Ex.: nom@entreprise.com" required type="email"/>
 </label>
 <label>Téléphone
-          <input id="tel" placeholder="Ex.: 514 555-1212" type="tel"/>
+          <input id="tel" placeholder="Ex.: 514 555-1212" required type="tel"/>
 </label>
 <label>Entreprise
-          <input id="entreprise" placeholder="Ex.: Entreprise ABC" type="text"/>
+          <input id="entreprise" placeholder="Ex.: Entreprise ABC" required type="text"/>
 </label>
 <label>Poste actuel
-          <input id="poste" placeholder="Ex.: Représentant technique" type="text"/>
+          <input id="poste" placeholder="Ex.: Représentant technique" required type="text"/>
 </label>
 <label>Années d’expérience (vente)
-          <input id="exp" min="0" placeholder="Ex.: 7" step="1" type="number"/>
+          <input id="exp" min="0" placeholder="Ex.: 7" required step="1" type="number"/>
 </label>
 <label>Rémunération (fixe + variable)
-          <input id="remu" placeholder="Ex.: 55 000 $ + commissions" type="text"/>
+          <input id="remu" placeholder="Ex.: 55 000 $ + commissions" required type="text"/>
 </label>
 <label>Région / territoire
-          <input id="region" placeholder="Ex.: Montréal et Rive-Sud" type="text"/>
+          <input id="region" placeholder="Ex.: Montréal et Rive-Sud" required type="text"/>
 </label>
 </div>
 </section>
 <!-- INTRO -->
+<div id="questionnaireWrap">
+<div id="timerVeil"><div class="veil-box"><strong>Chronom&egrave;tre non d&eacute;marr&eacute;</strong><p>Compl&eacute;tez d&rsquo;abord l&rsquo;identification, puis cliquez sur &laquo; D&eacute;marrer le chronom&egrave;tre &raquo; dans la barre du bas pour d&eacute;verrouiller les questions.</p></div></div>
 <section class="intro">
 <h2>Profil de Succ&egrave;s en Vente&reg; – Avis important</h2>
 <p>Le Profil de Succ&egrave;s en Vente&reg; a été conçu pour fournir des informations précieuses sur vos compétences et aptitudes en vente. Il aide à identifier vos forces et vos faiblesses dans 13 domaines clés du processus de vente, notamment :</p>
@@ -831,6 +838,7 @@ l
 <div id="overall"></div>
 <div class="grid" id="domains" style="margin-top:10px"></div>
 </section>
+</div>
 </main>
 <div class="actions">
 <div class="btnrow">
@@ -851,6 +859,10 @@ l
 <input id="nf-formule" name="formule" type="hidden">
 <input id="nf-submitted-at" name="submitted_at" type="hidden">
 <input id="nf-score-global" name="score_global_pct" type="hidden">
+<input id="nf-temps-actif" name="temps_actif_utilise" type="hidden">
+<input id="nf-temps-total" name="temps_total_ecoule" type="hidden">
+<input id="nf-pauses-utilisees" name="pauses_utilisees" type="hidden">
+<input id="nf-temps-pause-total" name="temps_pause_total" type="hidden">
 <textarea id="nf-scores-domaines" name="scores_domaines_json"></textarea>
 <textarea id="nf-scores-questions" name="scores_questions_json"></textarea>
 <textarea id="nf-resultats-resume" name="resultats_resume"></textarea>
@@ -938,6 +950,14 @@ l
   let timerSeconds = 60 * 60;
   let timerId = null;
   let timerStarted = false;
+  let timerPaused = false;
+  let startTimestamp = null;
+  let pauseStartedAt = null;
+  let pauseId = null;
+  let pausesUsed = 0;
+  let totalPauseSeconds = 0;
+  const maxPauses = 3;
+  const maxPauseSeconds = 15 * 60;
   const statusBox = document.getElementById('submit-status');
   const errorBox = document.getElementById('submit-error');
   const sendButton = document.getElementById('btnSend');
@@ -958,13 +978,95 @@ l
   function domainOfQuestion(questionNumber){ return ((questionNumber - 1) % DOMAIN_NAMES.length) + 1; }
   function showError(message){ errorBox.textContent = message; errorBox.style.display = 'block'; statusBox.style.display = 'none'; }
   function showStatus(message){ statusBox.textContent = message; statusBox.style.display = 'block'; errorBox.style.display = 'none'; }
-  function displayTimer(){ const m = Math.floor(timerSeconds / 60); const s = timerSeconds % 60; document.getElementById('timerDisplay').textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0'); }
+  function formatDuration(seconds){
+    const safeSeconds = Math.max(0, Math.floor(seconds || 0));
+    const h = Math.floor(safeSeconds / 3600);
+    const m = Math.floor((safeSeconds % 3600) / 60);
+    const s = safeSeconds % 60;
+    if (h > 0) return String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+    return String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  }
+  function activeSecondsUsed(){ return (60 * 60) - timerSeconds; }
+  function currentPauseSeconds(){ return timerPaused && pauseStartedAt ? Math.floor((Date.now() - pauseStartedAt) / 1000) : 0; }
+  function totalPauseSecondsUsed(){ return totalPauseSeconds + currentPauseSeconds(); }
+  function totalElapsedSeconds(){ return startTimestamp ? Math.floor((Date.now() - startTimestamp) / 1000) : 0; }
+  function displayTimer(){ document.getElementById('timerDisplay').textContent = formatDuration(timerSeconds); }
+  function validateIdentification(){
+    const requiredFields = [
+      ['nom', 'nom'],
+      ['prenom', 'pr\u00e9nom'],
+      ['email', 'courriel'],
+      ['tel', 't\u00e9l\u00e9phone'],
+      ['entreprise', 'entreprise'],
+      ['poste', 'poste actuel'],
+      ['exp', 'ann\u00e9es d\u2019exp\u00e9rience'],
+      ['remu', 'r\u00e9mun\u00e9ration'],
+      ['region', 'r\u00e9gion / territoire']
+    ];
+    for (const field of requiredFields) {
+      const input = document.getElementById(field[0]);
+      if (!input || !input.value.trim()) {
+        if (input) input.focus();
+        return 'Veuillez compl\u00e9ter la section Identification avant de d\u00e9marrer le chronom\u00e8tre. Information manquante : ' + field[1] + '.';
+      }
+    }
+    const email = document.getElementById('email');
+    if (email && !/^\S+@\S+\.\S+$/.test(email.value.trim())) {
+      email.focus();
+      return 'Veuillez inscrire une adresse courriel valide avant de d\u00e9marrer le chronom\u00e8tre.';
+    }
+    return '';
+  }
+  function setQuestionControlsDisabled(disabled){
+    document.querySelectorAll('main input[name^="q"], main select[id^="ae"]').forEach(function(control){
+      control.disabled = disabled;
+    });
+  }
+  function updatePauseStatus(){
+    if (!timerPaused) return;
+    const remaining = Math.max(0, maxPauseSeconds - currentPauseSeconds());
+    showStatus('Pause en cours. Les questions sont verrouill\u00e9es. Temps de pause restant : ' + formatDuration(remaining) + '.');
+    if (remaining <= 0) {
+      resumeTimer('La pause de 15 minutes est termin\u00e9e. Le chronom\u00e8tre reprend automatiquement.');
+    }
+  }
   function startTimer(){
-    if (!timerStarted) { timerStarted = true; document.body.classList.remove('timer-locked'); document.body.classList.add('timer-started'); showStatus('Le questionnaire est d\u00e9verrouill\u00e9. Vous pouvez r\u00e9pondre aux questions.'); }
+    if (timerPaused) { resumeTimer('Le chronom\u00e8tre reprend. Vous pouvez continuer le questionnaire.'); return; }
+    if (!timerStarted) {
+      const identificationError = validateIdentification();
+      if (identificationError) { showError(identificationError); return; }
+    }
+    if (!timerStarted) { timerStarted = true; startTimestamp = Date.now(); document.body.classList.remove('timer-locked'); document.body.classList.add('timer-started'); setQuestionControlsDisabled(false); showStatus('Le questionnaire est d\u00e9verrouill\u00e9. Vous pouvez r\u00e9pondre aux questions.'); }
     if (timerId !== null) return;
     timerId = setInterval(function(){ if (timerSeconds > 0) { timerSeconds--; displayTimer(); } else { clearInterval(timerId); timerId = null; showError('Temps \u00e9coul\u00e9. Vous pouvez tout de m\u00eame envoyer vos r\u00e9ponses si elles sont compl\u00e9t\u00e9es.'); } }, 1000);
+    document.getElementById('timerStart').textContent = 'D\u00e9marrer le chronom\u00e8tre';
   }
-  function pauseTimer(){ if (timerId !== null) { clearInterval(timerId); timerId = null; } }
+  function pauseTimer(){
+    if (!timerStarted) { showError('D\u00e9marrez le chronom\u00e8tre avant d\u2019utiliser une pause.'); return; }
+    if (timerPaused) { showStatus('La pause est d\u00e9j\u00e0 en cours. Cliquez sur \u00ab Reprendre le chronom\u00e8tre \u00bb pour continuer.'); return; }
+    if (pausesUsed >= maxPauses) { showError('Les 3 pauses permises ont d\u00e9j\u00e0 \u00e9t\u00e9 utilis\u00e9es.'); return; }
+    if (timerId !== null) { clearInterval(timerId); timerId = null; }
+    timerPaused = true;
+    pausesUsed++;
+    pauseStartedAt = Date.now();
+    document.body.classList.add('timer-paused');
+    setQuestionControlsDisabled(true);
+    document.getElementById('timerStart').textContent = 'Reprendre le chronom\u00e8tre';
+    pauseId = setInterval(updatePauseStatus, 1000);
+    updatePauseStatus();
+  }
+  function resumeTimer(message){
+    if (!timerPaused) return;
+    totalPauseSeconds += currentPauseSeconds();
+    timerPaused = false;
+    pauseStartedAt = null;
+    if (pauseId !== null) { clearInterval(pauseId); pauseId = null; }
+    document.body.classList.remove('timer-paused');
+    setQuestionControlsDisabled(false);
+    document.getElementById('timerStart').textContent = 'D\u00e9marrer le chronom\u00e8tre';
+    showStatus(message || 'Le chronom\u00e8tre reprend. Vous pouvez continuer le questionnaire.');
+    startTimer();
+  }
   function checkedValues(name){ return Array.from(document.querySelectorAll('input[name="' + name + '"]:checked')).map(function(input){ return input.value; }); }
   function valueOf(id){ return (document.getElementById(id)?.value || '').trim(); }
   function formatPhoneValue(value){
@@ -994,7 +1096,23 @@ l
     const questions = {}; for (let i=1;i<=50;i++) questions['q' + i] = checkedValues('q' + i);
     const autoEvaluation = {}; for (let i=1;i<=15;i++) autoEvaluation['ae' + i] = valueOf('ae' + i);
     const resultats = computeResults(questions);
-    return { formule: formule, submittedAt: new Date().toISOString(), candidat: { nom: valueOf('nom'), prenom: valueOf('prenom'), email: valueOf('email'), telephone: valueOf('tel'), entreprise: valueOf('entreprise'), poste: valueOf('poste'), experience: valueOf('exp'), remuneration: valueOf('remu'), region: valueOf('region') }, questions: questions, autoEvaluation: autoEvaluation, resultats: resultats };
+    return {
+      formule: formule,
+      submittedAt: new Date().toISOString(),
+      chrono: {
+        tempsActifUtilise: formatDuration(activeSecondsUsed()),
+        tempsActifUtiliseSecondes: activeSecondsUsed(),
+        tempsTotalEcoule: formatDuration(totalElapsedSeconds()),
+        tempsTotalEcouleSecondes: totalElapsedSeconds(),
+        pausesUtilisees: pausesUsed,
+        tempsPauseTotal: formatDuration(totalPauseSecondsUsed()),
+        tempsPauseTotalSecondes: totalPauseSecondsUsed()
+      },
+      candidat: { nom: valueOf('nom'), prenom: valueOf('prenom'), email: valueOf('email'), telephone: valueOf('tel'), entreprise: valueOf('entreprise'), poste: valueOf('poste'), experience: valueOf('exp'), remuneration: valueOf('remu'), region: valueOf('region') },
+      questions: questions,
+      autoEvaluation: autoEvaluation,
+      resultats: resultats
+    };
   }
   function jaccardScore(correctAnswers, selectedAnswers){
     const correct = new Set(correctAnswers || []);
@@ -1028,9 +1146,15 @@ l
     }
     return { methode: 'Jaccard par question: TP / (TP + FP + FN)', scoreGlobalPct: Math.round((total / 50) * 100), scoresQuestions: questionScores, scoresDomaines: domainScores };
   }
-  function buildResultsSummary(resultats){
+  function buildResultsSummary(payload){
+    const resultats = payload.resultats;
     const lines = [];
     lines.push('Score global Jaccard: ' + resultats.scoreGlobalPct + '%');
+    lines.push('');
+    lines.push('Temps actif utilis\u00e9: ' + payload.chrono.tempsActifUtilise);
+    lines.push('Temps total \u00e9coul\u00e9: ' + payload.chrono.tempsTotalEcoule);
+    lines.push('Pauses utilis\u00e9es: ' + payload.chrono.pausesUtilisees);
+    lines.push('Temps total en pause: ' + payload.chrono.tempsPauseTotal);
     lines.push('');
     lines.push('Scores par domaine:');
     Object.keys(resultats.scoresDomaines).forEach(function(key){
@@ -1041,6 +1165,7 @@ l
   }
   function validate(payload){
     if (!timerStarted) return 'Cliquez d\u2019abord sur \u00ab D\u00e9marrer le chronom\u00e8tre \u00bb avant de remplir ou envoyer le questionnaire.';
+    if (timerPaused) return 'Le questionnaire est en pause. Cliquez sur \u00ab Reprendre le chronom\u00e8tre \u00bb avant d\u2019envoyer les r\u00e9ponses.';
     if (!payload.candidat.nom || !payload.candidat.prenom || !payload.candidat.email || !payload.candidat.entreprise) return 'Veuillez remplir au minimum le nom, le pr\u00e9nom, le courriel et l\u2019entreprise.';
     if (!/^\S+@\S+\.\S+$/.test(payload.candidat.email)) return 'Veuillez inscrire une adresse courriel valide.';
     for (let i=1;i<=50;i++) if (!payload.questions['q' + i].length) return 'La question ' + i + ' n\u2019a pas encore de r\u00e9ponse.';
@@ -1050,9 +1175,13 @@ l
   function fillNetlifyForm(payload){
     document.getElementById('nf-formule').value = payload.formule; document.getElementById('nf-submitted-at').value = payload.submittedAt;
     document.getElementById('nf-score-global').value = payload.resultats.scoreGlobalPct;
+    document.getElementById('nf-temps-actif').value = payload.chrono.tempsActifUtilise;
+    document.getElementById('nf-temps-total').value = payload.chrono.tempsTotalEcoule;
+    document.getElementById('nf-pauses-utilisees').value = payload.chrono.pausesUtilisees;
+    document.getElementById('nf-temps-pause-total').value = payload.chrono.tempsPauseTotal;
     document.getElementById('nf-scores-domaines').value = JSON.stringify(payload.resultats.scoresDomaines);
     document.getElementById('nf-scores-questions').value = JSON.stringify(payload.resultats.scoresQuestions);
-    document.getElementById('nf-resultats-resume').value = buildResultsSummary(payload.resultats);
+    document.getElementById('nf-resultats-resume').value = buildResultsSummary(payload);
     document.getElementById('nf-nom').value = payload.candidat.nom; document.getElementById('nf-prenom').value = payload.candidat.prenom; document.getElementById('nf-email').value = payload.candidat.email; document.getElementById('nf-tel').value = payload.candidat.telephone; document.getElementById('nf-entreprise').value = payload.candidat.entreprise; document.getElementById('nf-poste').value = payload.candidat.poste; document.getElementById('nf-exp').value = payload.candidat.experience; document.getElementById('nf-remu').value = payload.candidat.remuneration; document.getElementById('nf-region').value = payload.candidat.region;
     for (let i=1;i<=50;i++) document.getElementById('nf-q' + i).value = payload.questions['q' + i].join(',');
     for (let i=1;i<=15;i++) document.getElementById('nf-ae' + i).value = payload.autoEvaluation['ae' + i];
@@ -1069,6 +1198,7 @@ l
   function openSectionById(id){ const button = document.querySelector('#' + id + ' .acc-toggle'); const body = document.querySelector('#' + id + ' .acc-body'); if (!button || !body) return; closeAll(); body.style.display='block'; button.textContent='Fermer la section'; button.setAttribute('aria-expanded','true'); document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'}); }
   window.addEventListener('DOMContentLoaded', function(){
     document.body.classList.add('timer-locked'); document.getElementById('btnAdmin')?.remove();
+    setQuestionControlsDisabled(true);
     attachFormatting();
     document.querySelectorAll('.acc-toggle').forEach(function(button){ button.addEventListener('click', function(){ const section = button.closest('.accordion'); const body = section.querySelector('.acc-body'); const wasOpen = body.style.display === 'block'; closeAll(); if (!wasOpen) { body.style.display='block'; button.textContent='Fermer la section'; button.setAttribute('aria-expanded','true'); } }); });
     document.querySelectorAll('.acc-next,.acc-prev').forEach(function(link){ link.addEventListener('click', function(event){ event.preventDefault(); openSectionById(link.dataset.target); }); });
