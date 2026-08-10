@@ -1,19 +1,11 @@
-﻿
+
 <!DOCTYPE html>
 
-<html lang="fr">
+<html lang="fr-CA">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Profil de Succ&egrave;s en Vente - Questionnaire international PSV</title>
-<meta name="description" content="Questionnaire international Profil de Succès en Vente® (PSV®)."/>
-<meta name="robots" content="noindex, nofollow, noarchive"/>
-<link rel="canonical" href="https://assessment.psv-global.com/fr/"/>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K4HXVY6SDR"></script>
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('consent','default',{'analytics_storage':'denied'});gtag('js',new Date());gtag('config','G-K4HXVY6SDR',{'anonymize_ip':true});
-</script>
+<title>Profil de Succ&egrave;s en Vente - Questionnaire PSV</title>
 <style>
   :root{ --blue:#0a2a66; --ink:#111; --muted:#666; --bg:#fafafa; --card:#fff; }
   body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; margin:0; color:var(--ink); background:var(--bg)}
@@ -62,15 +54,43 @@ gtag('consent','default',{'analytics_storage':'denied'});gtag('js',new Date());g
 body, p, li, div, section, legend, label {
   text-align: justify !important;
 }
-body { margin:0; }
+body {
+  margin: 2cm;
+}
 p {
   margin-bottom: 1em;
   line-height: 1.5;
 }
 li {
   margin-bottom: 0.5em;
-}
+}}
 
+
+  .opt{font-weight:400;color:#6b7280;font-size:.85em}
+  .field-why{display:block;margin-top:4px;color:#6b7280;font-size:12px;text-align:left!important}
+  .avis-h3{color:#0a2a66;font-size:15px;margin:20px 0 6px;text-transform:uppercase;letter-spacing:.05em}
+  .avis-encadre{background:#eef4ff;border-left:4px solid #0a2a66;border-radius:0 8px 8px 0;padding:14px 16px;margin:18px 0}
+  .avis-encadre p{margin:0}
+  .avis-liens{font-size:13px;color:#555;padding-top:12px;border-top:1px solid #e9eef6}
+  .avis-consent{display:flex;align-items:flex-start;gap:11px;background:#fff8e6;border:2px solid #e0b84a;border-radius:10px;padding:15px 17px;margin:20px 0 8px;text-align:left!important}
+  .avis-consent input{margin-top:4px;width:18px;height:18px;flex-shrink:0}
+  .avis-consent label{font-weight:600;color:#0a2a66;cursor:pointer;text-align:left!important}
+  .avis-note{font-size:13px;color:#6b7280;margin:0}
+
+  .psv-confirm{display:none;background:#fff;border:2px solid #0a7a2a;border-radius:12px;padding:22px 24px;margin:18px 0;text-align:left!important}
+  .psv-confirm h2{color:#0a7a2a;margin:0 0 10px;font-size:20px}
+  .psv-confirm p{text-align:left!important}
+  .psv-ref{display:flex;flex-direction:column;gap:4px;background:#f2fbf4;border:1px solid #bfe3c8;border-radius:10px;padding:14px 16px;margin:14px 0}
+  .psv-ref-label{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#0a7a2a;font-weight:700}
+  .psv-ref strong{font-size:22px;font-variant-numeric:tabular-nums;letter-spacing:.06em;color:#0a2a66}
+  .psv-confirm-detail{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:14px 0;font-size:14px}
+  .psv-confirm-detail dt{color:#6b7280;font-weight:600}
+  .psv-confirm-detail dd{margin:0;color:#111}
+  .psv-confirm-next{background:#eef4ff;border-left:4px solid #0a2a66;border-radius:0 8px 8px 0;padding:13px 15px;margin:14px 0}
+  .psv-confirm-note{font-size:13px;color:#6b7280;margin:0 0 14px}
+  @media print{.psv-confirm{display:block!important;break-inside:avoid}}
+
+  input.prefilled{background:#f2fbf4;border-color:#bfe3c8;font-weight:600}
 </style>
 <style>
 #instructions {
@@ -143,27 +163,9 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 .identite-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .formule-badge{border:1px solid #d8e3ff;background:#eef4ff;color:#0a2a66;border-radius:999px;padding:8px 12px;font-size:14px;font-weight:700}
 #questionnaireWrap{position:relative}
-.topbar{max-width:980px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.language-group{display:flex;flex-direction:column;align-items:center;gap:5px}
-.language-badge{border:1px solid #d8e3ff;background:#eef4ff;color:#0a2a66;border-radius:999px;padding:8px 12px;font-weight:700}
-.market-flags{font-size:20px;letter-spacing:3px;line-height:1;white-space:nowrap}
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.topbar a,footer a{color:#0a2a66;font-weight:600}
-.privacy-panel{background:#f7f9fc;border:1px solid #d8e3ff;border-radius:12px;padding:16px;margin:18px 0}
-.privacy-panel label{display:flex;align-items:flex-start;gap:9px;margin:10px 0}
-.privacy-panel input{margin-top:4px;flex:0 0 auto}
-#market{width:100%;padding:8px;border:1px solid #cbd5e1;border-radius:8px;background:#fff}
 </style>
 </head>
 <body>
-<nav class="topbar" aria-label="Navigation principale">
-<div class="language-group">
-<span class="language-badge">Français international</span>
-<span class="market-flags" aria-hidden="true">⚜️ 🇨🇦 🇫🇷 🇧🇪 🇨🇭 🌐</span>
-<span class="sr-only">Québec, francophonie canadienne, France, Belgique, Suisse et autres marchés francophones</span>
-</div>
-<a href="https://psv-global.com/">Retour au site principal PSV Global</a>
-</nav>
 <div class="psv-presentation-header">
 <img alt="PSV Global - Profil de Succès en Vente" src="presentation.png"/>
 </div>
@@ -216,41 +218,20 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 <div class="formule-badge" id="formuleBadge">Formule PSV : à confirmer</div>
 </div>
 <div class="grid-2">
-<label>Pays / marché
-  <select id="market" required>
-    <option value="">Choisissez votre pays ou marché</option>
-    <option value="ca">Canada — Québec et francophonie canadienne</option>
-    <option value="fr">France</option>
-    <option value="be">Belgique</option>
-    <option value="ch">Suisse</option>
-    <option value="international">Autre / International</option>
-  </select>
-</label>
-<label>Nom
-          <input id="nom" placeholder="Ex.: Tremblay" required type="text"/>
-</label>
-<label>Prénom
-          <input id="prenom" placeholder="Ex.: Marie" required type="text"/>
-</label>
-<label>Adresse électronique (courriel)
-          <input id="email" placeholder="Ex.: nom@entreprise.com" required type="email"/>
-</label>
-<label>Téléphone
-          <input id="tel" placeholder="Ex.: 514 555-1212" required type="tel"/>
+<label>Code de participation
+          <input id="codeparticipant" placeholder="Ex.: ABC-2026-014" required type="text"/>
+          <span class="field-why">Ce code vous a été fourni par l&rsquo;entreprise qui vous a invité. Il remplace votre nom : nous ne vous demandons pas votre identité.</span>
 </label>
 <label>Entreprise
           <input id="entreprise" placeholder="Ex.: Entreprise ABC" required type="text"/>
 </label>
 <label>Poste actuel
-          <input id="poste" placeholder="Ex.: Professionnel de la vente technique" required type="text"/>
+          <input id="poste" placeholder="Ex.: Représentant technique" required type="text"/>
 </label>
 <label>Années d’expérience (vente)
           <input id="exp" min="0" placeholder="Ex.: 7" required step="1" type="number"/>
 </label>
-<label>Rémunération (fixe + variable)
-          <input id="remu" placeholder="Ex.: 55 000 $ + commissions" required type="text"/>
-</label>
-<label>Région / secteur commercial
+<label>Région / territoire
           <input id="region" placeholder="Ex.: Montréal et Rive-Sud" required type="text"/>
 </label>
 </div>
@@ -258,11 +239,29 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 <!-- INTRO -->
 <div id="questionnaireWrap">
 <div id="timerVeil"><div class="veil-box"><strong>Chronom&egrave;tre non d&eacute;marr&eacute;</strong><p>Compl&eacute;tez d&rsquo;abord l&rsquo;identification, puis cliquez sur &laquo; D&eacute;marrer le chronom&egrave;tre &raquo; dans la barre du bas pour d&eacute;verrouiller les questions.</p></div></div>
-<section class="intro">
-<h2>Profil de Succ&egrave;s en Vente&reg; – Avis important</h2>
-<p>Le Profil de Succ&egrave;s en Vente&reg; a été conçu pour fournir des informations précieuses sur vos compétences et aptitudes en vente. Il aide à identifier vos forces et vos faiblesses dans 13 domaines clés du processus de vente, notamment :</p>
+<!--
+  =========================================================================
+  AVIS DE COLLECTE — Loi 25 (Québec) / RGPD
+  À VÉRIFIER AVANT MISE EN LIGNE :
+   1. Où sont stockées les soumissions ? Ce formulaire utilise Netlify Forms,
+      qui conserve chaque soumission dans le tableau de bord Netlify, sur des
+      serveurs américains, jusqu'à suppression manuelle. Tant que ce n'est pas
+      changé, l'affirmation « nous ne conservons rien » est inexacte.
+   2. Confirmer le délai réel de suppression et l'inscrire ci-dessous.
+   3. Insérer dynamiquement le nom de l'entreprise cliente dans
+      les éléments data-entreprise.
+  =========================================================================
+-->
+<section class="intro" id="avisCollecte">
+<h2>Profil de Succ&egrave;s en Vente&reg; — avant de commencer</h2>
+
+<p>Vous avez été invité à remplir ce questionnaire par <strong data-entreprise>l&rsquo;entreprise qui vous a transmis ce lien</strong>. Voici ce qu&rsquo;il faut savoir avant de répondre.</p>
+
+<h3 class="avis-h3">Ce qui est évalué</h3>
+<p>Le PSV mesure vos <strong>compétences de vente</strong>, et non votre personnalité. Ces compétences s&rsquo;apprennent et se développent : l&rsquo;objectif est de situer votre niveau actuel pour cibler vos priorités de progression, pas de porter un jugement sur vous.</p>
+<p>Treize domaines sont couverts par 50 questions à choix multiples :</p>
 <ol class="list13">
-<li>L’approche et l’établissement du contact</li>
+<li>L&rsquo;approche et l&rsquo;établissement du contact</li>
 <li>La découverte des besoins</li>
 <li>La présentation de la solution</li>
 <li>La gestion des objections</li>
@@ -272,14 +271,38 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 <li>La gestion du temps</li>
 <li>La planification de territoire</li>
 <li>La prospection</li>
-<li>L’écoute active</li>
-<li>La créativité et l’adaptabilité</li>
+<li>L&rsquo;écoute active</li>
+<li>La créativité et l&rsquo;adaptabilité</li>
 <li>Le professionnalisme</li>
 </ol>
-<p>Les résultats peuvent être utilisés par vos responsables ou votre employeur pour améliorer vos compétences commerciales en vous offrant de la formation ciblée dans les domaines où vous avez besoin d’aide.</p>
-<p>En complétant ce profil, vous acceptez expressément que vos réponses soient évaluées et que les résultats puissent être transmis à l’entreprise ou à l’agence qui vous a demandé de remplir ce profil.</p>
-<p>Le Profil de Succ&egrave;s en Vente&reg; mesure vos compétences de vente, et non votre personnalité. Les compétences de vente peuvent être entraînées et améliorées. Toutefois, il est essentiel de savoir quel est votre niveau actuel afin d’identifier les priorités de développement.</p>
-<p>Il s&rsquo;agit d&rsquo;un test de 50 questions &agrave; choix multiples couvrant 13 comp&eacute;tences critiques. Vos r&eacute;ponses permettront de pr&eacute;parer une analyse structur&eacute;e de vos forces, de vos zones &agrave; d&eacute;velopper et de vos priorit&eacute;s de progression en vente.</p>
+
+<h3 class="avis-h3">Ce qui est recueilli</h3>
+<p><strong>Nous ne vous demandons pas votre nom.</strong> Votre questionnaire est identifié par un code de participation fourni par l&rsquo;entreprise qui vous a invité. Elle seule sait à qui ce code correspond.</p>
+<p>Sont recueillis : le code de participation, le nom de l&rsquo;entreprise, votre poste, vos années d&rsquo;expérience, votre région, et vos réponses aux 50 questions. Le temps utilisé et le nombre de pauses sont également transmis.</p>
+<p>Nous ne demandons ni votre courriel ni votre téléphone. Nous n&rsquo;avons aucun moyen de vous joindre, et nous ne vous contacterons pas. La confirmation de réception s&rsquo;affiche à l&rsquo;écran dès l&rsquo;envoi.</p>
+<p>Aucune question ne porte sur votre vie privée, votre santé, vos origines ou vos convictions.</p>
+
+<h3 class="avis-h3">À quelle fin, et qui reçoit le rapport</h3>
+<p>Vos réponses servent à produire un rapport remis à <strong data-entreprise>l&rsquo;entreprise qui vous a invité</strong>, qui l&rsquo;utilisera pour orienter une décision d&rsquo;embauche, un plan de développement ou un accompagnement. Elles ne servent à aucune autre fin et ne sont ni vendues, ni louées, ni échangées.</p>
+
+<div class="avis-encadre">
+<p><strong>Ce rapport ne décide pas à votre place.</strong> Il est conçu comme un outil de discussion, notamment en entrevue. Aucune décision vous concernant ne devrait reposer uniquement sur ce résultat.</p>
+</div>
+
+<h3 class="avis-h3">Conservation</h3>
+<p>Le rapport que nous produisons porte votre code de participation, pas votre nom. <strong>Nous ne sommes donc pas en mesure de vous transmettre vos résultats</strong>, puisque nous ignorons qui vous êtes : pour les obtenir, adressez-vous à <span data-entreprise>l&rsquo;entreprise qui vous a invité</span>, seule à détenir la correspondance entre le code et votre nom.</p>
+
+<h3 class="avis-h3">Vos droits</h3>
+<p>Vous pouvez interrompre le questionnaire à tout moment. Si vous le quittez sans le soumettre, aucune réponse n&rsquo;est transmise.</p>
+<p>Vous avez le droit d&rsquo;accéder aux renseignements qui vous concernent et de les faire rectifier. Comme nous ne détenons aucune donnée permettant de vous identifier, ces droits s&rsquo;exercent auprès de l&rsquo;entreprise qui vous a invité.</p>
+<p class="avis-liens">Détails complets : <a href="https://psv-global.com/confidentialite/" rel="noopener" target="_blank">politique de confidentialité</a> · Responsable de la protection des renseignements personnels : <a href="mailto:evaluation@psv-global.com">evaluation@psv-global.com</a></p>
+
+<div class="avis-consent">
+<input id="psvConsent" type="checkbox"/>
+<label for="psvConsent">J&rsquo;ai lu ce qui précède et j&rsquo;accepte que mes réponses soient évaluées et que le rapport, identifié par mon code de participation, soit transmis à l&rsquo;entreprise qui m&rsquo;a invité.</label>
+</div>
+<p class="avis-note">Le chronomètre ne peut pas être démarré tant que cette case n&rsquo;est pas cochée.</p>
+</section>
 
 <section class="accordion" id="acc1">
 <div class="acc-head">
@@ -308,7 +331,7 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 </div>
 </fieldset>
 <fieldset class="q" data-q="3">
-<legend>3. Un client dit : « C’est trop cher ». Que peut faire un bon professionnel de la vente ?</legend>
+<legend>3. Un client dit : « C’est trop cher ». Que peut faire un bon vendeur ?</legend>
 <div class="choices">
 <label><input name="q3" type="checkbox" value="A"/> A. Réduire immédiatement le prix.</label>
 <label><input name="q3" type="checkbox" value="B"/> B. Mettre en valeur le retour sur investissement.</label>
@@ -350,7 +373,7 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 <fieldset class="q" data-q="7">
 <legend>7. Quelles sont des sources de nouveaux prospects ?</legend>
 <div class="choices">
-<label><input name="q7" type="checkbox" value="A"/> A. Les recommandations de clients satisfaits.</label>
+<label><input name="q7" type="checkbox" value="A"/> A. Les références de clients satisfaits.</label>
 <label><input name="q7" type="checkbox" value="B"/> B. Les salons professionnels.</label>
 <label><input name="q7" type="checkbox" value="C"/> C. Les bases de données achetées.</label>
 <label><input name="q7" type="checkbox" value="D"/> D. Les anciens clients insatisfaits.</label>
@@ -430,7 +453,7 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 </div>
 </fieldset>
 <fieldset class="q" data-q="14">
-<legend>14. Quelles sont les qualités essentielles d’un bon professionnel de la vente ?</legend>
+<legend>14. Quelles sont les qualités essentielles d’un bon vendeur ?</legend>
 <div class="choices">
 <label><input name="q14" type="checkbox" value="A"/> A. Empathie.</label>
 <label><input name="q14" type="checkbox" value="B"/> B. Persévérance.</label>
@@ -654,7 +677,7 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 </div>
 </fieldset>
 <fieldset class="q" data-q="34">
-<legend>34. Quels comportements favorisent la crédibilité du professionnel de la vente ?</legend>
+<legend>34. Quels comportements favorisent la crédibilité du vendeur ?</legend>
 <div class="choices">
 <label><input name="q34" type="checkbox" value="A"/> A. Connaître son produit parfaitement.</label>
 <label><input name="q34" type="checkbox" value="B"/> B. Admettre quand on ne connaît pas une réponse.</label>
@@ -786,7 +809,7 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 </div>
 </fieldset>
 <fieldset class="q" data-q="46">
-<legend>46. Quelles qualités augmentent la motivation d’un professionnel de la vente ?</legend>
+<legend>46. Quelles qualités augmentent la motivation d’un vendeur ?</legend>
 <div class="choices">
 <label><input name="q46" type="checkbox" value="A"/> A. Avoir des objectifs clairs.</label>
 <label><input name="q46" type="checkbox" value="B"/> B. Se récompenser après les succès.</label>
@@ -796,7 +819,7 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 </div>
 </fieldset>
 <fieldset class="q" data-q="47">
-<legend>47. Que doit faire un professionnel de la vente quand il ne connaît pas la réponse à une question client ?</legend>
+<legend>47. Que doit faire un vendeur quand il ne connaît pas la réponse à une question client ?</legend>
 <div class="choices">
 <label><input name="q47" type="checkbox" value="A"/> A. Deviner une réponse plausible.</label>
 <label><input name="q47" type="checkbox" value="B"/> B. Admettre honnêtement et promettre de vérifier.</label>
@@ -826,7 +849,7 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 </div>
 </fieldset>
 <fieldset class="q" data-q="50">
-<legend>50. Quelles compétences un professionnel de la vente doit-il développer pour réussir à long terme ?</legend>
+<legend>50. Quelles compétences un vendeur doit-il développer pour réussir à long terme ?</legend>
 <div class="choices">
 <label><input name="q50" type="checkbox" value="A"/> A. Compétences en communication.</label>
 <label><input name="q50" type="checkbox" value="B"/> B. Compétences en négociation.</label>
@@ -841,33 +864,46 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 </div>
 </div>
 </section>
+    
+l
+
+
+</p></section>
 <!-- AUTO-EVALUATION -->
 <section class="block" id="autoeval">
 <h2>Auto-évaluation et auto-perception</h2>
-<p class="note">Sélectionnez votre perception dans le <strong>menu déroulant</strong>. Choix disponibles : Très faible, Faible, Moyen, Bon, Très bon, Excellent.</p>
-<div class="ae-row"><span>1. Ma capacité à établir un contact initial et à mettre le client à l’aise :</span><select id="ae1"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>2. Ma capacité à identifier et comprendre les besoins du client :</span><select id="ae2"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>3. Ma capacité à présenter une solution adaptée aux besoins du client :</span><select id="ae3"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>4. Ma capacité à répondre efficacement aux objections :</span><select id="ae4"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>5. Ma capacité à négocier pour parvenir à un accord gagnant-gagnant :</span><select id="ae5"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>6. Ma capacité à conclure la vente :</span><select id="ae6"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>7. Ma capacité à effectuer un suivi et à fidéliser le client :</span><select id="ae7"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>8. Ma gestion du temps et de mes priorités :</span><select id="ae8"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>9. Ma capacité à planifier et gérer mon territoire de vente :</span><select id="ae9"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>10. Ma capacité à prospecter et générer de nouvelles opportunités :</span><select id="ae10"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>11. Mon écoute active et ma compréhension du client :</span><select id="ae11"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>12. Ma créativité et mon adaptabilité dans le processus de vente :</span><select id="ae12"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>13. Mon professionnalisme et mon éthique de travail :</span><select id="ae13"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>14. Ma motivation et mon attitude face au travail :</span><select id="ae14"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-<div class="ae-row"><span>15. Ma confiance en mes capacités de vente :</span><select id="ae15"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Excellent</option></select></div>
-</section>
-<section class="privacy-panel" id="confidentialite">
-<h2>Confidentialité et consentement</h2>
-<p>Vos réponses et vos coordonnées servent à produire et transmettre votre évaluation PSV. Consultez notre <a href="privacy.html" target="_blank" rel="noopener">avis de confidentialité</a>.</p>
-<label><input id="privacyConsent" type="checkbox" required/> <span>J’accepte que mes renseignements et mes réponses soient recueillis, analysés et transmis aux personnes autorisées aux fins de cette évaluation. <strong>(Obligatoire)</strong></span></label>
-<label><input id="analyticsConsent" type="checkbox"/> <span>J’accepte l’utilisation de Google Analytics 4 pour mesurer l’utilisation du questionnaire. <strong>(Facultatif)</strong></span></label>
+<p class="note">Sélectionnez votre perception dans le <strong>menu déroulant</strong>. Choix disponibles : Très faible, Faible, Moyen, Bon, Très bon, Supérieur.</p>
+<div class="ae-row"><span>1. Ma capacité à établir un contact initial et à mettre le client à l’aise :</span><select id="ae1"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>2. Ma capacité à identifier et comprendre les besoins du client :</span><select id="ae2"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>3. Ma capacité à présenter une solution adaptée aux besoins du client :</span><select id="ae3"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>4. Ma capacité à répondre efficacement aux objections :</span><select id="ae4"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>5. Ma capacité à négocier pour parvenir à un accord gagnant-gagnant :</span><select id="ae5"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>6. Ma capacité à conclure la vente :</span><select id="ae6"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>7. Ma capacité à effectuer un suivi et à fidéliser le client :</span><select id="ae7"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>8. Ma gestion du temps et de mes priorités :</span><select id="ae8"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>9. Ma capacité à planifier et gérer mon territoire de vente :</span><select id="ae9"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>10. Ma capacité à prospecter et générer de nouvelles opportunités :</span><select id="ae10"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>11. Mon écoute active et ma compréhension du client :</span><select id="ae11"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>12. Ma créativité et mon adaptabilité dans le processus de vente :</span><select id="ae12"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>13. Mon professionnalisme et mon éthique de travail :</span><select id="ae13"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>14. Ma motivation et mon attitude face au travail :</span><select id="ae14"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
+<div class="ae-row"><span>15. Ma confiance en mes capacités de vente :</span><select id="ae15"><option></option><option>Très faible</option><option>Faible</option><option>Moyen</option><option>Bon</option><option>Très bon</option><option>Supérieur</option></select></div>
 </section>
 <!-- RESULTATS (admin seulement) -->
+
+<section aria-live="polite" class="psv-confirm" id="psvConfirmation" tabindex="-1">
+<h2>Vos réponses ont bien été reçues</h2>
+<p>La transmission est confirmée. Conservez le numéro de référence ci-dessous : c&rsquo;est la seule information dont vous aurez besoin si vous souhaitez faire un suivi.</p>
+<div class="psv-ref"><span class="psv-ref-label">Numéro de référence</span><strong id="psvRefValue">—</strong></div>
+<dl class="psv-confirm-detail">
+<dt>Reçu le</dt><dd id="psvRefDate">—</dd>
+<dt>Contenu</dt><dd id="psvRefQuestions">—</dd>
+<dt>Code de participation</dt><dd id="psvRefCode">—</dd>
+</dl>
+<p class="psv-confirm-next"><strong>La suite.</strong> Votre rapport sera préparé puis transmis à l&rsquo;entreprise qui vous a invité. C&rsquo;est auprès d&rsquo;elle que vous pourrez en prendre connaissance et en discuter.</p>
+<p class="psv-confirm-note">Nous ne détenons ni votre nom, ni votre courriel, ni votre téléphone. Votre questionnaire est identifié uniquement par votre code de participation. Nous ne pouvons donc pas vous contacter, et aucune communication de notre part ne vous parviendra.</p>
+<button class="secondary" onclick="window.print()" type="button">Imprimer cette confirmation</button>
+</section>
 <section class="results" id="resultsPanel">
 <h3 style="margin:0 0 10px;color:#0a2a66">Résultats (visible en mode admin seulement)</h3>
 <div id="overall"></div>
@@ -887,15 +923,12 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 </div>
 <div id="submit-status"></div><div id="submit-error"></div><div class="muted">Vos r&eacute;ponses demeureront strictement confidentielles. Elles seront transmises de fa&ccedil;on s&eacute;curis&eacute;e &agrave; l&rsquo;&eacute;quipe PSV.</div>
 </div>
-<footer>&copy; 2026 PSV Global - Tous droits r&eacute;serv&eacute;s &nbsp;|&nbsp; <a href="privacy.html">Confidentialité</a> &nbsp;|&nbsp; <a href="https://psv-global.com/">Site principal</a></footer>
+<footer>&copy; 2026 PSV Global - Tous droits r&eacute;serv&eacute;s</footer>
 <form data-netlify="true" hidden method="POST" name="psv-questionnaire" netlify-honeypot="bot-field">
 <input name="form-name" type="hidden" value="psv-questionnaire">
 <input name="bot-field" type="text">
 <input id="nf-formule" name="formule" type="hidden">
-<input id="nf-market" name="market" type="hidden">
-<input id="nf-locale" name="locale" type="hidden">
-<input id="nf-source-url" name="source_url" type="hidden">
-<input id="nf-privacy-consent" name="privacy_consent" type="hidden">
+<input id="nf-reference" name="reference" type="hidden">
 <input id="nf-submitted-at" name="submitted_at" type="hidden">
 <input id="nf-score-global" name="score_global_pct" type="hidden">
 <input id="nf-temps-actif" name="temps_actif_utilise" type="hidden">
@@ -905,14 +938,10 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 <textarea id="nf-scores-domaines" name="scores_domaines_json"></textarea>
 <textarea id="nf-scores-questions" name="scores_questions_json"></textarea>
 <textarea id="nf-resultats-resume" name="resultats_resume"></textarea>
-<input id="nf-nom" name="nom" type="hidden">
-<input id="nf-prenom" name="prenom" type="hidden">
-<input id="nf-email" name="email" type="hidden">
-<input id="nf-tel" name="telephone" type="hidden">
+<input id="nf-code" name="code_participant" type="hidden">
 <input id="nf-entreprise" name="entreprise" type="hidden">
 <input id="nf-poste" name="poste" type="hidden">
 <input id="nf-exp" name="experience" type="hidden">
-<input id="nf-remu" name="remuneration" type="hidden">
 <input id="nf-region" name="region" type="hidden">
 <input id="nf-q1" name="q1" type="hidden">
 <input id="nf-q2" name="q2" type="hidden">
@@ -986,16 +1015,6 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
   const params = new URLSearchParams(window.location.search);
   const formule = params.get('formule') || 'PSV';
   const formuleLabel = formule === 'strategique' ? 'PSV Stratégique' : formule === 'essentiel' ? 'PSV Essentiel' : 'PSV à confirmer';
-  const MARKET_CONFIG = {
-    ca:{locale:'fr-CA',telephone:'Ex. : 514 555-1212',remuneration:'Ex. : 55 000 CAD + commissions',region:'Ex. : Montréal et Rive-Sud'},
-    fr:{locale:'fr-FR',telephone:'Ex. : +33 1 23 45 67 89',remuneration:'Ex. : 55 000 EUR + commissions',region:'Ex. : Île-de-France'},
-    be:{locale:'fr-BE',telephone:'Ex. : +32 2 555 12 34',remuneration:'Ex. : 55 000 EUR + commissions',region:'Ex. : Bruxelles-Capitale'},
-    ch:{locale:'fr-CH',telephone:'Ex. : +41 44 668 18 00',remuneration:'Ex. : 75 000 CHF + commissions',region:'Ex. : Suisse romande'},
-    international:{locale:'fr',telephone:'Incluez l’indicatif du pays',remuneration:'Indiquez le montant et la devise locale',region:'Indiquez votre région ou secteur commercial'}
-  };
-  const marketSelect = document.getElementById('market');
-  let market = MARKET_CONFIG[params.get('market')] ? params.get('market') : '';
-  let locale = market ? MARKET_CONFIG[market].locale : 'fr';
   let timerSeconds = 60 * 60;
   let timerId = null;
   let timerStarted = false;
@@ -1027,15 +1046,6 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
   function domainOfQuestion(questionNumber){ return ((questionNumber - 1) % DOMAIN_NAMES.length) + 1; }
   function showError(message){ errorBox.textContent = message; errorBox.style.display = 'block'; statusBox.style.display = 'none'; }
   function showStatus(message){ statusBox.textContent = message; statusBox.style.display = 'block'; errorBox.style.display = 'none'; }
-  function trackEvent(name, details){ if (typeof gtag === 'function') gtag('event', name, Object.assign({language:'fr',market:market||'non_selectionne',formule:formule},details||{})); }
-  function applyMarket(value, updateUrl){
-    if (!MARKET_CONFIG[value]) return;
-    market=value; locale=MARKET_CONFIG[value].locale; document.documentElement.lang=locale;
-    document.getElementById('tel').placeholder=MARKET_CONFIG[value].telephone;
-    document.getElementById('remu').placeholder=MARKET_CONFIG[value].remuneration;
-    document.getElementById('region').placeholder=MARKET_CONFIG[value].region;
-    if(updateUrl){const url=new URL(window.location.href);url.searchParams.set('market',market);history.replaceState({},'',url);trackEvent('assessment_market_selected');}
-  }
   function formatDuration(seconds){
     const safeSeconds = Math.max(0, Math.floor(seconds || 0));
     const h = Math.floor(safeSeconds / 3600);
@@ -1050,17 +1060,12 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
   function totalElapsedSeconds(){ return startTimestamp ? Math.floor((Date.now() - startTimestamp) / 1000) : 0; }
   function displayTimer(){ document.getElementById('timerDisplay').textContent = formatDuration(timerSeconds); }
   function validateIdentification(){
-    if (!marketSelect.value) { marketSelect.focus(); return 'Veuillez choisir votre pays ou marché avant de démarrer le chronomètre.'; }
     const requiredFields = [
-      ['nom', 'nom'],
-      ['prenom', 'pr\u00e9nom'],
-      ['email', 'courriel'],
-      ['tel', 't\u00e9l\u00e9phone'],
+      ['codeparticipant', 'code de participation'],
       ['entreprise', 'entreprise'],
       ['poste', 'poste actuel'],
       ['exp', 'ann\u00e9es d\u2019exp\u00e9rience'],
-      ['remu', 'r\u00e9mun\u00e9ration'],
-       ['region', 'r\u00e9gion / secteur commercial']
+      ['region', 'r\u00e9gion / territoire']
     ];
     for (const field of requiredFields) {
       const input = document.getElementById(field[0]);
@@ -1069,10 +1074,11 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
         return 'Veuillez compl\u00e9ter la section Identification avant de d\u00e9marrer le chronom\u00e8tre. Information manquante : ' + field[1] + '.';
       }
     }
-    const email = document.getElementById('email');
-    if (email && !/^\S+@\S+\.\S+$/.test(email.value.trim())) {
-      email.focus();
-      return 'Veuillez inscrire une adresse courriel valide avant de d\u00e9marrer le chronom\u00e8tre.';
+    const consent = document.getElementById('psvConsent');
+    if (consent && !consent.checked) {
+      consent.focus();
+      consent.closest('.avis-consent')?.scrollIntoView({behavior:'smooth', block:'center'});
+      return 'Veuillez lire l\u2019avis et cocher la case de consentement avant de d\u00e9marrer le chronom\u00e8tre.';
     }
     return '';
   }
@@ -1095,7 +1101,7 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
       const identificationError = validateIdentification();
       if (identificationError) { showError(identificationError); return; }
     }
-    if (!timerStarted) { timerStarted = true; startTimestamp = Date.now(); marketSelect.disabled=true; document.body.classList.remove('timer-locked'); document.body.classList.add('timer-started'); setQuestionControlsDisabled(false); trackEvent('assessment_start'); showStatus('Le questionnaire est d\u00e9verrouill\u00e9. Vous pouvez r\u00e9pondre aux questions.'); }
+    if (!timerStarted) { timerStarted = true; startTimestamp = Date.now(); document.body.classList.remove('timer-locked'); document.body.classList.add('timer-started'); setQuestionControlsDisabled(false); showStatus('Le questionnaire est d\u00e9verrouill\u00e9. Vous pouvez r\u00e9pondre aux questions.'); }
     if (timerId !== null) return;
     timerId = setInterval(function(){ if (timerSeconds > 0) { timerSeconds--; displayTimer(); } else { clearInterval(timerId); timerId = null; showError('Temps \u00e9coul\u00e9. Vous pouvez tout de m\u00eame envoyer vos r\u00e9ponses si elles sont compl\u00e9t\u00e9es.'); } }, 1000);
     document.getElementById('timerStart').textContent = 'D\u00e9marrer le chronom\u00e8tre';
@@ -1139,8 +1145,33 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
     if (!digits) return '';
     return digits.replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' $';
   }
-  function attachFormatting(){
-    /* Les formats de téléphone et de devise varient selon le pays : aucune transformation forcée. */
+  function makeReference(){
+    if (psvReference) return psvReference;
+    const d = new Date();
+    const ymd = d.getFullYear().toString()
+      + String(d.getMonth()+1).padStart(2,'0')
+      + String(d.getDate()).padStart(2,'0');
+    let rnd = '';
+    const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    const bytes = new Uint8Array(5);
+    (window.crypto || window.msCrypto).getRandomValues(bytes);
+    for (const b of bytes) rnd += alphabet[b % alphabet.length];
+    psvReference = 'PSV-' + ymd + '-' + rnd;
+    return psvReference;
+  }
+  function showConfirmation(reference, payload){
+    const panel = document.getElementById('psvConfirmation');
+    if (!panel) return;
+    document.getElementById('psvRefValue').textContent = reference;
+    document.getElementById('psvRefDate').textContent =
+      new Date().toLocaleString('fr-CA', {dateStyle:'long', timeStyle:'short'});
+    document.getElementById('psvRefQuestions').textContent =
+      payload && payload.resultats ? '50 questions transmises' : 'Questionnaire transmis';
+    const codeCell = document.getElementById('psvRefCode');
+    if (codeCell) codeCell.textContent = (payload && payload.candidat && payload.candidat.codeParticipant) || '—';
+    panel.style.display = 'block';
+    panel.scrollIntoView({behavior:'smooth', block:'center'});
+    panel.focus();
   }
   function collectPayload(){
     const questions = {}; for (let i=1;i<=50;i++) questions['q' + i] = checkedValues('q' + i);
@@ -1148,10 +1179,7 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
     const resultats = computeResults(questions);
     return {
       formule: formule,
-      market: market,
-      locale: locale,
-      sourceUrl: window.location.href,
-      privacyConsent: document.getElementById('privacyConsent').checked ? 'oui' : 'non',
+      reference: makeReference(),
       submittedAt: new Date().toISOString(),
       chrono: {
         tempsActifUtilise: formatDuration(activeSecondsUsed()),
@@ -1162,7 +1190,7 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
         tempsPauseTotal: formatDuration(totalPauseSecondsUsed()),
         tempsPauseTotalSecondes: totalPauseSecondsUsed()
       },
-      candidat: { nom: valueOf('nom'), prenom: valueOf('prenom'), email: valueOf('email'), telephone: valueOf('tel'), entreprise: valueOf('entreprise'), poste: valueOf('poste'), experience: valueOf('exp'), remuneration: valueOf('remu'), region: valueOf('region') },
+      candidat: { codeParticipant: valueOf('codeparticipant'), entreprise: valueOf('entreprise'), poste: valueOf('poste'), experience: valueOf('exp'), region: valueOf('region') },
       questions: questions,
       autoEvaluation: autoEvaluation,
       resultats: resultats
@@ -1220,17 +1248,14 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
   function validate(payload){
     if (!timerStarted) return 'Cliquez d\u2019abord sur \u00ab D\u00e9marrer le chronom\u00e8tre \u00bb avant de remplir ou envoyer le questionnaire.';
     if (timerPaused) return 'Le questionnaire est en pause. Cliquez sur \u00ab Reprendre le chronom\u00e8tre \u00bb avant d\u2019envoyer les r\u00e9ponses.';
-    if (!payload.candidat.nom || !payload.candidat.prenom || !payload.candidat.email || !payload.candidat.entreprise) return 'Veuillez remplir au minimum le nom, le pr\u00e9nom, le courriel et l\u2019entreprise.';
-    if (!/^\S+@\S+\.\S+$/.test(payload.candidat.email)) return 'Veuillez inscrire une adresse courriel valide.';
-    if (!payload.market) return 'Veuillez choisir votre pays ou marché.';
-    if (payload.privacyConsent !== 'oui') return 'Vous devez accepter le consentement de confidentialité avant l’envoi.';
+    if (!payload.candidat.codeParticipant || !payload.candidat.entreprise) return 'Veuillez inscrire le code de participation et le nom de l\u2019entreprise avant d\u2019envoyer les r\u00e9ponses.';
     for (let i=1;i<=50;i++) if (!payload.questions['q' + i].length) return 'La question ' + i + ' n\u2019a pas encore de r\u00e9ponse.';
     for (let i=1;i<=15;i++) if (!payload.autoEvaluation['ae' + i]) return 'L\u2019auto-\u00e9valuation ' + i + ' doit \u00eatre compl\u00e9t\u00e9e.';
     return '';
   }
   function fillNetlifyForm(payload){
-    document.getElementById('nf-formule').value = payload.formule; document.getElementById('nf-submitted-at').value = payload.submittedAt;
-    document.getElementById('nf-market').value = payload.market; document.getElementById('nf-locale').value = payload.locale; document.getElementById('nf-source-url').value = payload.sourceUrl; document.getElementById('nf-privacy-consent').value = payload.privacyConsent;
+    document.getElementById('nf-formule').value = payload.formule;
+    document.getElementById('nf-reference').value = payload.reference; document.getElementById('nf-submitted-at').value = payload.submittedAt;
     document.getElementById('nf-score-global').value = payload.resultats.scoreGlobalPct;
     document.getElementById('nf-temps-actif').value = payload.chrono.tempsActifUtilise;
     document.getElementById('nf-temps-total').value = payload.chrono.tempsTotalEcoule;
@@ -1239,7 +1264,7 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
     document.getElementById('nf-scores-domaines').value = JSON.stringify(payload.resultats.scoresDomaines);
     document.getElementById('nf-scores-questions').value = JSON.stringify(payload.resultats.scoresQuestions);
     document.getElementById('nf-resultats-resume').value = buildResultsSummary(payload);
-    document.getElementById('nf-nom').value = payload.candidat.nom; document.getElementById('nf-prenom').value = payload.candidat.prenom; document.getElementById('nf-email').value = payload.candidat.email; document.getElementById('nf-tel').value = payload.candidat.telephone; document.getElementById('nf-entreprise').value = payload.candidat.entreprise; document.getElementById('nf-poste').value = payload.candidat.poste; document.getElementById('nf-exp').value = payload.candidat.experience; document.getElementById('nf-remu').value = payload.candidat.remuneration; document.getElementById('nf-region').value = payload.candidat.region;
+    document.getElementById('nf-code').value = payload.candidat.codeParticipant;    document.getElementById('nf-entreprise').value = payload.candidat.entreprise; document.getElementById('nf-poste').value = payload.candidat.poste; document.getElementById('nf-exp').value = payload.candidat.experience; document.getElementById('nf-region').value = payload.candidat.region;
     for (let i=1;i<=50;i++) document.getElementById('nf-q' + i).value = payload.questions['q' + i].join(',');
     for (let i=1;i<=15;i++) document.getElementById('nf-ae' + i).value = payload.autoEvaluation['ae' + i];
     document.getElementById('nf-responses-json').value = JSON.stringify(payload);
@@ -1248,20 +1273,30 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
     event.preventDefault();
     const payload = collectPayload(); const validationError = validate(payload); if (validationError) { showError(validationError); return; }
     fillNetlifyForm(payload); sendButton.disabled = true; sendButton.textContent = 'Envoi en cours...';
-    try { const form = document.querySelector('form[name="psv-questionnaire"]'); const body = new URLSearchParams(new FormData(form)).toString(); const response = await fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: body }); if (!response.ok) throw new Error('Netlify response ' + response.status); trackEvent('assessment_complete',{score_global:payload.resultats.scoreGlobalPct}); showStatus('Merci. Vos r\u00e9ponses ont \u00e9t\u00e9 envoy\u00e9es \u00e0 l\u2019\u00e9quipe PSV.'); sendButton.textContent = 'R\u00e9ponses envoy\u00e9es'; }
+    try { const form = document.querySelector('form[name="psv-questionnaire"]'); const body = new URLSearchParams(new FormData(form)).toString(); const response = await fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: body }); if (!response.ok) throw new Error('Netlify response ' + response.status); showStatus('Merci. Vos r\u00e9ponses ont bien \u00e9t\u00e9 re\u00e7ues.'); sendButton.textContent = 'R\u00e9ponses envoy\u00e9es'; showConfirmation(payload.reference, payload); }
     catch (error) { showError('L\u2019envoi n\u2019a pas fonctionn\u00e9. V\u00e9rifiez que la page est publi\u00e9e sur Netlify, puis r\u00e9essayez.'); sendButton.disabled = false; sendButton.textContent = 'Envoyer les r\u00e9ponses'; }
   }
   function closeAll(){ document.querySelectorAll('.accordion .acc-body').forEach(function(el){ el.style.display='none'; }); document.querySelectorAll('.acc-toggle').forEach(function(button){ button.textContent='Ouvrir la section'; button.setAttribute('aria-expanded','false'); }); }
   function openSectionById(id){ const button = document.querySelector('#' + id + ' .acc-toggle'); const body = document.querySelector('#' + id + ' .acc-body'); if (!button || !body) return; closeAll(); body.style.display='block'; button.textContent='Fermer la section'; button.setAttribute('aria-expanded','true'); document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'}); }
+  function prefillFromUrl(){
+    const params = new URLSearchParams(window.location.search);
+    const ref = (params.get('ref') || params.get('code') || '').trim();
+    const ent = (params.get('entreprise') || '').trim();
+    if (ref) {
+      const input = document.getElementById('codeparticipant');
+      if (input) { input.value = ref; input.readOnly = true; input.classList.add('prefilled'); }
+    }
+    if (ent) {
+      const input = document.getElementById('entreprise');
+      if (input) { input.value = ent; }
+      document.querySelectorAll('[data-entreprise]').forEach(function(el){ el.textContent = ent; });
+    }
+  }
   window.addEventListener('DOMContentLoaded', function(){
+    prefillFromUrl();
     document.body.classList.add('timer-locked'); document.getElementById('btnAdmin')?.remove();
     setQuestionControlsDisabled(true);
-    attachFormatting();
-    if(market){marketSelect.value=market;applyMarket(market,false);}
-    marketSelect.addEventListener('change',function(){
-      if(this.value){applyMarket(this.value,true);}else{market='';locale='fr';document.documentElement.lang='fr';const url=new URL(window.location.href);url.searchParams.delete('market');history.replaceState({},'',url);}
-    });
-    document.getElementById('analyticsConsent').addEventListener('change',function(){gtag('consent','update',{'analytics_storage':this.checked?'granted':'denied'});if(this.checked)trackEvent('assessment_view');});
+    
     document.querySelectorAll('.acc-toggle').forEach(function(button){ button.addEventListener('click', function(){ const section = button.closest('.accordion'); const body = section.querySelector('.acc-body'); const wasOpen = body.style.display === 'block'; closeAll(); if (!wasOpen) { body.style.display='block'; button.textContent='Fermer la section'; button.setAttribute('aria-expanded','true'); } }); });
     document.querySelectorAll('.acc-next,.acc-prev').forEach(function(link){ link.addEventListener('click', function(event){ event.preventDefault(); openSectionById(link.dataset.target); }); });
     sendButton.addEventListener('click', submitResponses); document.getElementById('timerStart').addEventListener('click', startTimer); document.getElementById('timerPause').addEventListener('click', pauseTimer); displayTimer();
@@ -1270,4 +1305,3 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 </script>
 </body>
 </html>
-
