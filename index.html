@@ -164,6 +164,8 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 .formule-badge{border:1px solid #d8e3ff;background:#eef4ff;color:#0a2a66;border-radius:999px;padding:8px 12px;font-size:14px;font-weight:700}
 #questionnaireWrap{position:relative}
 </style>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<link rel="canonical" href="https://assessment.psv-global.com/fr/">
 </head>
 <body>
 <div class="psv-presentation-header">
@@ -218,6 +220,18 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 <div class="formule-badge" id="formuleBadge">Formule PSV : à confirmer</div>
 </div>
 <div class="grid-2">
+<label>Pays / marché
+          <select id="marketSelect" required>
+            <option value="">Sélectionnez votre pays ou marché</option>
+            <option value="qc">Canada — Québec</option>
+            <option value="ca">Canada — autres provinces</option>
+            <option value="fr">France</option>
+            <option value="be">Belgique</option>
+            <option value="ch">Suisse</option>
+            <option value="us">États-Unis</option>
+<option value="international">Autre marché</option>
+          </select>
+</label>
 <label>Code de participation
           <input id="codeparticipant" placeholder="Ex.: ABC-2026-014" required type="text"/>
           <span class="field-why">Ce code vous a été fourni par l&rsquo;entreprise qui vous a invité. Il remplace votre nom : nous ne vous demandons pas votre identité.</span>
@@ -225,14 +239,8 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 <label>Entreprise
           <input id="entreprise" placeholder="Ex.: Entreprise ABC" required type="text"/>
 </label>
-<label>Poste actuel
-          <input id="poste" placeholder="Ex.: Représentant technique" required type="text"/>
-</label>
 <label>Années d’expérience (vente)
           <input id="exp" min="0" placeholder="Ex.: 7" required step="1" type="number"/>
-</label>
-<label>Région / territoire
-          <input id="region" placeholder="Ex.: Montréal et Rive-Sud" required type="text"/>
 </label>
 </div>
 </section>
@@ -259,7 +267,7 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 
 <h3 class="avis-h3">Ce qui est évalué</h3>
 <p>Le PSV mesure vos <strong>compétences de vente</strong>, et non votre personnalité. Ces compétences s&rsquo;apprennent et se développent : l&rsquo;objectif est de situer votre niveau actuel pour cibler vos priorités de progression, pas de porter un jugement sur vous.</p>
-<p>Treize domaines sont couverts par 50 questions à choix multiples :</p>
+<p>Treize domaines sont couverts par 50 questions à choix multiples, suivis d&rsquo;une auto-évaluation de 15 énoncés :</p>
 <ol class="list13">
 <li>L&rsquo;approche et l&rsquo;établissement du contact</li>
 <li>La découverte des besoins</li>
@@ -278,7 +286,8 @@ body.timer-paused main input[name^="q"],body.timer-paused main select[id^="ae"]{
 
 <h3 class="avis-h3">Ce qui est recueilli</h3>
 <p><strong>Nous ne vous demandons pas votre nom.</strong> Votre questionnaire est identifié par un code de participation fourni par l&rsquo;entreprise qui vous a invité. Elle seule sait à qui ce code correspond.</p>
-<p>Sont recueillis : le code de participation, le nom de l&rsquo;entreprise, votre poste, vos années d&rsquo;expérience, votre région, et vos réponses aux 50 questions. Le temps utilisé et le nombre de pauses sont également transmis.</p>
+<p>Sont recueillis : le code de participation, le nom de l&rsquo;entreprise, votre pays ou marché, vos années d&rsquo;expérience en vente, vos réponses aux 50 questions et votre auto-évaluation en 15 énoncés. Le temps utilisé et le nombre de pauses sont également transmis.</p>
+<p>Les caractéristiques du poste sont décrites séparément par l&rsquo;entreprise. Vous n&rsquo;avez pas à les fournir.</p>
 <p>Nous ne demandons ni votre courriel ni votre téléphone. Nous n&rsquo;avons aucun moyen de vous joindre, et nous ne vous contacterons pas. La confirmation de réception s&rsquo;affiche à l&rsquo;écran dès l&rsquo;envoi.</p>
 <p>Aucune question ne porte sur votre vie privée, votre santé, vos origines ou vos convictions.</p>
 
@@ -904,11 +913,6 @@ l
 <p class="psv-confirm-note">Nous ne détenons ni votre nom, ni votre courriel, ni votre téléphone. Votre questionnaire est identifié uniquement par votre code de participation. Nous ne pouvons donc pas vous contacter, et aucune communication de notre part ne vous parviendra.</p>
 <button class="secondary" onclick="window.print()" type="button">Imprimer cette confirmation</button>
 </section>
-<section class="results" id="resultsPanel">
-<h3 style="margin:0 0 10px;color:#0a2a66">Résultats (visible en mode admin seulement)</h3>
-<div id="overall"></div>
-<div class="grid" id="domains" style="margin-top:10px"></div>
-</section>
 </div>
 </main>
 <div class="actions">
@@ -929,20 +933,18 @@ l
 <input name="bot-field" type="text">
 <input id="nf-formule" name="formule" type="hidden">
 <input id="nf-reference" name="reference" type="hidden">
+<input id="nf-market" name="market" type="hidden">
+<input id="nf-locale" name="locale" type="hidden">
+<input id="nf-source-url" name="source_url" type="hidden">
+<input id="nf-privacy-consent" name="privacy_consent" type="hidden">
 <input id="nf-submitted-at" name="submitted_at" type="hidden">
-<input id="nf-score-global" name="score_global_pct" type="hidden">
 <input id="nf-temps-actif" name="temps_actif_utilise" type="hidden">
 <input id="nf-temps-total" name="temps_total_ecoule" type="hidden">
 <input id="nf-pauses-utilisees" name="pauses_utilisees" type="hidden">
 <input id="nf-temps-pause-total" name="temps_pause_total" type="hidden">
-<textarea id="nf-scores-domaines" name="scores_domaines_json"></textarea>
-<textarea id="nf-scores-questions" name="scores_questions_json"></textarea>
-<textarea id="nf-resultats-resume" name="resultats_resume"></textarea>
 <input id="nf-code" name="code_participant" type="hidden">
 <input id="nf-entreprise" name="entreprise" type="hidden">
-<input id="nf-poste" name="poste" type="hidden">
 <input id="nf-exp" name="experience" type="hidden">
-<input id="nf-region" name="region" type="hidden">
 <input id="nf-q1" name="q1" type="hidden">
 <input id="nf-q2" name="q2" type="hidden">
 <input id="nf-q3" name="q3" type="hidden">
@@ -1013,6 +1015,26 @@ l
 <script>
 (function(){
   const params = new URLSearchParams(window.location.search);
+  const MARKET_CONFIG = {
+    qc:            { label:'Canada — Québec',      locale:'fr-CA', devise:'CAD' },
+    ca:            { label:'Canada — hors Québec', locale:'fr-CA', devise:'CAD' },
+    fr:            { label:'France',               locale:'fr-FR', devise:'EUR' },
+    be:            { label:'Belgique',             locale:'fr-BE', devise:'EUR' },
+    ch:            { label:'Suisse',               locale:'fr-CH', devise:'CHF' },
+    international: { label:'Marché francophone',   locale:'fr',    devise:'devise locale' }
+  };
+  const requestedMarket = (params.get('market') || '').toLowerCase();
+  let market = Object.prototype.hasOwnProperty.call(MARKET_CONFIG, requestedMarket) ? requestedMarket : '';
+  let marketConfig = MARKET_CONFIG[market || 'international'];
+  function applyMarket(selectedMarket, updateUrl){
+    market = Object.prototype.hasOwnProperty.call(MARKET_CONFIG, selectedMarket) ? selectedMarket : '';
+    marketConfig = MARKET_CONFIG[market || 'international'];
+    if (updateUrl && market) {
+      const u = new URL(window.location.href);
+      u.searchParams.set('market', market);
+      window.history.replaceState({}, '', u);
+    }
+  }
   const formule = params.get('formule') || 'PSV';
   const formuleLabel = formule === 'strategique' ? 'PSV Stratégique' : formule === 'essentiel' ? 'PSV Essentiel' : 'PSV à confirmer';
   let timerSeconds = 60 * 60;
@@ -1031,13 +1053,9 @@ l
   const sendButton = document.getElementById('btnSend');
   const formuleBadge = document.getElementById('formuleBadge');
   if (formuleBadge) formuleBadge.textContent = 'Formule PSV : ' + formuleLabel;
-  const ANSWER_KEY = {
-    1:['B','D'],2:['A','B'],3:['B','D'],4:['B','D'],5:['B'],6:['B','C'],7:['A','B','C'],8:['A','D'],9:['B','D'],10:['A','B','D'],
-    11:['B','D'],12:['B','C','D'],13:['A','B','C'],14:['A','B','C','D','E'],15:['A','D'],16:['B','D'],17:['A','B','D'],18:['A','B','C','D','E'],19:['A','B','D'],20:['B','D'],
-    21:['B','C'],22:['A','B','D'],23:['B','C'],24:['A','B','C'],25:['A','B','D'],26:['A','B','C','D','E'],27:['B','D'],28:['A','B','D'],29:['B','C','D'],30:['A','B','C','D','E'],
-    31:['A','B','D'],32:['A','B','C','D','E'],33:['A','B','D'],34:['A','B','C','D','E'],35:['A','C','D'],36:['A','B','C','D','E'],37:['A','B','C'],38:['A','B','C'],39:['A','B','D'],40:['A','B','C'],
-    41:['A','B','C','D','E'],42:['B','C','D'],43:['A','B','C'],44:['A','B','C','D','E'],45:['A','B','C'],46:['A','B','C'],47:['B'],48:['A','B','C'],49:['A','B','C'],50:['A','B','C','D','E']
-  };
+  // La clé de correction a été retirée du navigateur.
+  // Elle réside dans netlify/functions/submission-created.js, exécutée
+  // côté serveur et jamais transmise au répondant.
   const DOMAIN_NAMES = [
     'Approche et contact','D\u00e9couverte des besoins','Pr\u00e9sentation de la solution','Gestion des objections','N\u00e9gociation',
     'Conclusion de la vente','Suivi et fid\u00e9lisation','Gestion du temps','Planification de territoire','Prospection',
@@ -1063,9 +1081,7 @@ l
     const requiredFields = [
       ['codeparticipant', 'code de participation'],
       ['entreprise', 'entreprise'],
-      ['poste', 'poste actuel'],
-      ['exp', 'ann\u00e9es d\u2019exp\u00e9rience'],
-      ['region', 'r\u00e9gion / territoire']
+      ['exp', 'ann\u00e9es d\u2019exp\u00e9rience']
     ];
     for (const field of requiredFields) {
       const input = document.getElementById(field[0]);
@@ -1073,6 +1089,10 @@ l
         if (input) input.focus();
         return 'Veuillez compl\u00e9ter la section Identification avant de d\u00e9marrer le chronom\u00e8tre. Information manquante : ' + field[1] + '.';
       }
+    }
+    if (!market) {
+      document.getElementById('marketSelect')?.focus();
+      return 'Veuillez s\u00e9lectionner votre pays ou march\u00e9 avant de d\u00e9marrer le chronom\u00e8tre.';
     }
     const consent = document.getElementById('psvConsent');
     if (consent && !consent.checked) {
@@ -1179,7 +1199,11 @@ l
     const resultats = computeResults(questions);
     return {
       formule: formule,
+      market: market,
+      locale: marketConfig.locale,
+      sourceUrl: window.location.href,
       reference: makeReference(),
+      privacyConsent: document.getElementById('psvConsent')?.checked === true,
       submittedAt: new Date().toISOString(),
       chrono: {
         tempsActifUtilise: formatDuration(activeSecondsUsed()),
@@ -1190,43 +1214,15 @@ l
         tempsPauseTotal: formatDuration(totalPauseSecondsUsed()),
         tempsPauseTotalSecondes: totalPauseSecondsUsed()
       },
-      candidat: { codeParticipant: valueOf('codeparticipant'), entreprise: valueOf('entreprise'), poste: valueOf('poste'), experience: valueOf('exp'), region: valueOf('region') },
+      candidat: { codeParticipant: valueOf('codeparticipant'), entreprise: valueOf('entreprise'), experience: valueOf('exp'),  },
       questions: questions,
       autoEvaluation: autoEvaluation,
       resultats: resultats
     };
   }
-  function jaccardScore(correctAnswers, selectedAnswers){
-    const correct = new Set(correctAnswers || []);
-    const selected = new Set(selectedAnswers || []);
-    let tp = 0;
-    selected.forEach(function(answer){ if (correct.has(answer)) tp++; });
-    const fp = selected.size - tp;
-    let fn = 0;
-    correct.forEach(function(answer){ if (!selected.has(answer)) fn++; });
-    const denominator = tp + fp + fn;
-    return denominator === 0 ? 0 : tp / denominator;
-  }
-  function computeResults(questions){
-    const questionScores = {};
-    const domainBuckets = {};
-    let total = 0;
-    for (let q=1; q<=50; q++) {
-      const score = jaccardScore(ANSWER_KEY[q], questions['q' + q]);
-      const rounded = Math.round(score * 100);
-      const domainId = domainOfQuestion(q);
-      questionScores['q' + q] = { scorePct: rounded, scoreRaw: Number(score.toFixed(4)), bonnesReponses: ANSWER_KEY[q], reponsesCochees: questions['q' + q], domaine: domainId };
-      if (!domainBuckets[domainId]) domainBuckets[domainId] = [];
-      domainBuckets[domainId].push(score);
-      total += score;
-    }
-    const domainScores = {};
-    for (let d=1; d<=DOMAIN_NAMES.length; d++) {
-      const bucket = domainBuckets[d] || [];
-      const avg = bucket.length ? bucket.reduce(function(sum, value){ return sum + value; }, 0) / bucket.length : 0;
-      domainScores['d' + String(d).padStart(2,'0')] = { nom: DOMAIN_NAMES[d - 1], scorePct: Math.round(avg * 100) };
-    }
-    return { methode: 'Jaccard par question: TP / (TP + FP + FN)', scoreGlobalPct: Math.round((total / 50) * 100), scoresQuestions: questionScores, scoresDomaines: domainScores };
+  function computeResults(){
+    // Correction effectuée côté serveur après soumission.
+    return { serverScored: true, domaines: {}, questions: {} };
   }
   function buildResultsSummary(payload){
     const resultats = payload.resultats;
@@ -1249,13 +1245,18 @@ l
     if (!timerStarted) return 'Cliquez d\u2019abord sur \u00ab D\u00e9marrer le chronom\u00e8tre \u00bb avant de remplir ou envoyer le questionnaire.';
     if (timerPaused) return 'Le questionnaire est en pause. Cliquez sur \u00ab Reprendre le chronom\u00e8tre \u00bb avant d\u2019envoyer les r\u00e9ponses.';
     if (!payload.candidat.codeParticipant || !payload.candidat.entreprise) return 'Veuillez inscrire le code de participation et le nom de l\u2019entreprise avant d\u2019envoyer les r\u00e9ponses.';
+    for (let i=1;i<=15;i++) if (!payload.autoEvaluation['ae' + i]) return 'L\u2019auto-\u00e9valuation ' + i + ' n\u2019est pas remplie.';
     for (let i=1;i<=50;i++) if (!payload.questions['q' + i].length) return 'La question ' + i + ' n\u2019a pas encore de r\u00e9ponse.';
     for (let i=1;i<=15;i++) if (!payload.autoEvaluation['ae' + i]) return 'L\u2019auto-\u00e9valuation ' + i + ' doit \u00eatre compl\u00e9t\u00e9e.';
     return '';
   }
   function fillNetlifyForm(payload){
     document.getElementById('nf-formule').value = payload.formule;
-    document.getElementById('nf-reference').value = payload.reference; document.getElementById('nf-submitted-at').value = payload.submittedAt;
+    document.getElementById('nf-reference').value = payload.reference;
+    document.getElementById('nf-market').value = payload.market;
+    document.getElementById('nf-locale').value = payload.locale;
+    document.getElementById('nf-source-url').value = payload.sourceUrl;
+    document.getElementById('nf-privacy-consent').value = payload.privacyConsent ? 'true' : 'false'; document.getElementById('nf-submitted-at').value = payload.submittedAt;
     document.getElementById('nf-score-global').value = payload.resultats.scoreGlobalPct;
     document.getElementById('nf-temps-actif').value = payload.chrono.tempsActifUtilise;
     document.getElementById('nf-temps-total').value = payload.chrono.tempsTotalEcoule;
@@ -1263,8 +1264,7 @@ l
     document.getElementById('nf-temps-pause-total').value = payload.chrono.tempsPauseTotal;
     document.getElementById('nf-scores-domaines').value = JSON.stringify(payload.resultats.scoresDomaines);
     document.getElementById('nf-scores-questions').value = JSON.stringify(payload.resultats.scoresQuestions);
-    document.getElementById('nf-resultats-resume').value = buildResultsSummary(payload);
-    document.getElementById('nf-code').value = payload.candidat.codeParticipant;    document.getElementById('nf-entreprise').value = payload.candidat.entreprise; document.getElementById('nf-poste').value = payload.candidat.poste; document.getElementById('nf-exp').value = payload.candidat.experience; document.getElementById('nf-region').value = payload.candidat.region;
+    document.getElementById('nf-code').value = payload.candidat.codeParticipant;    document.getElementById('nf-entreprise').value = payload.candidat.entreprise; document.getElementById('nf-exp').value = payload.candidat.experience;
     for (let i=1;i<=50;i++) document.getElementById('nf-q' + i).value = payload.questions['q' + i].join(',');
     for (let i=1;i<=15;i++) document.getElementById('nf-ae' + i).value = payload.autoEvaluation['ae' + i];
     document.getElementById('nf-responses-json').value = JSON.stringify(payload);
@@ -1294,6 +1294,12 @@ l
   }
   window.addEventListener('DOMContentLoaded', function(){
     prefillFromUrl();
+    const marketSelect = document.getElementById('marketSelect');
+    if (marketSelect) {
+      marketSelect.value = market;
+      marketSelect.addEventListener('change', function(){ applyMarket(marketSelect.value, true); });
+    }
+    applyMarket(market, false);
     document.body.classList.add('timer-locked'); document.getElementById('btnAdmin')?.remove();
     setQuestionControlsDisabled(true);
     

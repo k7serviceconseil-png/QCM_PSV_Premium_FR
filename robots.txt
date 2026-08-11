@@ -1,0 +1,5 @@
+# Sous-domaine d'évaluation — aucun contenu ne doit être indexé.
+# Les 50 questions constituent l'instrument : leur indexation permettrait
+# à un candidat de s'y préparer et retirerait au PSV sa raison d'être.
+User-agent: *
+Disallow: /
